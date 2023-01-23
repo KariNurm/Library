@@ -1,0 +1,25 @@
+.book-component {
+    background-color: #92eebb;
+    padding: 20px;
+    margin: 20px;
+    border: 15px;
+    border-style: solid;
+    border-color: #31a967;
+    border-radius: 5px;
+    max-width: 80%;
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.book-cover {
+    border: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #31a967;
+    max-width: fit-content;
+    padding: 5px;
+}
+img {
+    max-height: 400px;
+}
