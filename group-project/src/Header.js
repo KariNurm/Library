@@ -1,16 +1,16 @@
 import './Header.css';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
 
-export const Home = () => (
+const Home = () => (
 	<div> <h2>Home</h2> </div>
 )
-export const Search = () => (
+const Search = () => (
 	<div> <h2>Search</h2> <code></code></div>
 )
-export const Signup = () => (
+const Signup = () => (
 	<div> <h2>Signup</h2></div>
 )
-export const Login = () => (
+const Login = () => (
 	<div> <h2>Login</h2></div>
 )
 
