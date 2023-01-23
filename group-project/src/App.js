@@ -1,9 +1,9 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const LandingPage = () => {} ;
-const SearchPage = () => {} ;
-const Header = () => {} ;
+const LandingPage = () => {} ; { /* Landinpage component, will be imported */ }
+const SearchPage = () => {} ; { /* Searchpage component, will be imported */ }
+const Header = () => {} ; { /* Header/navbar component, will be imported */ }
 
 
 const App = () => { 
