@@ -1,24 +1,35 @@
-import LandingPage from "./LandingPage"; /* Landing Page Imported Here */
-import Header from "./Header";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { getBooks } from "./services/axios";
+import Header from "./Header"
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {useEffect, useState } from 'react';
+import LandingPage from "./LandingPage";
+import SearchPage from "./SearchPage";
 
-const SearchPage = () => {};
 
-/* Searchpage component, will be imported */
+const App = () => { 
 
-const App = () => {
-  return (
-    <div className="App">
-      <Header /> {/* <Link> elements goes to Header component*/}
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/search" element={<SearchPage />} />
-        </Routes>
-      </Router>
-    </div>
-  );
-};
+useEffect(() => {
+  getBooks().then((data) => {setBooks(data)});
+}, []);
+  
+const [books, setBooks] = useState([]);
+console.log(books)
+
+ return ( 
+  <div className='App'>
+    <Router>
+    
+    <Header /> { /* <Link> elements goes to Header component*/ }
+    
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
+    </Router>
+      
+  </div>
+)
+}
 
 export default App;
