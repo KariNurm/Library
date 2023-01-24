@@ -3,9 +3,9 @@ import Header from "./Header"
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {useEffect, useState } from 'react';
+import LandingPage from "./LandingPage";
+import SearchPage from "./SearchPage";
 
-const LandingPage = () => {} ; { /* Landinpage component, will be imported */ }
-const SearchPage = () => {} ; { /* Searchpage component, will be imported */ }
 
 const App = () => { 
 
@@ -32,4 +32,4 @@ console.log(books)
 )
 }
 
-export default App
+export default App;
