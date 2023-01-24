@@ -1,3 +1,4 @@
+import './SearchPage.css'
 import {useState} from "react";
 
 const SearchPage = () => {
@@ -61,7 +62,7 @@ const SearchPage = () => {
     }
 
     return (
-        <>
+        <div className='searchPage'>
             <h1>Search for books</h1>
             <p>Title</p>
             <input
@@ -128,7 +129,7 @@ const SearchPage = () => {
                     </tr>
                 ))}
             </table>
-        </>
+        </div>
     )
 }
 
