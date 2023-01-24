@@ -1,14 +1,8 @@
 import './BookComponent.css'
 import bookCover from './bookCover.png'
+import BookCopy from './BookCopy'
 const BookComponent = () => {
-    const copies = [
-		{
-			"id": "1",
-			"status": "in_library",
-			"borrower_id": null,
-			"due_date": null
-		}
-	]
+    
 
     return (
         <div className = "book-component">
@@ -30,12 +24,12 @@ const BookComponent = () => {
                         quam metus. Vestibulum dolor odio, commodo ut eleifend sit amet, consectetur a justo. 
                         Donec sit amet justo vel lacus mollis vehicula quis id lacus.</p>
             <h3>copies</h3>
-            <ul>
-                <p>copy1</p>
-                <button>Borrow</button>
-                <p>copy2</p>
-                <button>Borrow</button>
-            </ul>
+            
+           
+    <BookCopy />
+                
+                
+           
                 </div>
             </div>
         </div>
