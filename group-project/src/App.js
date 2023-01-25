@@ -1,4 +1,4 @@
-import { getBooks } from "./services/axios";
+import { getBooks } from "./services/Communication";
 import Header from "./Header"
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
@@ -7,12 +7,12 @@ import {useEffect, useState } from 'react';
 import LandingPage from "./LandingPage";
 
 const App = () => { 
+  const [books, setBooks] = useState([]);
 
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
 }, []);
   
-const [books, setBooks] = useState([]);
 console.log(books)
 
  return ( 
@@ -24,8 +24,6 @@ console.log(books)
       <Route path="/" element={<LandingPage />} />
       <Route path="/search" element={<SearchPage />} />
     </Routes>
-  
-      
   </div>
 )
 }

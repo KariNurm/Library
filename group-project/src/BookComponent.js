@@ -1,6 +1,7 @@
 import './BookComponent.css'
-import bookCover from './bookCover.png'
+import bookCover from './images/bookCover.png'
 import BookCopy from './BookCopy'
+import { formToJSON } from 'axios'
 const BookComponent = () => {
     
 
