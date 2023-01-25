@@ -1,18 +1,20 @@
-import { getBooks } from "./services/axios";
+import { getBooks } from "./services/Communication";
 import Header from "./Header";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SearchPage from "./SearchPage";
 import { useEffect, useState } from "react";
 import LandingPage from "./LandingPage";
 
 const App = () => {
+  const [books, setBooks] = useState([]);
+
   useEffect(() => {
     getBooks().then((data) => {
       setBooks(data);
     });
   }, []);
 
-  const [books, setBooks] = useState([]);
   console.log(books);
 
   return (
@@ -20,6 +22,7 @@ const App = () => {
       <Header /> {/* <Link> elements goes to Header component*/}
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
     </div>
   );
