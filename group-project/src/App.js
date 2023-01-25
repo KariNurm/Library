@@ -1,8 +1,8 @@
 import { getBooks } from "./services/axios";
 import Header from "./Header"
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchPageList from "./SearchPageList";
+import { Routes, Route } from 'react-router-dom';
+import SearchPage from "./SearchPage";
 import {useEffect, useState } from 'react';
 import LandingPage from "./LandingPage";
 
