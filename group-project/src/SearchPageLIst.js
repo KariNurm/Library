@@ -105,7 +105,7 @@ const SearchPageList = () => {
 
                 {books.filter(book => { //Filter the books on title.
                 if (searchTitle === "" && searchAuthor === "") {
-                        return true;
+                        return false;
                     } else if (book.title.toLowerCase().includes(
                         searchTitle.toLowerCase()) &&
                         book.author.toLowerCase().includes(
