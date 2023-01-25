@@ -61,6 +61,15 @@ const SearchPageList = () => {
         event.preventDefault();
     }
 
+    // const handleLess = (event) => {
+    //     event.preventDefault();
+    //     if (book.pagecount <= searchPageCount) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
     return (
         <>
             <h1>Search for books</h1>
@@ -86,9 +95,9 @@ const SearchPageList = () => {
                 value = {searchPageCount}
                 />
             <button onClick={handleSubmit}>{"<="}</button>
-            <button onClick={handleSubmit}>{">"}</button>
+            <button onClick={handleSubmit}>{">="}</button>
             <br/>
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>Show booksearch results</button>
         
             <table>
                 <tr>
