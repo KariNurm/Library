@@ -3,29 +3,29 @@ import Header from "./Header"
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
 import SearchPage from "./SearchPage";
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import LandingPage from "./LandingPage";
 
-const App = () => { 
+const App = () => {
   const [books, setBooks] = useState([]);
 
-useEffect(() => {
-  getBooks().then((data) => {setBooks(data)});
-}, []);
-  
-console.log(books)
+  useEffect(() => {
+    getBooks().then((data) => {
+      setBooks(data);
+    });
+  }, []);
 
- return ( 
-  <div className='App'>
-    
-    <Header /> { /* <Link> elements goes to Header component*/ }
-  
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/search" element={<SearchPage />} />
-    </Routes>
-  </div>
-)
-}
+  console.log(books);
+
+  return (
+    <div className="App">
+      <Header /> {/* <Link> elements goes to Header component*/}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default App;
