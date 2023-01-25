@@ -8,6 +8,7 @@ const SearchPage= () => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
+    const [revealedBooks, setRevealedBooks] = useState("")
     
     const books = [
         {
@@ -75,11 +76,30 @@ const SearchPage= () => {
         //         return false;
     //     }
     // }
-    
+    const filteredBooks = books.filter(book => { //Filter the books on title.
+        if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
+            return false;
+        } else if (
+            book.isbn.includes(searchISBN) &&
+            book.title.toLowerCase().includes(
+            searchTitle.toLowerCase()) &&
+            book.author.toLowerCase().includes(
+                searchAuthor.toLowerCase()
+                )) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+
+    const showBooks = (event) => {
+        event.preventDefault();
+        setRevealedBooks = filteredBooks
+    }
     return (
         <>  
             <div className="searchPage">
-            <h1>Search for books</h1> 
+            <h1 className="title">Search for books</h1> 
             <p>ISBN: </p>
             <input
                 type = "search"
@@ -101,7 +121,7 @@ const SearchPage= () => {
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
-            <p>Page Count: </p>
+            <p>Page Count: </p> {/*Doesn't work yet*/}
             <input
                 type = "search"
                 placeholder = "Search with a pagecount"
@@ -111,32 +131,21 @@ const SearchPage= () => {
             <button onClick={handleSubmit}>{"<="}</button>
             <button onClick={handleSubmit}>{">="}</button>
             <br/>
-            <button>Show booksearch results</button>
+            <div className="button">
+            <button onClick={showBooks}>Show booksearch results</button>
+            </div>
 
             <table>
-                <tr>
+                {filteredBooks.length > 0 && <tr>
                     <th>ISBN</th>
                     <th>Title</th>
                     <th>Subtitle</th>
                     <th>Author</th>
                     <th>Publisher</th>
                     <th>Pages</th>
-                </tr>
+                </tr>}
 
-                {books.filter(book => { //Filter the books on title.
-                if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
-                    return false;
-                } else if (
-                    book.title.toLowerCase().includes(
-                    searchTitle.toLowerCase()) &&
-                    book.author.toLowerCase().includes(
-                        searchAuthor.toLowerCase()
-                        )) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }).map((books, id) => (
+                {filteredBooks.map((books, id) => (
                         <tr key={id}>
                         <td>{books.isbn}</td>
                         <td>{books.title}</td>
