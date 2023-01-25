@@ -32,6 +32,7 @@ img {
     border: 2px; 
     border-style: solid; 
     border-color: #31a967;
+    border-radius: 20px;
     padding: 10px;
     background-color: #77e1a6;
     max-width: 50%;
@@ -40,7 +41,7 @@ img {
 .borrow-button {
     padding: 5px 10px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: #31a967;
     background-color: #0cb658;
     color: #f6fcf9;
