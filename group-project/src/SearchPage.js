@@ -1,5 +1,6 @@
 import './SearchPage.css'
 import {useState} from "react";
+import BookComponent from './BookComponent';
 
 const SearchPage = () => {
     const [searchTitle, setSearchTitle] = useState("");
@@ -63,6 +64,7 @@ const SearchPage = () => {
 
     return (
         <div className='searchPage'>
+            <BookComponent/>
             <h1>Search for books</h1>
             <p>Title</p>
             <input
