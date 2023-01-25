@@ -1,10 +1,10 @@
 import { getBooks } from "./services/axios";
 import Header from "./Header"
 import './App.css'
-import {  Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SearchPageList from "./SearchPageList";
 import {useEffect, useState } from 'react';
 import LandingPage from "./LandingPage";
-import SearchPage from "./SearchPage";
 
 const App = () => { 
 
