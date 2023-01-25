@@ -1,0 +1,19 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgb(178, 178, 178);
+    text-align: center;
+    height: 3vh;
+    padding: 50px;
+    color: white;
+    font-size: 20px;
+    z-index: 1;
+}
+
+.navLink {
+    padding: 15px;
+    margin: 15px;
+    color: white
+}
