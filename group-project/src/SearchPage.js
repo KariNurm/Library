@@ -9,9 +9,6 @@ const SearchPage= () => {
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
     
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const closeModal = () => setModalIsOpen(false);
-    
     const books = [
         {
             "isbn": "9781593275846",
@@ -81,30 +78,30 @@ const SearchPage= () => {
     
     return (
         <>  
-            <div>
+            <div className="searchPage">
             <h1>Search for books</h1> 
-            <p>ISBN</p>
+            <p>ISBN: </p>
             <input
                 type = "search"
                 placeholder = "Search with an ISBN"
                 onChange = {handleISBN}
                 value = {searchISBN}
                 />
-            <p>Title</p>
+            <p>Title: </p>
             <input
                 type = "search"
                 placeholder = "Search with a title"
                 onChange = {handleTitle}
                 value = {searchTitle}
                 />
-            <p>Author</p>
+            <p>Author: </p>
             <input
                 type = "search"
                 placeholder = "Search with an author"
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
-            <p>Page Count</p>
+            <p>Page Count: </p>
             <input
                 type = "search"
                 placeholder = "Search with a pagecount"
@@ -114,12 +111,7 @@ const SearchPage= () => {
             <button onClick={handleSubmit}>{"<="}</button>
             <button onClick={handleSubmit}>{">="}</button>
             <br/>
-            <button onClick={() => setModalIsOpen(true)}>Show booksearch results</button>
-
-            <Modal className="modal"
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                >
+            <button>Show booksearch results</button>
 
             <table>
                 <tr>
@@ -127,11 +119,8 @@ const SearchPage= () => {
                     <th>Title</th>
                     <th>Subtitle</th>
                     <th>Author</th>
-                    <th>Published</th>
                     <th>Publisher</th>
                     <th>Pages</th>
-                    <th>Description</th>
-                    <th>Website</th>
                 </tr>
 
                 {books.filter(book => { //Filter the books on title.
@@ -153,16 +142,11 @@ const SearchPage= () => {
                         <td>{books.title}</td>
                         <td>{books.subtitle}</td>
                         <td>{books.author}</td>
-                        <td>{books.published}</td>
                         <td>{books.publisher}</td>
                         <td>{books.pages}</td>
-                        <td>{books.description}</td>
-                        <td>{books.website}</td>
                     </tr>
                 ))}
             </table>
-            <button onClick={closeModal}>Close the book results</button>
-            </Modal>
     </div>
         </>
     )
