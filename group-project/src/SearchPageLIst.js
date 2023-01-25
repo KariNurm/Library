@@ -1,12 +1,13 @@
 import {useState} from "react";
 import "./SearchPageList.css"
 
-const SearchPageList = () => {
+const SearchPageList= () => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
 
     const [submitted, setSubmitted] = useState("");
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const books = [
         {

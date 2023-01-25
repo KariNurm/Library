@@ -1,3 +1,15 @@
 .searchPage {
   margin-top: 15vh;
 }
+
+.modal {
+  z-index: 1;
+}
+
+.table {
+  border: 1px solid black;
+}
+
+.div {
+  width: 300px;
+}
