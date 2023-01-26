@@ -5,6 +5,7 @@ import "./SearchPage.css"
 // Vaihda filteredbooks to revealedbooks or setrevealedbooks
 
 const SearchPage= ({books}) => {
+    
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
@@ -95,7 +96,7 @@ const SearchPage= ({books}) => {
 
     const showBooks = (event) => {
         event.preventDefault();
-        setRevealedBooks(revealedBooks)
+        setRevealedBooks(!revealedBooks)
     }
     return (
         <>  
@@ -133,11 +134,14 @@ const SearchPage= ({books}) => {
             <button onClick={handleSubmit}>{">="}</button>
             <br/>
             <div className="button">
-            <button onClick={showBooks}>Show booksearch results</button>
+            <button onClick={showBooks}>Toggle book search results</button>
             </div>
+            {
+                revealedBooks ?
+                <table>
+                <thead>
 
-            <table>
-                {revealedBooks.length > 0 && <tr>
+                {filteredBooks.length > 0 && <tr>
                     <th>ISBN</th>
                     <th>Title</th>
                     <th>Subtitle</th>
@@ -145,9 +149,12 @@ const SearchPage= ({books}) => {
                     <th>Publisher</th>
                     <th>Pages</th>
                 </tr>}
+                </thead>
+                
+                <tbody>
 
                 {filteredBooks.map((books, id) => (
-                        <tr key={id}>
+                    <tr key={id}>
                         <td>{books.isbn}</td>
                         <td>{books.title}</td>
                         <td>{books.subtitle}</td>
@@ -156,7 +163,10 @@ const SearchPage= ({books}) => {
                         <td>{books.pages}</td>
                     </tr>
                 ))}
+                </tbody>
             </table>
+            : null
+            }
     </div>
         </>
     )
