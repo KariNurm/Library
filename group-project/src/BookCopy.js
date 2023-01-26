@@ -10,11 +10,12 @@ const BookCopy = () => {
     return(
     <div className='book-copy wrapper'>
         
-        <p>{copies.status}</p>
-        {copies.status === "in_library" &&
-            <button className="borrow-button">
-            Borrow
-        </button>
+        {copies.status === "in_library" ?
+            <div>
+                In library
+                <button className="borrow-button">Borrow</button> 
+            </div>
+        : <p>{copies.status}</p>
         }
     </div>
     )

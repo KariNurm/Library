@@ -33,7 +33,7 @@ function LandingPage() {
         </p>
         <h3 className="our-mission">Our Mission</h3>
         <p>
-          The Green Library has been in operation since 2001 on the city of
+          The Green Library has been in operation since 2001 in the city of
           Oulu, Finland. Our library is a vital community resource, serving
           patrons of all ages and backgrounds. We have a wide range of
           collections, resources, and services that cater to the diverse needs
