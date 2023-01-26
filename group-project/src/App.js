@@ -11,7 +11,7 @@ import "./App.css";
 const App = () => {
   
 const [books, setBooks] = useState([]);
-console.log(books);
+
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
 }, []);
