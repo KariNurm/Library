@@ -1,8 +1,7 @@
 import {useState} from "react";
 import Modal from "react-modal";
 import "./SearchPage.css"
-
-// Vaihda filteredbooks to revealedbooks or setrevealedbooks
+import BookComponent from "./BookComponent";
 
 const SearchPage= ({books}) => {
     
@@ -98,6 +97,7 @@ const SearchPage= ({books}) => {
         event.preventDefault();
         setRevealedBooks(!revealedBooks)
     }
+    <BookComponent/>
     return (
         <>  
             <div className="searchPage">
