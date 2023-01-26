@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchPage from "./SearchPage";
 import { useEffect, useState } from "react";
 import LandingPage from "./LandingPage";
+import BookComponent from "./BookComponent";
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -14,12 +15,12 @@ const App = () => {
       setBooks(data);
     });
   }, []);
-
   console.log(books);
 
   return (
     <div className="App">
       <Header /> {/* <Link> elements goes to Header component*/}
+<BookComponent/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/search" element={<SearchPage />} />
