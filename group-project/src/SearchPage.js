@@ -4,6 +4,8 @@ import "./SearchPage.css"
 import BookComponent from "./BookComponent";
 
 const SearchPage = ({books}) => {
+
+    console.log(books);
     
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
