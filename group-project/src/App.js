@@ -29,7 +29,7 @@ const toggleForm = (formName) => {
   
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/search" element={<SearchPage books={books} />} />
+      <Route path="/search" element={<SearchPage books={books}/>} />
       <Route path="/login" element={
         currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup onFormSwitch={toggleForm} />} />
     </Routes>
