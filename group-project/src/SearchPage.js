@@ -1,7 +1,7 @@
 import {useState} from "react";
 import Modal from "react-modal";
 import "./SearchPage.css"
-
+import BookComponent from "./BookComponent";
 
 const SearchPage= ({books}) => {
     const [searchISBN, setSearchISBN] = useState("");
@@ -41,7 +41,7 @@ const SearchPage= ({books}) => {
         //         return false;
     //     }
     // }
-    
+    <BookComponent/>
     return (
         <>  
             <div className="searchPage">
