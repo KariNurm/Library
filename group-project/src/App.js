@@ -8,6 +8,7 @@ import SearchPage from "./SearchPage";
 import Signup from "./Signup";
 import "./App.css";
 
+
 const App = () => {
   
 const [books, setBooks] = useState([]);
@@ -26,7 +27,6 @@ const toggleForm = (formName) => {
   <div className='App'>
     
     <Header /> { /* <Link> elements goes to Header component*/ }
-  
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/search" element={<SearchPage />} />

@@ -41,7 +41,7 @@ const SearchPage= ({books}) => {
         //         return false;
     //     }
     // }
-    <BookComponent/>
+    
     return (
         <>  
             <div className="searchPage">
