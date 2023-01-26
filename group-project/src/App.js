@@ -1,7 +1,7 @@
 import { getBooks } from "./services/Communication";
 import Header from "./Header";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SearchPage from "./SearchPage";
 import { useEffect, useState } from "react";
 import LandingPage from "./LandingPage";
@@ -15,7 +15,6 @@ const App = () => {
       setBooks(data);
     });
   }, []);
-  console.log(books);
 
   return (
     <div className="App">
@@ -23,7 +22,7 @@ const App = () => {
 <BookComponent/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search" element={<SearchPage books={books} />} />
       </Routes>
     </div>
   );
