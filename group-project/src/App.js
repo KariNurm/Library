@@ -1,7 +1,6 @@
 import { getBooks } from "./services/Communication";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import BookComponent from "./BookComponent";
 import Header from "./Header";
 import LandingPage from "./LandingPage";
 import Login from "./Login"
@@ -12,7 +11,7 @@ import "./App.css";
 const App = () => {
   
 const [books, setBooks] = useState([]);
-console.log(books);
+
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
 }, []);
@@ -29,7 +28,6 @@ const toggleForm = (formName) => {
     <Header /> { /* <Link> elements goes to Header component*/ }
   
     <Routes>
-      <Route path="/bookComponent" element={<BookComponent />} />
       <Route path="/" element={<LandingPage />} />
       <Route path="/search" element={<SearchPage books={books}/>} />
       <Route path="/login" element={
