@@ -23,7 +23,10 @@ const BookComponent = ({book}) => {
                 <div className = "book-info">
                     <h3>Author: {book.author}</h3>
                     <h3>Title: {book.title}</h3>
-                    ? <h3>Subtitle</h3>
+                    {book.subtitle ? <>
+                                        <h3>Subtitle: </h3>
+                                        <p>{book.subtitle}</p>
+                                        </> : <></>}
                     <h3>Description:</h3>
                     <p>{book.description}</p>
                     <h3>Copies: {book.copies.length}</h3>
