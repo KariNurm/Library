@@ -2,7 +2,7 @@ import {useState} from "react";
 import Modal from "react-modal";
 import "./SearchPage.css"
 
-
+// Vaihda filteredbooks to revealedbooks or setrevealedbooks
 const SearchPage= () => {
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
@@ -94,7 +94,7 @@ const SearchPage= () => {
 
     const showBooks = (event) => {
         event.preventDefault();
-        setRevealedBooks = filteredBooks
+        setRevealedBooks(revealedBooks)
     }
     return (
         <>  
@@ -136,7 +136,7 @@ const SearchPage= () => {
             </div>
 
             <table>
-                {filteredBooks.length > 0 && <tr>
+                {revealedBooks.length > 0 && <tr>
                     <th>ISBN</th>
                     <th>Title</th>
                     <th>Subtitle</th>
