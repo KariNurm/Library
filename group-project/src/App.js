@@ -12,7 +12,7 @@ import "./App.css";
 const App = () => {
   
 const [books, setBooks] = useState([]);
-console.log(books);
+
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
 }, []);
@@ -29,7 +29,7 @@ const toggleForm = (formName) => {
     <Header /> { /* <Link> elements goes to Header component*/ }
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/search" element={<SearchPage />} />
+      <Route path="/search" element={<SearchPage books={books}/>} />
       <Route path="/login" element={
         currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup onFormSwitch={toggleForm} />} />
     </Routes>
