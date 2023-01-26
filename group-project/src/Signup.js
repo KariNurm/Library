@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login_Signup.css";
 
 const Signup = (props) => {
     const [email, setEmail] = useState('');
@@ -12,15 +13,7 @@ const Signup = (props) => {
 
     return (
         <div className="container">
-              <br></br>   { /* how to avoid line breaks?*/ }
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+             
             <h2>Signup</h2>
         <form className="signup-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>

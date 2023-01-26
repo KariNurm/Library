@@ -1,21 +1,21 @@
-import { getBooks } from "./services/axios";
-import Header from "./Header"
-import Login from "./Login"
-import './App.css'
-import {  Routes, Route } from 'react-router-dom';
-import {useEffect, useState } from 'react';
+import { getBooks } from "./services/Communication";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Header from "./Header";
 import LandingPage from "./LandingPage";
+import Login from "./Login"
 import SearchPage from "./SearchPage";
 import Signup from "./Signup";
+import "./App.css";
 
 const App = () => { 
 
+const [books, setBooks] = useState([]);
+console.log(books);
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
 }, []);
-  
-const [books, setBooks] = useState([]);
-console.log(books)
+
 const [currentForm, setCurrentForm] = useState('login');
 
 const toggleForm = (formName) => {
