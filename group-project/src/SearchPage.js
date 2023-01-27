@@ -52,29 +52,9 @@ const SearchPage = ({books}) => {
         //         return false;
     //     }
     // }
-    const filteredBooks = books.filter(book => { //Filter the books on title.
-        if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
-            return false;
-        } else if (
-            book.isbn.includes(searchISBN) &&
-            book.title.toLowerCase().includes(
-            searchTitle.toLowerCase()) &&
-            book.author.toLowerCase().includes(
-                searchAuthor.toLowerCase()
-                )) {
-                    return true;
-                } else {
-                    return false;
-                }
-            })
-
-    const showBooks = (event) => {
-        event.preventDefault();
-        setRevealedBooks(!revealedBooks)
-    }
-    <BookComponent/>
     return (
         <>  
+        
             <Modal
                 isOpen={isOpen}
                 onRequestClose={closeElement}
@@ -173,7 +153,7 @@ const SearchPage = ({books}) => {
                             return false;
                         }
                     }).map((books) => (
-                    <tbody key={books.isbn}>
+                    <tbody key={books.isbn} className="tableElement">
                       <tr onClick={() => {setCurrentElement(books); setIsOpen(true)}}>
                         <td>{books.isbn}</td>
                         <td>{books.title}</td>

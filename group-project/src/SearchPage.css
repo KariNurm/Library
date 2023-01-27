@@ -16,6 +16,12 @@ table, th, td {
   height: 1000px;
 }
 
-.button {
-  margin-top: 20px;
+.tableElement {
+  background-color: rgb(0, 76, 0);
+}
+.tableElement:hover {
+  background-color: rgb(0, 142, 0);
+}
+.tableElement:active {
+  background-color: rgb(65, 76, 65);
 }
