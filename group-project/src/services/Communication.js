@@ -17,4 +17,10 @@ const getUsers = () => {
             .then((response) => response.data);
 }
 
-export {getBooks, getUsers};
+const addUser = (newUser) => {
+  return axios
+            .post(usersUrl, newUser)
+            .then((response) => response.data);
+}
+
+export {getBooks, getUsers, addUser};

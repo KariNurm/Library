@@ -1,27 +1,81 @@
 .searchPage {
-  color: #ffffff;
-  margin-left: 50px;
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
-.modal {
-  z-index: 1;
+.searchPage h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
 }
 
-table, th, td {
-  border: 1px solid black;
-  margin-top: 50px;
+.searchPage p {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.searchPage input[type="search"] {
+  width: 90%;
+  max-width: 450px;
+  background-color: white;
+  padding: 10px;
+  margin: 0, 0, 0, 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.div {
-  height: 1000px;
+.searchPage input:hover {
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
 }
 
-.tableElement {
-  background-color: rgb(0, 76, 0);
+.searchPage table {
+  width: 80%;
+  margin: 2rem auto;
+  border-collapse: collapse;
 }
-.tableElement:hover {
-  background-color: rgb(0, 142, 0);
+
+.searchPage thead {
+  background-color: #05421f;
+  color: white;
+  align-items: center;
 }
-.tableElement:active {
-  background-color: rgb(65, 76, 65);
+
+.searchPage th,
+.searchPage td {
+  border: 1px solid #dddddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.searchPage th {
+  font-size: 1.2rem;
+}
+.searchPage button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.searchPage button:hover {
+  background-color: #11d211;
+  color: white;
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as idv4} from 'uuid'
 import "./Login_Signup.css";
 
 const Signup = (props) => {
@@ -8,7 +9,17 @@ const Signup = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
+        const newId = idv4();
+        const newUser = {
+            name: name,
+            password: password,
+            email: email,
+            id: newId,
+            book_history: [],
+            admin: false
+        }
+        props.addNewUser(newUser);
+        
     }
 
     return (
