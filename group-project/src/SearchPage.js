@@ -123,6 +123,7 @@ const SearchPage = ({books}) => {
             <br/>
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
+            <div className="owlImage"></div>
             </div>
            {
                 revealedBooks ?
