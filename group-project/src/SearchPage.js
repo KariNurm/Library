@@ -124,7 +124,8 @@ const SearchPage = ({books}) => {
  
 
             <table>
-                { searchISBN === "" ? <></> : 
+                { (searchISBN === "" || searchTitle === ""
+                || searchAuthor === "") ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -135,7 +136,7 @@ const SearchPage = ({books}) => {
                           <th>Pages</th>
                         </tr> 
                       </thead> }
-                { searchTitle === "" ? <></> : 
+                {/* { searchTitle === "" ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -156,7 +157,7 @@ const SearchPage = ({books}) => {
                           <th>Publisher</th>
                           <th>Pages</th>
                         </tr> 
-                      </thead> }
+                      </thead> } */}
 
                 {books.filter(book => { //Filter the books on title.
                 if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
