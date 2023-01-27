@@ -4,7 +4,8 @@
 }
 
 .modal {
-  z-index: 1;
+  border: solid black;
+  background-color: aqua;
 }
 
 table, th, td {

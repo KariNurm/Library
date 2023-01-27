@@ -13,7 +13,7 @@ const SearchPage = ({books}) => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
-    const [revealedBooks, setRevealedBooks] = useState(false)
+   // const [revealedBooks, setRevealedBooks] = useState(false)
     
     const handleISBN = (event) => {
         event.preventDefault();
@@ -44,6 +44,10 @@ const SearchPage = ({books}) => {
 
     const closeElement = () => setIsOpen(false);
 
+    const showBooks = () =>  {
+        console.log("fix this")
+    }
+
     // const handleLess = (event) => {
         //     event.preventDefault();
         //     if (book.pagecount <= searchPageCount) {
@@ -55,7 +59,7 @@ const SearchPage = ({books}) => {
     return (
         <>  
         
-            <Modal
+            <Modal className="modal"
                 isOpen={isOpen}
                 onRequestClose={closeElement}
                 contentLabel="Book element"
@@ -99,13 +103,12 @@ const SearchPage = ({books}) => {
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
             </div>
-            {
+          {/*  {
                 revealedBooks ?
  
-
+            */}
             <table>
-                { (searchISBN === "" || searchTitle === ""
-                || searchAuthor === "") ? <></> : 
+                { searchAuthor === "" ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -116,7 +119,7 @@ const SearchPage = ({books}) => {
                           <th>Pages</th>
                         </tr> 
                       </thead> }
-                {/* { searchTitle === "" ? <></> : 
+                 { searchTitle === "" ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -137,7 +140,7 @@ const SearchPage = ({books}) => {
                           <th>Publisher</th>
                           <th>Pages</th>
                         </tr> 
-                      </thead> } */}
+                      </thead> } 
 
                 {books.filter(book => { //Filter the books on title.
                 if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
@@ -165,8 +168,7 @@ const SearchPage = ({books}) => {
                     </tbody>
                 ))}
             </table>
-            : null
-            }
+           
     </div>
         </>
     )
