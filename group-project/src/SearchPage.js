@@ -143,7 +143,7 @@ const SearchPage= ({books}) => {
                             return false;
                         }
                     }).map((books) => (
-                    <tbody key={books.isbn}>
+                    <tbody key={books.isbn} className="tableElement">
                       <tr onClick={() => {setCurrentElement(books); setIsOpen(true)}}>
                         <td>{books.isbn}</td>
                         <td>{books.title}</td>
