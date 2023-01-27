@@ -12,7 +12,7 @@
     border-radius: 5px;
     max-width: 80%;
     text-align: justify;
-    background: linear-gradient(to top, green,#064923);
+    background: linear-gradient(to bottom, #05421f, green);
 }
 .wrapper {
     display: flex;
