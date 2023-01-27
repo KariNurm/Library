@@ -3,6 +3,11 @@
   margin-left: 10px;
 }
 
+.modal {
+  border: solid black;
+  background-color: aqua;
+}
+
 table, th, td {
   border: 1px solid black;
   margin-top: 16vh;
