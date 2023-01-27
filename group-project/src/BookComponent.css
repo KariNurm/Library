@@ -32,17 +32,17 @@ img {
 .book-info {
     margin-left: 20px;
     padding: 20px;
-    background-color: #63bc72;
+    background-color: #31a967af;
     border-radius: 5px;
 
 }
 .book-copy {
     border: 2px; 
     border-style: solid; 
-    border-color: #31a967;
+    border-color: green;
     border-radius: 5px;
     padding: 10px;
-    background-color: #77e1a6;
+    background-color: #63bc72;
     max-width: 50%;
    
 }
