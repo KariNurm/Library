@@ -1,4 +1,4 @@
-import { getBooks } from "./services/Communication";
+import { addUser, getBooks, getUsers } from "./services/Communication";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "./Header";
@@ -11,10 +11,16 @@ import "./App.css";
 const App = () => {
   
 const [books, setBooks] = useState([]);
+const [users, setUsers] = useState([]);
 
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
+  getUsers().then((data) => {setUsers(data)});
 }, []);
+
+const addNewUser = (newUser) => {
+  addUser(newUser).then(newUser => setUsers([newUser, ...users]));
+}
 
 const [currentForm, setCurrentForm] = useState('login');
 
@@ -31,7 +37,7 @@ const toggleForm = (formName) => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/search" element={<SearchPage books={books}/>} />
       <Route path="/login" element={
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup onFormSwitch={toggleForm} />} />
+        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup  addNewUser={addNewUser} onFormSwitch={toggleForm} />} />
     </Routes>
   
       
