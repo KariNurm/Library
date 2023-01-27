@@ -3,10 +3,6 @@
   margin-left: 10px;
 }
 
-.modal {
-  z-index: 1;
-}
-
 table, th, td {
   border: 1px solid black;
   margin-top: 16vh;

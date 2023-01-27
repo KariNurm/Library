@@ -51,7 +51,7 @@ const SearchPage= ({books}) => {
     
     return (
         <>  
-            <Modal
+            <Modal className="modal"
                 isOpen={isOpen}
                 onRequestClose={closeElement}
                 contentLabel="Book element"
