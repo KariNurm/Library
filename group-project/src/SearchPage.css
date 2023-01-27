@@ -1,6 +1,6 @@
 .searchPage {
   color: #ffffff;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
 .modal {
@@ -10,7 +10,7 @@
 
 table, th, td {
   border: 1px solid black;
-  margin-top: 16vh;
+  margin-top: 50px;
 }
 
 .div {

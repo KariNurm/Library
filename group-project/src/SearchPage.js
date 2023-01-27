@@ -5,12 +5,16 @@ import BookComponent from "./BookComponent"
 Modal.setAppElement('#root');
 
 
-const SearchPage= ({books}) => {
+const SearchPage = ({books}) => {
+
+    console.log(books);
+    
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
-
+   // const [revealedBooks, setRevealedBooks] = useState(false)
+    
     const handleISBN = (event) => {
         event.preventDefault();
         setSearchISBN(event.target.value)
@@ -40,6 +44,10 @@ const SearchPage= ({books}) => {
 
     const closeElement = () => setIsOpen(false);
 
+    const showBooks = () =>  {
+        console.log("fix this")
+    }
+
     // const handleLess = (event) => {
         //     event.preventDefault();
         //     if (book.pagecount <= searchPageCount) {
@@ -48,9 +56,9 @@ const SearchPage= ({books}) => {
         //         return false;
     //     }
     // }
-    
     return (
         <>  
+        
             <Modal className="modal"
                 isOpen={isOpen}
                 onRequestClose={closeElement}
@@ -60,7 +68,7 @@ const SearchPage= ({books}) => {
 
             </Modal>
             <div className="searchPage">
-            <h1>Search for books</h1> 
+            <h1 className="title">Search for books</h1> 
             <p>ISBN: </p>
             <input
                 type = "search"
@@ -82,7 +90,7 @@ const SearchPage= ({books}) => {
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
-            <p>Page Count: </p>
+            <p>Page Count: </p> {/*Doesn't work yet*/}
             <input
                 type = "search"
                 placeholder = "Search with a pagecount"
@@ -92,10 +100,15 @@ const SearchPage= ({books}) => {
             <button onClick={handleSubmit}>{"<="}</button>
             <button onClick={handleSubmit}>{">="}</button>
             <br/>
-            <button>Show booksearch results</button>
-
+            <div className="button">
+            <button onClick={showBooks}>Toggle book search results</button>
+            </div>
+          {/*  {
+                revealedBooks ?
+ 
+            */}
             <table>
-                { searchISBN === "" ? <></> : 
+                { searchAuthor === "" ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -106,7 +119,7 @@ const SearchPage= ({books}) => {
                           <th>Pages</th>
                         </tr> 
                       </thead> }
-                { searchTitle === "" ? <></> : 
+                 { searchTitle === "" ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -127,7 +140,7 @@ const SearchPage= ({books}) => {
                           <th>Publisher</th>
                           <th>Pages</th>
                         </tr> 
-                      </thead> }
+                      </thead> } 
 
                 {books.filter(book => { //Filter the books on title.
                 if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
@@ -155,6 +168,7 @@ const SearchPage= ({books}) => {
                     </tbody>
                 ))}
             </table>
+           
     </div>
         </>
     )
