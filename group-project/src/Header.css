@@ -1,5 +1,5 @@
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -9,7 +9,7 @@
     padding: 50px;
     color: white;
     font-size: 20px;
-    z-index: 0.9;
+    z-index: 1;
 }
 
 .navLink {
