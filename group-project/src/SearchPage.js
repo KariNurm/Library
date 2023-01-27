@@ -48,9 +48,9 @@ const SearchPage= ({books}) => {
         //         return false;
     //     }
     // }
-    
     return (
         <>  
+        
             <Modal
                 isOpen={isOpen}
                 onRequestClose={closeElement}
