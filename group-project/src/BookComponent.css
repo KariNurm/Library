@@ -10,6 +10,9 @@
     border-color: #31a967;
     border-radius: 5px;
     max-width: 80%;
+    text-align: justify;
+    background: linear-gradient(to bottom, #05421f, green);
+
 }
 .wrapper {
     display: flex;
@@ -23,12 +26,15 @@ img {
     border: 5px;
     border-style: solid;
     border-radius: 5px;
-    border-color: #31a967;
+    border-color: green;
     padding: 5px;
 }
 .book-info {
-    padding: 40px;
-   
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #63bc72;
+    border-radius: 5px;
+
 }
 .book-copy {
     border: 2px; 
@@ -44,7 +50,7 @@ img {
     padding: 5px 10px;
     margin: 10px;
     border-radius: 5px;
-    border-color: #31a967;
-    background-color: #0cb658;
+    border-color: green;
+    background-color: #10ad10;
     color: #f6fcf9;
 }
