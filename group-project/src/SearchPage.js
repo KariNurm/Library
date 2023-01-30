@@ -7,12 +7,12 @@ Modal.setAppElement('#root');
 
 const SearchPage = ({books}) => {
 
-    console.log(books);
+
     
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
-    const [searchPageCount, setSearchPageCount] = useState("");
+    //const [searchPageCount, setSearchPageCount] = useState("");
     const [revealedBooks, setRevealedBooks] = useState(false);
     const [pageSearch, setPageSearch] = useState(false);
     
@@ -31,14 +31,14 @@ const SearchPage = ({books}) => {
         setSearchAuthor(event.target.value)
     };
     
-    const handlePageCount = (event) => {
-        event.preventDefault();
-        setSearchPageCount(event.target.value)
-    };
+    // const handlePageCount = (event) => {
+    //     event.preventDefault();
+    //     setSearchPageCount(event.target.value)
+    // };
     
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    // }
     
     const [isOpen, setIsOpen] = useState(false);
     const [currentElement, setCurrentElement] = useState({});
