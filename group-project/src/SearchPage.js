@@ -7,7 +7,7 @@ Modal.setAppElement('#root');
 
 const SearchPage = ({books}) => {
 
-    console.log(books);
+
     
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");

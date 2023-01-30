@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import "./Login_Signup.css";
+import { useContext } from "react"
+import { UserContext } from "./App";
 
 const Login = (props) => {
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
-    
+        const data = useContext(UserContext)
+        
         const handleSubmit = (e) => {
             e.preventDefault();
-            console.log(email);
+            const findUserIndex = data.users.findIndex((ele) => ele.email === email);
+            if(findUserIndex === -1) {
+                console.log("no user found")
+            } else {
+                if(password === data.users[findUserIndex].password) {
+                    data.setLoginStatus(true);
+                } else {
+                    console.log("wrong pw")
+                }
+            }
+            
+            console.log(findUserIndex)
+
+            
         }
     
         return (
