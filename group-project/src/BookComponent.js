@@ -1,6 +1,6 @@
 import "./BookComponent.css";
 
-const BookComponent = ({ book }) => {
+const BookComponent = ({ book, setIsOpen }) => {
   const status = book.copies.map((copy, i) => {
     return copy.status === "in_library" ? (
       <div key={copy.id}>
@@ -8,7 +8,7 @@ const BookComponent = ({ book }) => {
         <button className="borrow-button">Borrow</button>
       </div>
     ) : (
-      <p>{i + 1}. Borrowed</p>
+      <p>{i + 1}. Borrowed </p>
     );
   });
 
@@ -19,6 +19,12 @@ const BookComponent = ({ book }) => {
           <img src={book.cover} alt="Book cover" />
         </div>
         <div className="book-info">
+        <button
+            onClick={() => setIsOpen(false)}
+            type="button"
+            className="btn-close"
+            data-mdb-dismiss="modal"
+            aria-label="Close">X</button>
           <h3>Author: {book.author}</h3>
           <h3>Title: {book.title}</h3>
           {book.subtitle ? (
