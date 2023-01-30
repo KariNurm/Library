@@ -4,6 +4,7 @@
       "name": "Rene Orosz",
       "password": "hunter12",
       "id": 1,
+      "email": "joo@mail.com",
       "books_history": [
         "2",
         "3"
@@ -13,9 +14,26 @@
     {
       "name": "Kirsti Ä. Jontta",
       "password": "vakavanhavainamoinen",
+      "email": "test@hotmail.com",
       "id": 2,
       "books_history": [],
       "admin": true
+    },
+    {
+      "name": "Test",
+      "password": "123",
+      "email": "jee@hotmail.com",
+      "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "Pera",
+      "password": "jee",
+      "email": "p@mail.com",
+      "id": "2e525720-05f2-4d4b-9ab2-050246aa4d66",
+      "book_history": [],
+      "admin": false
     }
   ],
   "books": [
