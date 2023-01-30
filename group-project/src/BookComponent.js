@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import './BookComponent.css'
 
 const BookComponent = ({book}) => {
-    
+ const [borrowStatus, setBorrowStatus]  = useState(book.copies[0].status) 
+ console.log(book);
     const status = book.copies.map((copy, i) => {
         return  copy.status === "in_library" ? 
                                             <div key={copy.id}>
                                                 {i+1}. In library
-                                                <button className="borrow-button" onClick={copy.status = "borrowed"}>Borrow</button> 
+                                                <button className="borrow-button" onClick={("borrowed")}>Borrow</button> 
                                             </div> 
                                             : 
                                             <p>{i+1}. Borrowed</p>

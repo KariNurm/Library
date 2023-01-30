@@ -1,11 +1,8 @@
 .book-component {
-   
-    
+    background:linear-gradient(to bottom, #05421f, green);
     padding: 20px;
     margin: 20px;
-    
     margin-top: 14vh;
-
     border: 15px;
     border-style: solid;
     border-color: #31a967;
@@ -28,7 +25,9 @@ img {
     padding: 5px;
 }
 .book-info {
-    padding: 40px;
+    padding: 20px;
+    margin: 20;
+    background-color: #77e1a7a2;
    
 }
 .book-copy {
