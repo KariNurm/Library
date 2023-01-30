@@ -96,8 +96,8 @@ const SearchPage = ({books}) => {
                 onRequestClose={closeElement}
                 contentLabel="Book element"
                 >
-                <BookComponent book={currentElement}/>
-
+                <BookComponent setIsOpen={setIsOpen} book={currentElement}/>
+                
             </Modal>
             <div className="searchPage">
             <h1 className="title">Search for books</h1> 
