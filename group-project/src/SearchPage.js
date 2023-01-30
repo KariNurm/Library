@@ -13,7 +13,7 @@ const SearchPage = ({books}) => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
-   // const [revealedBooks, setRevealedBooks] = useState(false)
+   const [revealedBooks, setRevealedBooks] = useState(false)
     
     const handleISBN = (event) => {
         event.preventDefault();
@@ -44,10 +44,6 @@ const SearchPage = ({books}) => {
 
     const closeElement = () => setIsOpen(false);
 
-    const showBooks = () =>  {
-        console.log("fix this")
-    }
-
     // const handleLess = (event) => {
         //     event.preventDefault();
         //     if (book.pagecount <= searchPageCount) {
@@ -56,6 +52,31 @@ const SearchPage = ({books}) => {
         //         return false;
     //     }
     // }
+
+    const filteredBooks = books.filter(book => { //Filter the books on title.
+        if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
+            return false;
+        } else if (
+            book.isbn.includes(searchISBN) &&
+            book.title.toLowerCase().includes(
+            searchTitle.toLowerCase()) &&
+            book.author.toLowerCase().includes(
+                searchAuthor.toLowerCase()
+                )) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+
+
+    const showBooks = (event) => {
+        event.preventDefault();
+        setRevealedBooks(!revealedBooks)
+    }
+    <BookComponent/>
+
+
     return (
         <>  
         
@@ -103,12 +124,13 @@ const SearchPage = ({books}) => {
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
             </div>
-          {/*  {
+           {
                 revealedBooks ?
  
-            */}
+           
             <table>
-                { searchAuthor === "" ? <></> : 
+                { (searchISBN === "" && searchTitle === ""
+                && searchAuthor === "") ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
@@ -119,43 +141,8 @@ const SearchPage = ({books}) => {
                           <th>Pages</th>
                         </tr> 
                       </thead> }
-                 { searchTitle === "" ? <></> : 
-                      <thead>
-                        <tr>
-                          <th>ISBN</th>
-                          <th>Title</th>
-                          <th>Subtitle</th>
-                          <th>Author</th>
-                          <th>Publisher</th>
-                          <th>Pages</th>
-                        </tr> 
-                      </thead> }
-                { searchAuthor === "" ? <></> : 
-                      <thead>
-                        <tr>
-                          <th>ISBN</th>
-                          <th>Title</th>
-                          <th>Subtitle</th>
-                          <th>Author</th>
-                          <th>Publisher</th>
-                          <th>Pages</th>
-                        </tr> 
-                      </thead> } 
 
-                {books.filter(book => { //Filter the books on title.
-                if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
-                    return false;
-                } else if (
-                    book.title.toLowerCase().includes(
-                    searchTitle.toLowerCase()) &&
-                    book.author.toLowerCase().includes(
-                        searchAuthor.toLowerCase()
-                        )) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }).map((books) => (
+                {filteredBooks.map((books) => (
                     <tbody key={books.isbn} className="tableElement">
                       <tr onClick={() => {setCurrentElement(books); setIsOpen(true)}}>
                         <td>{books.isbn}</td>
@@ -168,7 +155,7 @@ const SearchPage = ({books}) => {
                     </tbody>
                 ))}
             </table>
-           
+           : null }
     </div>
         </>
     )
