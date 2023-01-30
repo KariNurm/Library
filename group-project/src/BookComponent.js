@@ -1,36 +1,38 @@
 import './BookComponent.css'
-import bookCover from './images/bookCover.png'
-import BookCopy from './BookCopy'
-import { formToJSON } from 'axios'
-const BookComponent = () => {
+
+const BookComponent = ({book}) => {
     
+    const status = book.copies.map((copy, i) => {
+        return  copy.status === "in_library" ? 
+                                            <div key={copy.id}>
+                                                {i+1}. In library
+                                                <button className="borrow-button">Borrow</button> 
+                                            </div> 
+                                            : 
+                                            <p>{i+1}. Borrowed</p>
+                                            
+                                            
+    });
 
     return (
         <div className = "book-component">
             <div className = "wrapper">
                 <div className = "book-cover">
-                    <img src={bookCover} alt="Book cover" />
+                    <img src={book.cover} alt="Book cover" />
                 </div>
                 <div className = "book-info">
-                    <h3> the author of the book</h3>
-                    <h3>Book title</h3>
-                    <h3>Subtitle</h3>
-                    <h3>Description</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut iaculis sem. 
-                        Sed quis interdum turpis. Aliquam enim velit, aliquet at eros a, tempor hendrerit orci.
-                        Aliquam imperdiet nisl iaculis, laoreet ex interdum, ornare elit. Phasellus ac vehicula 
-                        mauris. Vestibulum faucibus ante lacus, porttitor finibus felis condimentum sagittis. 
-                        Sed sodales tellus imperdiet consectetur pharetra. Proin aliquet nisl quis enim finibus 
-                        aliquam. Cras consequat leo at augue laoreet, eget lacinia orci vehicula. Praesent vitae 
-                        quam metus. Vestibulum dolor odio, commodo ut eleifend sit amet, consectetur a justo. 
-                        Donec sit amet justo vel lacus mollis vehicula quis id lacus.</p>
-            <h3>copies</h3>
-            
-           
-    <BookCopy />
-                
-                
-           
+                    <h3>Author: {book.author}</h3>
+                    <h3>Title: {book.title}</h3>
+                    {book.subtitle ? <>
+                                        <h3>Subtitle: </h3>
+                                        <p>{book.subtitle}</p>
+                                        </> : <></>}
+                    <h3>Description:</h3>
+                    <p>{book.description}</p>
+                    <h3>Copies: {book.copies.length}</h3>
+                    <div className='book-copy wrapper'>
+                        {status}
+                    </div>
                 </div>
             </div>
         </div>

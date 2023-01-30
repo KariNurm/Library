@@ -1,48 +1,20 @@
 import {useState} from "react";
 import Modal from "react-modal";
 import "./SearchPage.css"
+import BookComponent from "./BookComponent"
+Modal.setAppElement('#root');
 
 
-const SearchPage= () => {
+const SearchPage = ({books}) => {
+
+    console.log(books);
+    
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
+   const [revealedBooks, setRevealedBooks] = useState(false)
     
-    const books = [
-        {
-            "isbn": "9781593275846",
-            "title": "Eloquent JavaScript, Second Edition",
-            "subtitle": "A Modern Introduction to Programming",
-            "author": "Marijn Haverbeke",
-            "published": "2014-12-14T00:00:00.000Z",
-            "publisher": "No Starch Press",
-            "pages": 472,
-            "description": "JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.",
-            "website": "http://eloquentjavascript.net/",
-        },
-        {
-            "isbn": "9781449331818",
-            "title": "Learning JavaScript Design Patterns",
-            "subtitle": "A JavaScript and jQuery Developer's Guide",
-            "author": "Addy Osmani",
-            "published": "2012-07-01T00:00:00.000Z",
-            "publisher": "O'Reilly Media",
-            "pages": 254,
-            "description": "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you.",
-            "website": "http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/"
-        },
-        {
-            "isbn": "0679722769",
-            "title": "Ulysses",
-            "author": "James Joyce",
-            "published": "1922-02-02T00:00:00.000Z",
-            "publisher": "Sylvia Beach",
-            "pages": 730,
-            "description": "Ulysses is a modernist novel by Irish writer James Joyce. It was first serialised in parts in the American journal The Little Review from March 1918 to December 1920 and then published in its entirety in Paris by Sylvia Beach on 2 February 1922, Joyce's 40th birthday."
-        }
-    ]
-
     const handleISBN = (event) => {
         event.preventDefault();
         setSearchISBN(event.target.value)
@@ -66,6 +38,11 @@ const SearchPage= () => {
     const handleSubmit = (event) => {
         event.preventDefault();
     }
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const [currentElement, setCurrentElement] = useState({});
+
+    const closeElement = () => setIsOpen(false);
 
     // const handleLess = (event) => {
         //     event.preventDefault();
@@ -75,11 +52,44 @@ const SearchPage= () => {
         //         return false;
     //     }
     // }
-    
+
+    const filteredBooks = books.filter(book => { //Filter the books on title.
+        if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
+            return false;
+        } else if (
+            book.isbn.includes(searchISBN) &&
+            book.title.toLowerCase().includes(
+            searchTitle.toLowerCase()) &&
+            book.author.toLowerCase().includes(
+                searchAuthor.toLowerCase()
+                )) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+
+
+    const showBooks = (event) => {
+        event.preventDefault();
+        setRevealedBooks(!revealedBooks)
+    }
+    <BookComponent/>
+
+
     return (
         <>  
+        
+            <Modal className="modal"
+                isOpen={isOpen}
+                onRequestClose={closeElement}
+                contentLabel="Book element"
+                >
+                <BookComponent book={currentElement}/>
+
+            </Modal>
             <div className="searchPage">
-            <h1>Search for books</h1> 
+            <h1 className="title">Search for books</h1> 
             <p>ISBN: </p>
             <input
                 type = "search"
@@ -101,7 +111,7 @@ const SearchPage= () => {
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
-            <p>Page Count: </p>
+            <p>Page Count: </p> {/*Doesn't work yet*/}
             <input
                 type = "search"
                 placeholder = "Search with a pagecount"
@@ -111,42 +121,41 @@ const SearchPage= () => {
             <button onClick={handleSubmit}>{"<="}</button>
             <button onClick={handleSubmit}>{">="}</button>
             <br/>
-            <button>Show booksearch results</button>
-
+            <div className="button">
+            <button onClick={showBooks}>Toggle book search results</button>
+            </div>
+           {
+                revealedBooks ?
+ 
+           
             <table>
-                <tr>
-                    <th>ISBN</th>
-                    <th>Title</th>
-                    <th>Subtitle</th>
-                    <th>Author</th>
-                    <th>Publisher</th>
-                    <th>Pages</th>
-                </tr>
+                { (searchISBN === "" && searchTitle === ""
+                && searchAuthor === "") ? <></> : 
+                      <thead>
+                        <tr>
+                          <th>ISBN</th>
+                          <th>Title</th>
+                          <th>Subtitle</th>
+                          <th>Author</th>
+                          <th>Publisher</th>
+                          <th>Pages</th>
+                        </tr> 
+                      </thead> }
 
-                {books.filter(book => { //Filter the books on title.
-                if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
-                    return false;
-                } else if (
-                    book.title.toLowerCase().includes(
-                    searchTitle.toLowerCase()) &&
-                    book.author.toLowerCase().includes(
-                        searchAuthor.toLowerCase()
-                        )) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }).map((books, id) => (
-                        <tr key={id}>
+                {filteredBooks.map((books) => (
+                    <tbody key={books.isbn} className="tableElement">
+                      <tr onClick={() => {setCurrentElement(books); setIsOpen(true)}}>
                         <td>{books.isbn}</td>
                         <td>{books.title}</td>
                         <td>{books.subtitle}</td>
                         <td>{books.author}</td>
                         <td>{books.publisher}</td>
                         <td>{books.pages}</td>
-                    </tr>
+                      </tr>
+                    </tbody>
                 ))}
             </table>
+           : null }
     </div>
         </>
     )

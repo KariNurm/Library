@@ -1,31 +1,57 @@
-import { getBooks } from "./services/Communication";
-import Header from "./Header"
-import './App.css'
-import { Routes, Route } from 'react-router-dom';
-import SearchPage from "./SearchPage";
+import { addUser, getBooks, getUsers } from "./services/Communication";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Header from "./Header";
 import LandingPage from "./LandingPage";
+import Login from "./Login"
+import SearchPage from "./SearchPage";
+import Signup from "./Signup";
+import "./App.css";
+
+
+
+
 
 const App = () => {
-  const [books, setBooks] = useState([]);
+  
+  
+const [books, setBooks] = useState([]);
+const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getBooks().then((data) => {
-      setBooks(data);
-    });
-  }, []);
+useEffect(() => {
+  getBooks().then((data) => {setBooks(data)});
+  getUsers().then((data) => {setUsers(data)});
+}, []);
 
-  console.log(books);
+const addNewUser = (newUser) => {
+  addUser(newUser).then(newUser => setUsers([newUser, ...users]));
+}
 
-  return (
-    <div className="App">
-      <Header /> {/* <Link> elements goes to Header component*/}
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/search" element={<SearchPage />} />
-      </Routes>
-    </div>
-  );
-};
+const [currentForm, setCurrentForm] = useState('login');
+
+const toggleForm = (formName) => {
+  setCurrentForm(formName);
+}
+
+ return ( 
+  <div className='App'>
+    
+    <Header /> { /* <Link> elements goes to Header component*/ }
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/search" element={<SearchPage books={books}/>} />
+      <Route path="/login" element={
+        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup  addNewUser={addNewUser} onFormSwitch={toggleForm} />} />
+    </Routes>
+  
+      
+  </div>
+)
+}
 
 export default App;
+
+
+
+
+
