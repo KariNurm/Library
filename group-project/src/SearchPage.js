@@ -122,7 +122,7 @@ const SearchPage = ({books}) => {
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
-            <p>Page Count: </p> {/*Doesn't work yet*/}
+            {/* <p>Page Count: </p> Doesn't work yet
             <input
                 type = "search"
                 placeholder = "Search with a pagecount"
@@ -130,11 +130,12 @@ const SearchPage = ({books}) => {
                 value = {searchPageCount}
                 />
             <button onClick={handleSubmit}>Search books with less pages</button>
-            <button onClick={handleSubmit}>Search books with more pages</button>
+            <button onClick={handleSubmit}>Search books with more pages</button> */}
             <br/>
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
             <div className="owlImage"></div>
+            <div className="searchImage"></div>
             </div>
            {
                 revealedBooks ?
