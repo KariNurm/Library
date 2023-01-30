@@ -85,9 +85,19 @@
   width: 450px;
   height: 450px;
   position: absolute;
-  background-position: right, top;
-  top: 125px;
+  top: 140px;
   background-size: 100%;
   margin: 5px;
   right: 25px;
+}
+
+.searchImage {
+  background: url("./images/anothersearch.png");
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 150px;
+  background-size: 80%;
+  margin: 5px;
+  left: 25px;
 }
