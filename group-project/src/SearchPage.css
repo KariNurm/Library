@@ -81,11 +81,13 @@
 }
 
 .owlImage {
-  background: url("./images/owl.jpg");
-  width: 400px;
-  height: 400px;
-  background-position: right;
+  background: url("./images/transparent-owl.png");
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  background-position: right, top;
+  top: 125px;
   background-size: 100%;
   margin: 5px;
-  right: 0px;
+  right: 25px;
 }
