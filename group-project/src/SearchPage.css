@@ -83,6 +83,28 @@
   transform: scale(1.1);
 }
 
+.owlImage {
+  background: url("./images/transparent-owl.png");
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  top: 40px;
+  background-size: 100%;
+  margin: 5px;
+  right: 25px;
+}
+
+.detectiveImage {
+  background: url("./images/detective.png");
+  width: 350px;
+  height: 350px;
+  position: absolute;
+  top: 120px;
+  background-size: 100%;
+  margin: 5px;
+  left: 85px;
+  background-repeat: no-repeat;
+}
 .searchPage tr:hover {
   cursor: pointer;
   box-shadow: 0px 0px 20px rgb(13, 13, 13);

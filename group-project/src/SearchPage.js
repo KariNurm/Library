@@ -13,7 +13,8 @@ const SearchPage = ({books}) => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
-   const [revealedBooks, setRevealedBooks] = useState(false)
+    const [revealedBooks, setRevealedBooks] = useState(false);
+    const [pageSearch, setPageSearch] = useState(false);
     
     const handleISBN = (event) => {
         event.preventDefault();
@@ -46,10 +47,20 @@ const SearchPage = ({books}) => {
 
     // const handleLess = (event) => {
         //     event.preventDefault();
+        //     setPageSearch(true);
         //     if (book.pagecount <= searchPageCount) {
     //         return true;
     //     } else {
-        //         return false;
+    //         return false;
+    //     }
+    // }
+    // const handleMore = (event) => {
+        //     event.preventDefault();
+        //     setPageSearch(true);
+        //     if (book.pagecount => searchPageCount) {
+    //         return true;
+    //     } else {
+    //         return false;
     //     }
     // }
 
@@ -111,26 +122,30 @@ const SearchPage = ({books}) => {
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
-            <p>Page Count: </p> {/*Doesn't work yet*/}
+            {/* <p>Page Count: </p> Doesn't work yet
             <input
                 type = "search"
                 placeholder = "Search with a pagecount"
                 onChange = {handlePageCount}
                 value = {searchPageCount}
                 />
-            <button onClick={handleSubmit}>{"<="}</button>
-            <button onClick={handleSubmit}>{">="}</button>
+            <button onClick={handleSubmit}>Search books with less pages</button>
+            <button onClick={handleSubmit}>Search books with more pages</button> */}
             <br/>
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
+            <div className="owlImage"></div>
+            <div className="detectiveImage"></div>
             </div>
+            <p>
+                Click on the row of the book for more info.
+            </p>
            {
                 revealedBooks ?
- 
-           
+            
             <table>
                 { (searchISBN === "" && searchTitle === ""
-                && searchAuthor === "") ? <></> : 
+                && searchAuthor === "" && !pageSearch) ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
