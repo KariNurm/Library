@@ -16,28 +16,30 @@ const BookComponent = ({book}) => {
                                             
     });
 
-    return (
-        <div className = "book-component">
-            <div className = "wrapper">
-                <div className = "book-cover">
-                    <img src={book.cover} alt="Book cover" />
-                </div>
-                <div className = "book-info">
-                    <h3>Author: {book.author}</h3>
-                    <h3>Title: {book.title}</h3>
-                    {book.subtitle ? <>
-                                        <h3>Subtitle: </h3>
-                                        <p>{book.subtitle}</p>
-                                        </> : <></>}
-                    <h3>Description:</h3>
-                    <p>{book.description}</p>
-                    <h3>Copies: {book.copies.length}</h3>
-                    <div className='book-copy wrapper'>
-                        {status}
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="book-component">
+      <div className="wrapper">
+        <div className="book-cover">
+          <img src={book.cover} alt="Book cover" />
         </div>
-    )
-}
+        <div className="book-info">
+          <h3>Author: {book.author}</h3>
+          <h3>Title: {book.title}</h3>
+          {book.subtitle ? (
+            <>
+              <h3>Subtitle: </h3>
+              <p>{book.subtitle}</p>
+            </>
+          ) : (
+            <></>
+          )}
+          <h3>Description:</h3>
+          <p>{book.description}</p>
+          <h3>Copies: {book.copies.length}</h3>
+          <div className="book-copy wrapper">{status}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default BookComponent;

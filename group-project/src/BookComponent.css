@@ -8,6 +8,9 @@
     border-color: #31a967;
     border-radius: 5px;
     max-width: 80%;
+    text-align: justify;
+    background: linear-gradient(to bottom, #05421f, green);
+
 }
 .wrapper {
     display: flex;
@@ -21,22 +24,23 @@ img {
     border: 5px;
     border-style: solid;
     border-radius: 5px;
-    border-color: #31a967;
+    border-color: green;
     padding: 5px;
 }
 .book-info {
+    margin-left: 20px;
     padding: 20px;
-    margin: 20;
-    background-color: #77e1a7a2;
-   
+    background-color: #31a967af;
+    border-radius: 5px;
+
 }
 .book-copy {
     border: 2px; 
     border-style: solid; 
-    border-color: #31a967;
+    border-color: green;
     border-radius: 5px;
     padding: 10px;
-    background-color: #77e1a6;
+    background-color: #63bc72;
     max-width: 50%;
    
 }
@@ -44,7 +48,7 @@ img {
     padding: 5px 10px;
     margin: 10px;
     border-radius: 5px;
-    border-color: #31a967;
-    background-color: #0cb658;
+    border-color: green;
+    background-color: #10ad10;
     color: #f6fcf9;
 }
