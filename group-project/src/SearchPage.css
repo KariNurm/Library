@@ -82,8 +82,8 @@
 
 .owlImage {
   background: url("./images/owl.jpg");
-  width: 100px;
-  height: 100px;
+  width: 400px;
+  height: 400px;
   background-position: right;
   background-size: 100%;
   margin: 5px;
