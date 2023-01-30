@@ -118,8 +118,8 @@ const SearchPage = ({books}) => {
                 onChange = {handlePageCount}
                 value = {searchPageCount}
                 />
-            <button onClick={handleSubmit}>{"<="}</button>
-            <button onClick={handleSubmit}>{">="}</button>
+            <button onClick={handleSubmit}>Search books with less pages</button>
+            <button onClick={handleSubmit}>Search books with more pages</button>
             <br/>
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
