@@ -46,7 +46,6 @@ const [loginStatus, setLoginStatus] = useState("false")
       </Routes>
     {loginStatus === true ? <p className="logStatus" style={{"color": "green"}}>Logged In</p>  
                           : <p className="logStatus" style={{"color": "red"}}>Logged out</p>}
-    <p className="loginTest">logged in: {loginStatus} </p>
     {console.log(loginStatus)}
     </UserContext.Provider>
   </div>
