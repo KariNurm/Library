@@ -19,6 +19,10 @@
 
 .logo-image {
   height: 300px;
+
+  border-style: ridge;
+  border: #05421f;
+  padding: 0px;
 }
 
 .text-container {
