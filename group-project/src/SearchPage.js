@@ -135,12 +135,14 @@ const SearchPage = ({books}) => {
             <div className="button">
             <button onClick={showBooks}>Toggle book search results</button>
             <div className="owlImage"></div>
-            <div className="searchImage"></div>
+            <div className="detectiveImage"></div>
             </div>
+            <p>
+                Click on the row of the book for more info.
+            </p>
            {
                 revealedBooks ?
- 
-           
+            
             <table>
                 { (searchISBN === "" && searchTitle === ""
                 && searchAuthor === "" && !pageSearch) ? <></> : 
