@@ -91,13 +91,14 @@
   right: 25px;
 }
 
-.searchImage {
-  background: url("./images/anothersearch.png");
-  width: 400px;
-  height: 400px;
+.detectiveImage {
+  background: url("./images/detective.png");
+  width: 350px;
+  height: 350px;
   position: absolute;
-  top: 150px;
-  background-size: 80%;
+  top: 225px;
+  background-size: 100%;
   margin: 5px;
-  left: 25px;
+  left: 85px;
+  background-repeat: no-repeat;
 }
