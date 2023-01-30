@@ -13,7 +13,8 @@ const SearchPage = ({books}) => {
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
     const [searchPageCount, setSearchPageCount] = useState("");
-   const [revealedBooks, setRevealedBooks] = useState(false)
+    const [revealedBooks, setRevealedBooks] = useState(false);
+    const [pageSearch, setPageSearch] = useState(false);
     
     const handleISBN = (event) => {
         event.preventDefault();
@@ -46,10 +47,20 @@ const SearchPage = ({books}) => {
 
     // const handleLess = (event) => {
         //     event.preventDefault();
+        //     setPageSearch(true);
         //     if (book.pagecount <= searchPageCount) {
     //         return true;
     //     } else {
-        //         return false;
+    //         return false;
+    //     }
+    // }
+    // const handleMore = (event) => {
+        //     event.preventDefault();
+        //     setPageSearch(true);
+        //     if (book.pagecount => searchPageCount) {
+    //         return true;
+    //     } else {
+    //         return false;
     //     }
     // }
 
@@ -131,7 +142,7 @@ const SearchPage = ({books}) => {
            
             <table>
                 { (searchISBN === "" && searchTitle === ""
-                && searchAuthor === "") ? <></> : 
+                && searchAuthor === "" && !pageSearch) ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
