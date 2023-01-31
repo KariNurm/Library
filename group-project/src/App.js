@@ -36,7 +36,7 @@ const [loginStatus, setLoginStatus] = useState({login: false})
 
  return ( 
   <div className='App'>
-    <UserContext.Provider value={{users: users, setLoginStatus: setLoginStatus}}>
+    <UserContext.Provider value={{users: users, loginStatus: loginStatus, setLoginStatus: setLoginStatus}}>
       <Header /> { /* <Link> elements goes to Header component*/ }
       <Routes>
         <Route path="/" element={<LandingPage />} />
