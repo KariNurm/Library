@@ -90,3 +90,15 @@ label {
   border-radius: 10px;
   padding: 20px;
 }
+
+.wrong-email {
+  padding: 20px;
+  margin: 20px;
+  border: 15px;
+  border-style: solid;
+  border-color: #92eebb;
+  border-radius: 5px;
+  max-width: 80%;
+  text-align: justify;
+  background-color: #31a967;
+}
