@@ -55,7 +55,7 @@ const Signup = (props) => {
             <label htmlFor="email">Email</label>
             <input className="login-input" required="required" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">Password</label>
-            <input className="login-input" required="required" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+            <input className="login-input" required="required" minlength="4" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <button className="login-button"  type="submit">Submit</button>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
