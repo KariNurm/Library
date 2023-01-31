@@ -1,4 +1,4 @@
-import { addUser, getBooks, getUsers } from "./services/Communication";
+import { addUser, getBooks, getUsers, getLoginStatus } from "./services/Communication";
 import { Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import Header from "./Header";
@@ -15,10 +15,10 @@ const App = () => {
   
 const [books, setBooks] = useState([]);
 const [users, setUsers] = useState([]);
-
 useEffect(() => {
   getBooks().then((data) => {setBooks(data)});
   getUsers().then((data) => {setUsers(data)});
+  getLoginStatus().then((data) =>{setLoginStatus(data)})
 }, []);
 
 const addNewUser = (newUser) => {
@@ -32,7 +32,7 @@ const toggleForm = (formName) => {
 }
 
 
-const [loginStatus, setLoginStatus] = useState({login: false})
+const [loginStatus, setLoginStatus] = useState({})
 // loginStatus contains the data of the logged in user
 
  return ( 

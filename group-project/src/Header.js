@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { useContext, useState } from 'react';
 import { UserContext } from './App';
 import Modal from 'react-modal';
+import { setLoginStatusServer } from './services/Communication';
 Modal.setAppElement('#root');
 
 const Header = () => {
@@ -27,7 +28,9 @@ const Header = () => {
 	const data = useContext(UserContext)
 	const handleClick = () => {
 		console.log("data", data)
-		data.setLoginStatus({login: false});
+		setLoginStatusServer({login: false})
+			.then(response => data.setLoginStatus(response))
+
 		setLogoutPopOpen(false)
 	}
 
