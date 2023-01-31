@@ -6,6 +6,7 @@ import LandingPage from "./LandingPage";
 import Login from "./Login"
 import SearchPage from "./SearchPage";
 import Signup from "./Signup";
+import MyPage from "./MyPage";
 import "./App.css";
 export const UserContext = createContext();
 
@@ -32,7 +33,7 @@ const toggleForm = (formName) => {
 
 
 const [loginStatus, setLoginStatus] = useState({login: false})
-
+// loginStatus contains the data of the logged in user
 
  return ( 
   <div className='App'>
@@ -41,13 +42,14 @@ const [loginStatus, setLoginStatus] = useState({login: false})
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/search" element={<SearchPage books={books}/>} />
-        <Route path="/login" element={
-          currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup  addNewUser={addNewUser} onFormSwitch={toggleForm} />} />
+        <Route path="/mypage" element={<MyPage/>} />
+        <Route path="/login" element={ currentForm === "login" 
+                                                    ? <Login onFormSwitch={toggleForm} /> 
+                                                    : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
+                                                    }/>
       </Routes>
 
     {/*This part is for testing only*/}
-    {loginStatus.login === true ? <p className="logStatus" style={{"color": "green"}}>Logged In as {loginStatus.user.name}</p>  
-                          : <p className="logStatus" style={{"color": "red"}}>Logged out</p>}
     {console.log(loginStatus)}
     </UserContext.Provider>
   </div>
