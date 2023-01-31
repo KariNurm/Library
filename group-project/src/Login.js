@@ -15,7 +15,9 @@ const Login = (props) => {
                 console.log("no user found")
             } else {
                 if(password === data.users[findUserIndex].password) {
-                    data.setLoginStatus(true);
+                    data.setLoginStatus({login: true,
+                                         userId: data.users[findUserIndex].id,
+                                         admin: data.users[findUserIndex].admin});
                 } else {
                     console.log("wrong pw")
                 }
