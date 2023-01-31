@@ -11,3 +11,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.loginTest {
+  position: absolute;
+  top: 10vh;
+}
+.logStatus {
+  position: absolute;
+  top: 15vh;
+}
