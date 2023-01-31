@@ -49,7 +49,7 @@ const Login = (props) => {
                 <Modal isOpen={wrongOpen}
                        contentLabel="wrong email/password"
                        style={customStyles}
-                       className="wrong-email"
+                       
                        >
                         <div className="wrong-email">
                             <h3>Wrong email address or password</h3>
