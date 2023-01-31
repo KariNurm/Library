@@ -1,4 +1,7 @@
 {
+  "loginStatus": {
+    "login": false
+  },
   "users": [
     {
       "name": "Rene Orosz",
@@ -215,6 +218,30 @@
       "copies": [
         {
           "id": "10",
+          "status": "in_library",
+          "borrower_id": null,
+          "due_date": null
+        }
+      ]
+    },
+    {
+      "isbn": "123",
+      "title": "Book",
+      "author": "Jon Doe",
+      "published": "2022-02-02T00:00:00.000Z",
+      "publisher": "Memer",
+      "pages": 330,
+      "description": "This book was added for testin purposes                   ",
+      "cover": "https://i.chzbgr.com/full/9605744384/h1EBAC277/horror-uxe-tion-wrecked-toilet-just-wait-few-minutes-before-go-there-okay-seriously-not-kidding",
+      "copies": [
+        {
+          "id": "11",
+          "status": "borrowed",
+          "borrower_id": "1",
+          "due_date": "2015-11-14T00:00:00.000Z"
+        },
+        {
+          "id": "12",
           "status": "in_library",
           "borrower_id": null,
           "due_date": null
