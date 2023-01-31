@@ -1,24 +1,21 @@
 import { useState } from 'react';
 import './BookComponent.css'
 
-const BookComponent = ({book}, {setCurrentElement}) => {
-
- console.log(book);
+const BookComponent = ({book, setIsOpen, setCurrentElement}) => {
     const status = book.copies.map((copy, i) => {
         const borrow = () => {
            
            setCurrentElement (book.copy.status ("borrowed") )
         }
 
-        return  copy.status === "in_library" ? 
-                                            <div key={copy.id}>
-                                                {i+1}. In library
-                                                <button className="borrow-button" onClick={(borrow)}>Borrow</button> 
-                                            </div> 
-                                            : 
-                                            <p>{i+1}. Borrowed</p>
-                                            
-                                            
+        return  copy.status === "in_library" ? (
+        <div key={copy.id}>
+            {i+1}. In library
+            <button className="borrow-button" onClick={(borrow)}>Borrow</button> 
+        </div> 
+         ) : (
+          <p>{i+1}. Borrowed</p>
+         );                                                                    
     });
 
   return (
@@ -28,6 +25,12 @@ const BookComponent = ({book}, {setCurrentElement}) => {
           <img src={book.cover} alt="Book cover" />
         </div>
         <div className="book-info">
+        <button
+            onClick={() => setIsOpen(false)}
+            type="button"
+            className="btn-close"
+            data-mdb-dismiss="modal"
+            aria-label="Close">X</button>
           <h3>Author: {book.author}</h3>
           <h3>Title: {book.title}</h3>
           {book.subtitle ? (

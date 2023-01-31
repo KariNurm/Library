@@ -53,3 +53,10 @@ img {
     background-color: #10ad10;
     color: #f6fcf9;
 }
+
+.btn-close {
+    padding: 3px 6px;
+    margin: 5px;
+    border-radius: 5px;
+    float: right;
+}
