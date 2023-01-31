@@ -31,9 +31,7 @@ const toggleForm = (formName) => {
 }
 
 
-const [loginStatus, setLoginStatus] = useState({login: false,
-                                                userId: null,
-                                                admin: false })
+const [loginStatus, setLoginStatus] = useState({login: false})
 
 
  return ( 
@@ -46,7 +44,9 @@ const [loginStatus, setLoginStatus] = useState({login: false,
         <Route path="/login" element={
           currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Signup  addNewUser={addNewUser} onFormSwitch={toggleForm} />} />
       </Routes>
-    {loginStatus.login === true ? <p className="logStatus" style={{"color": "green"}}>Logged In</p>  
+
+    {/*This part is for testing only*/}
+    {loginStatus.login === true ? <p className="logStatus" style={{"color": "green"}}>Logged In as {loginStatus.user.name}</p>  
                           : <p className="logStatus" style={{"color": "red"}}>Logged out</p>}
     {console.log(loginStatus)}
     </UserContext.Provider>
