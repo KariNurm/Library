@@ -74,7 +74,7 @@ const SearchPage = ({books}) => {
         event.preventDefault();
         setRevealedBooks(!revealedBooks)
     }
-    <BookComponent/>
+    
 
 
     return (
