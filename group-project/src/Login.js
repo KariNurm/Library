@@ -20,6 +20,8 @@ const Login = (props) => {
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
+
+        const [attempts, setAttempts] = useState(0);
         
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -27,17 +29,21 @@ const Login = (props) => {
             if(findUserIndex === -1) {
                 setWrongOpen(true);
             } else {
-                if(password === data.users[findUserIndex].password) {
-                    setLoginStatusServer({login: true,
-                                         user: {name: data.users[findUserIndex].name,
-                                         email: data.users[findUserIndex].email,
-                                         id: data.users[findUserIndex].id,
-                                         book_history: data.users[findUserIndex].book_history,
-                                         admin: data.users[findUserIndex].admin}})
-                                         .then(response => data.setLoginStatus(response))
-                } else {
-                    setWrongOpen(true);
-                }
+                while (setAttempts < 3) {
+                    if(password === data.users[findUserIndex].password) {
+                        setLoginStatusServer({login: true,
+                            user: {name: data.users[findUserIndex].name,
+                                email: data.users[findUserIndex].email,
+                                id: data.users[findUserIndex].id,
+                                book_history: data.users[findUserIndex].book_history,
+                                admin: data.users[findUserIndex].admin}})
+                                .then(response => data.setLoginStatus(response))
+                            } else {
+                                setWrongOpen(true);
+                                setAttempts(attempts + 1);
+                                console.log(setAttempts);
+                            }
+                    }
             }
             
             console.log(findUserIndex)
@@ -56,16 +62,27 @@ const Login = (props) => {
                        >
                         <div className="wrong-email">
                             <h3>Wrong email address or password</h3>
+                            <h2>Attempts left: {3-attempts}</h2>
                             <button onClick={() => setWrongOpen(false)}>Close</button>
                         </div>
                 </Modal>
+                    if (setAttempts = 0) {
                 <form className="login-form" onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email</label>
                     <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="your_email@gmail.com" id="email" name="email" />
                     <label htmlFor="password">Password</label>
                     <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                     <button className="login-button" type="submit">Submit</button>
                 </form>
+                    } else {
+                        <form className="login-form" onSubmit={handleSubmit}>
+                        <label htmlFor="email">Email</label>
+                    <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="your_email@gmail.com" id="email" name="email" disabled/>
+                    <label htmlFor="password">Password</label>
+                    <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" disabled />
+                    <button className="login-button" type="submit">Submit</button>
+                    </form>
+                    }
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
                 </div>
         )
