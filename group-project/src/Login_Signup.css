@@ -93,12 +93,22 @@ label {
 
 .wrong-email {
   padding: 20px;
-  margin: 20px;
-  border: 15px;
+  border: 20px;
   border-style: solid;
-  border-color: #92eebb;
-  border-radius: 5px;
+  border-color: #31a967;
+  border-radius: 4px;
   max-width: 80%;
   text-align: justify;
-  background-color: #31a967;
+  background-color: #31a967af;
+}
+
+.signup-success {
+  padding: 35px;
+  border: 20px;
+  border-style: solid;
+  border-color: #31a967;
+  border-radius: 4px;
+  max-width: 80%;
+  text-align: justify;
+  background-color: #31a967af;
 }

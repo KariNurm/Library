@@ -16,6 +16,7 @@ const Signup = (props) => {
           inset: '50% auto auto 50%', // top right bottom left
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
+          padding: 0,
         },
       };
       Modal.setAppElement('#root'); // bind modal to root
@@ -46,8 +47,10 @@ const Signup = (props) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
+        <div className="signup-success">
         <h2 ref={subtitle}> Thank you for registration! You can <Link onClick={() => props.onFormSwitch('login')}> log in </Link> </h2>
         <button onClick={() => setIsOpen(false)}> X </button>
+        </div>
       </Modal>
         <form className="signup-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
