@@ -3,6 +3,7 @@ import "./Login_Signup.css";
 import  Modal  from "react-modal";
 import { setLoginStatusServer } from "./services/Communication";
 import { UserContext } from "./App";
+import { useNavigate } from "react-router-dom";
 Modal.setAppElement('#root')
 
 const customStyles = {
@@ -16,7 +17,7 @@ const customStyles = {
 
 const Login = (props) => {
         const [wrongOpen, setWrongOpen] = useState(false);
-
+        const navigate = useNavigate();
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
@@ -30,17 +31,18 @@ const Login = (props) => {
                 if(password === data.users[findUserIndex].password) {
                     setLoginStatusServer({login: true,
                                          user: {name: data.users[findUserIndex].name,
-                                         email: data.users[findUserIndex].email,
-                                         id: data.users[findUserIndex].id,
-                                         book_history: data.users[findUserIndex].book_history,
-                                         admin: data.users[findUserIndex].admin}})
-                                         .then(response => data.setLoginStatus(response))
+                                                email: data.users[findUserIndex].email,
+                                                id: data.users[findUserIndex].id,
+                                                book_history: data.users[findUserIndex].book_history,
+                                                admin: data.users[findUserIndex].admin}})
+                                         .then(response => {console.log("vastaus", response);
+                                                                    data.setLoginStatus(response);
+                                                                    navigate("/");})
                 } else {
                     setWrongOpen(true);
                 }
             }
             
-            console.log(findUserIndex)
 
             
         }

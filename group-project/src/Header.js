@@ -1,5 +1,5 @@
 import './Header.css';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useContext, useState } from 'react';
 import { UserContext } from './App';
 import Modal from 'react-modal';
@@ -8,6 +8,7 @@ Modal.setAppElement('#root');
 
 const Header = () => {
 	
+	const navigate = useNavigate()
 	const [logoutPopOpen, setLogoutPopOpen] = useState(false)
 
 	const style = { "color": "yellow",
@@ -27,7 +28,7 @@ const Header = () => {
 
 	const data = useContext(UserContext)
 	const handleClick = () => {
-		console.log("data", data)
+		navigate("/")
 		setLoginStatusServer({login: false})
 			.then(response => data.setLoginStatus(response))
 

@@ -31,6 +31,7 @@ const Signup = (props) => {
             password: password,
             email: email,
             id: newId,
+            current_loans: [],
             book_history: [],
             admin: false
         }
