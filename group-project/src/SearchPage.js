@@ -14,7 +14,7 @@ const SearchPage = ({books}) => {
     const [searchAuthor, setSearchAuthor] = useState("");
     //const [searchPageCount, setSearchPageCount] = useState("");
     const [revealedBooks, setRevealedBooks] = useState(false);
-    const [pageSearch, setPageSearch] = useState(false);
+    // const [pageSearch, setPageSearch] = useState(false);
     
     const handleISBN = (event) => {
         event.preventDefault();
@@ -156,7 +156,7 @@ const SearchPage = ({books}) => {
             
             <table>
                 { (searchISBN === "" && searchTitle === ""
-                && searchAuthor === "" && !pageSearch) ? <></> : 
+                && searchAuthor === "") ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
