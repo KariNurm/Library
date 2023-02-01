@@ -8,7 +8,7 @@ const BookComponent = ({ book, setIsOpen }) => {
         <button className="borrow-button">Borrow</button>
       </div>
     ) : (
-      <p>{i + 1}. Borrowed </p>
+      <p>{i + 1}. Borrowed &nbsp; </p>
     );
   });
 

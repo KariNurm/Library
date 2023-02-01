@@ -10,6 +10,7 @@ const customStyles = {
       inset: '50% auto auto 50%', // top right bottom left
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+      padding: 0,
     },
   }
 
@@ -50,8 +51,10 @@ const Login = (props) => {
                 <h2>Login</h2>
                 <Modal isOpen={wrongOpen}
                        contentLabel="wrong email/password"
-                       style={customStyles}>
-                        <div>
+                       style={customStyles}
+                       
+                       >
+                        <div className="wrong-email">
                             <h3>Wrong email address or password</h3>
                             <button onClick={() => setWrongOpen(false)}>Close</button>
                         </div>
