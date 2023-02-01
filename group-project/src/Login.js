@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./Login_Signup.css";
 import  Modal  from "react-modal";
+import { setLoginStatusServer } from "./services/Communication";
 import { UserContext } from "./App";
 Modal.setAppElement('#root')
 
@@ -26,12 +27,13 @@ const Login = (props) => {
                 setWrongOpen(true);
             } else {
                 if(password === data.users[findUserIndex].password) {
-                    data.setLoginStatus({login: true,
+                    setLoginStatusServer({login: true,
                                          user: {name: data.users[findUserIndex].name,
                                          email: data.users[findUserIndex].email,
                                          id: data.users[findUserIndex].id,
                                          book_history: data.users[findUserIndex].book_history,
-                                         admin: data.users[findUserIndex].admin}});
+                                         admin: data.users[findUserIndex].admin}})
+                                         .then(response => data.setLoginStatus(response))
                 } else {
                     setWrongOpen(true);
                 }
