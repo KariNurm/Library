@@ -111,6 +111,15 @@
       "current_loans": [],
       "book_history": [],
       "admin": false
+    },
+    {
+      "name": "User",
+      "password": "1234****",
+      "email": "some@email.com",
+      "id": "c6581391-6653-427e-927b-e72f13189849",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
     }
   ],
   "books": [
