@@ -9,6 +9,7 @@ import Signup from "./Signup";
 import MyPage from "./MyPage";
 import "./App.css";
 export const UserContext = createContext();
+export const BooksContext = createContext();
 
 const App = () => {
   
@@ -31,23 +32,24 @@ const toggleForm = (formName) => {
   setCurrentForm(formName);
 }
 
-
 const [loginStatus, setLoginStatus] = useState({})
 // loginStatus contains the data of the logged in user
 
  return ( 
   <div className='App'>
     <UserContext.Provider value={{users: users, loginStatus: loginStatus, setLoginStatus: setLoginStatus}}>
+        <BooksContext.Provider value={{books: books, setBooks: setBooks}} >
       <Header /> { /* <Link> elements goes to Header component*/ }
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/search" element={<SearchPage books={books}/>} />
+          <Route path="/search" element={<SearchPage books={books}/>} />
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/login" element={ currentForm === "login" 
                                                     ? <Login onFormSwitch={toggleForm} /> 
                                                     : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
-                                                    }/>
+                                                  }/>
       </Routes>
+    </BooksContext.Provider>
 
     {/*This part is for testing only*/}
     </UserContext.Provider>

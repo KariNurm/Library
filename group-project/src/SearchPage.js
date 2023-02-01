@@ -91,7 +91,7 @@ const SearchPage = ({books}) => {
         setSearchISBN("");
         setSearchTitle("");
     }
-    <BookComponent/>
+   
 
 
     return (

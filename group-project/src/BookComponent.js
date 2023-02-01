@@ -1,16 +1,53 @@
 import "./BookComponent.css";
+import { BooksContext } from "./App";
+import { useContext } from "react";
+import axios from "axios";
 
 const BookComponent = ({ book, setIsOpen }) => {
+
+  const dataUser = useContext(BooksContext);
+
+  const borrow = (id) => {
+    const newCopies = book.copies.map((copy) => {
+      if(copy.id === id) {
+        return { ...copy,
+                status: "borrowed"
+        }
+      } else {
+        return {...copy}
+      }
+    })
+    const newStatus = [{ ...book,
+                         copies: [...newCopies]
+                      }]
+    //console.log("copio uusi data", newStatus)
+     
+    axios.put(`http://localhost:3001/books?isbn=${book.isbn}`, newStatus)
+    .then(response => console.log("takas serveriltä ",response))
+
+
+  
+    // const newStatus = [{ 
+    //               ...book,
+    //               copies:
+    //                    }] 
+                    
+
+  }
+
+
   const status = book.copies.map((copy, i) => {
     return copy.status === "in_library" ? (
       <div key={copy.id}>
         {i + 1}. In library
-        <button className="borrow-button">Borrow</button>
+        <button className="borrow-button" onClick={() => borrow(copy.id)}>Borrow</button>
       </div>
     ) : (
       <p>{i + 1}. Borrowed &nbsp; </p>
     );
   });
+
+
 
   return (
     <div className="book-component">
