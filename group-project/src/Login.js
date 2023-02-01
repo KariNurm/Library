@@ -3,6 +3,7 @@ import "./Login_Signup.css";
 import  Modal  from "react-modal";
 import { setLoginStatusServer } from "./services/Communication";
 import { UserContext } from "./App";
+import { useNavigate } from "react-router-dom";
 Modal.setAppElement('#root')
 
 const customStyles = {
@@ -16,7 +17,7 @@ const customStyles = {
 
 const Login = (props) => {
         const [wrongOpen, setWrongOpen] = useState(false);
-
+        const navigate = useNavigate();
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
@@ -46,7 +47,6 @@ const Login = (props) => {
                     }
             }
             
-            console.log(findUserIndex)
 
             
         }
