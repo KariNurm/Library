@@ -11,11 +11,7 @@ const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
       }
       
     })
-    let arr = [];
-    arr.concat(newCopies);
-    console.log("book copies", arr)
-    setBookBorrowStatus(book.isbn, book.copy.id)
-    // Tässä pitäisi käyttää setBookBorrowStatus-funktiota tyyliin setBookBorrowStatus(isbn, copyId) 
+    
   }
 
   const status = book.copies.map((copy, i) => {
@@ -23,7 +19,7 @@ const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
     return copy.status === "in_library" ? (
       <div key={copy.id}>
         {i + 1}. In library
-        <button className="borrow-button" onClick={(borrow(copy.id))}>Borrow</button>
+        <button className="borrow-button" onClick={(borrow)}>Borrow</button>
       </div>
     ) : (
       <p>{i + 1}. Borrowed &nbsp; </p>
