@@ -1,6 +1,6 @@
 import { UserContext } from "./App";
 import { useContext } from "react";
-import './MyPage.css'
+// import './MyPage.css'
 
 
 const MyPage = () => {

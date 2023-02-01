@@ -50,6 +50,38 @@
       ],
       "book_history": [],
       "admin": false
+    },
+    {
+      "name": "Test",
+      "password": "Lazy",
+      "email": "some@gmail.com",
+      "id": "8d3fa329-db76-46fb-bec9-aa9b3972c3c5",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "User",
+      "password": "L@zy",
+      "email": "some@gmail.com",
+      "id": "9816c1aa-907a-4fd7-8e5b-e8c25e07dab2",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "user",
+      "password": "Lazy",
+      "email": "some@gmail.com",
+      "id": "4303f327-b7b5-4c7a-8d8b-8a3d27fdbd44",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "User",
+      "password": "Lazy",
+      "email": "some@gmail.com",
+      "id": "a37cf355-1c44-4d98-839b-c348a668fb16",
+      "book_history": [],
+      "admin": false
     }
   ],
   "books": [
