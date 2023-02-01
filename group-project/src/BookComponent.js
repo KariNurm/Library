@@ -1,22 +1,30 @@
 import { useState } from 'react';
 import './BookComponent.css'
 
-const BookComponent = ({book, setIsOpen, setCurrentElement}) => {
-    const status = book.copies.map((copy, i) => {
-        const borrow = () => {
-           
-           setCurrentElement (book.copy.status ("borrowed") )
-        }
+const BookComponent = ({ book, setIsOpen, setCurrentElement ,setBookBorrowStatus}) => {
 
-        return  copy.status === "in_library" ? (
-        <div key={copy.id}>
-            {i+1}. In library
-            <button className="borrow-button" onClick={(borrow)}>Borrow</button> 
-        </div> 
-         ) : (
-          <p>{i+1}. Borrowed</p>
-         );                                                                    
-    });
+  const borrow = (id) => {
+    const newCopies = book.copies.map(copy => {
+      if (copy.id === id) {
+        copy.status = "borrowed";
+      }
+    })
+    book.copies = newCopies;
+    {setBookBorrowStatus(book.isbn, book.copy.id)}
+    // Tässä pitäisi käyttää setBookBorrowStatus-funktiota tyyliin setBookBorrowStatus(isbn, copyId) 
+  }
+
+  const status = book.copies.map((copy, i) => {
+
+    return copy.status === "in_library" ? (
+      <div key={copy.id}>
+        {i + 1}. In library
+        <button className="borrow-button" onClick={(borrow(copy.id))}>Borrow</button>
+      </div>
+    ) : (
+      <p>{i + 1}. Borrowed</p>
+    );
+  });
 
   return (
     <div className="book-component">
@@ -25,7 +33,7 @@ const BookComponent = ({book, setIsOpen, setCurrentElement}) => {
           <img src={book.cover} alt="Book cover" />
         </div>
         <div className="book-info">
-        <button
+          <button
             onClick={() => setIsOpen(false)}
             type="button"
             className="btn-close"

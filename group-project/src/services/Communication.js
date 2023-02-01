@@ -10,6 +10,11 @@ const getBooks = () => {
             .get(booksUrl)
             .then((response) => response.data);
 }
+const setBookBorrowStatus = (book) => {
+  return axios
+            .put(booksUrl, book)
+            .then((response) => response.data);
+}
 // Get current login status
 const getLoginStatus = () => {
   return axios
