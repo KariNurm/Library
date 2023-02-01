@@ -8,47 +8,69 @@ import { Link } from "react-router-dom"
 const Signup = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     const [name, setName] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [isError, setIsError] = useState(false);
    
     const customStyles = {
         content: {
           inset: '50% auto auto 50%', // top right bottom left
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
+          padding: 0,
         },
       };
       Modal.setAppElement('#root'); // bind modal to root
       const subtitle = useRef(null);
-    
-    
+      const subtitle1 = useRef(null);
+        
     const handleSubmit = (e) => {
-        e.preventDefault();
+      e.preventDefault();
+      if (password === password2)  {
         const newId = idv4();
         const newUser = {
             name: name,
             password: password,
             email: email,
             id: newId,
+            current_loans: [],
             book_history: [],
             admin: false
         }
         props.addNewUser(newUser);
         setIsOpen(true);
-    }
+        } else {
+          setIsError(true)
+        }
+      }
+    
     return (
         <div className="container">
             <h2>Signup</h2>
+
+      <Modal
+        isOpen={isError}
+        onAfterOpen={() => {subtitle1.style.color = '#f00'}}
+        onRequestClose={() => setIsError(false)}
+        style={customStyles}
+        contentLabel="passwords do not match">
+        <h2 ref={subtitle1}> Passwords do not match! Please try again  </h2>
+        <button onClick={() => setIsError(false)}> X </button>
+      </Modal>
+
       <Modal
         isOpen={isOpen}
         onAfterOpen={() => {subtitle.style.color = '#f00'}}
         onRequestClose={() => setIsOpen(false)}
         style={customStyles}
-        contentLabel="Example Modal"
-      >
+        contentLabel="successful modal">
+        <div className="signup-success">
         <h2 ref={subtitle}> Thank you for registration! You can <Link onClick={() => props.onFormSwitch('login')}> log in </Link> </h2>
         <button onClick={() => setIsOpen(false)}> X </button>
+        </div>
       </Modal>
+
         <form className="signup-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
             <input className="login-input" required="required" value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Name" />
@@ -56,7 +78,9 @@ const Signup = (props) => {
             <input className="login-input" required="required" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">Password</label>
             <input className="login-input" required="required" minlength="4" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-            <button className="login-button"  type="submit">Submit</button>
+            <label htmlFor="password2">Repeat password</label>
+            <input className="login-input" required="required" minlength="4" value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" placeholder="********" id="password2" name="password2" />
+            <button className="login-button" type="submit">Submit</button>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>

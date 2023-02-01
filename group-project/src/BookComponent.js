@@ -26,7 +26,7 @@ const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
         <button className="borrow-button" onClick={(borrow(copy.id))}>Borrow</button>
       </div>
     ) : (
-      <p>{i + 1}. Borrowed</p>
+      <p>{i + 1}. Borrowed &nbsp; </p>
     );
   });
 

@@ -1,17 +1,18 @@
 {
   "loginStatus": {
     "login": false
-  },
+    },
   "users": [
     {
       "name": "Rene Orosz",
       "password": "hunter12",
       "id": 1,
       "email": "joo@mail.com",
-      "books_history": [
+      "book_history": [
         "2",
         "3"
       ],
+      "current_loans": [],
       "admin": false
     },
     {
@@ -19,7 +20,8 @@
       "password": "vakavanhavainamoinen",
       "email": "test@hotmail.com",
       "id": 2,
-      "books_history": [],
+      "current_loans": [],
+      "book_history": [],
       "admin": true
     },
     {
@@ -27,6 +29,7 @@
       "password": "123",
       "email": "jee@hotmail.com",
       "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
+      "current_loans": [],
       "book_history": [],
       "admin": false
     },
@@ -35,6 +38,41 @@
       "password": "jee",
       "email": "p@mail.com",
       "id": "2e525720-05f2-4d4b-9ab2-050246aa4d66",
+      "current_loans": [
+        "11"
+      ],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "Test",
+      "password": "Lazy",
+      "email": "some@gmail.com",
+      "id": "8d3fa329-db76-46fb-bec9-aa9b3972c3c5",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "User",
+      "password": "L@zy",
+      "email": "some@gmail.com",
+      "id": "9816c1aa-907a-4fd7-8e5b-e8c25e07dab2",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "user",
+      "password": "Lazy",
+      "email": "some@gmail.com",
+      "id": "4303f327-b7b5-4c7a-8d8b-8a3d27fdbd44",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "User",
+      "password": "Lazy",
+      "email": "some@gmail.com",
+      "id": "a37cf355-1c44-4d98-839b-c348a668fb16",
       "book_history": [],
       "admin": false
     }

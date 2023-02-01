@@ -1,12 +1,12 @@
 import { UserContext } from "./App";
 import { useContext } from "react";
-import './MyPage.css'
+// import './MyPage.css'
 
 
 const MyPage = () => {
   const data = useContext(UserContext);
   const user = data.loginStatus.user;
-  console.log("data", data)
+  console.log("data to my page", data)
 
   return <div className="mypage">
           <h2>Welcome to your page {user.name}</h2>
