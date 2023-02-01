@@ -1,7 +1,7 @@
 {
   "loginStatus": {
     "login": false
-    },
+  },
   "users": [
     {
       "name": "Rene Orosz",
@@ -73,6 +73,42 @@
       "password": "Lazy",
       "email": "some@gmail.com",
       "id": "a37cf355-1c44-4d98-839b-c348a668fb16",
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "Name",
+      "password": "********",
+      "email": "youremail@gmail.com",
+      "id": "0fb7f53a-ab18-4949-96c5-b75ceaf55b17",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "user",
+      "password": "********",
+      "email": "some@gmail.com",
+      "id": "af40e260-932b-4914-8514-a371b0da6121",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "User",
+      "password": "********",
+      "email": "some@gmail.com",
+      "id": "ae7ebcea-1d43-42ea-bc9e-1dec855e97b2",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "some",
+      "password": "****1234",
+      "email": "some@gmail.com",
+      "id": "a92b0d9f-668d-4324-a3c9-f6d3679d5231",
+      "current_loans": [],
       "book_history": [],
       "admin": false
     }
