@@ -22,6 +22,7 @@
 }
 img {
     max-height: 400px;
+    max-width:50in;
     border: 5px;
     border-style: solid;
     border-radius: 5px;

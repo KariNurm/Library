@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import './BookComponent.css'
+import { setBookBorrowStatus } from './services/Communication';
 
-const BookComponent = ({ book, setIsOpen, setCurrentElement ,setBookBorrowStatus}) => {
+const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
 
   const borrow = (id) => {
     const newCopies = book.copies.map(copy => {
       if (copy.id === id) {
         copy.status = "borrowed";
       }
+      
     })
-    book.copies = newCopies;
-    {setBookBorrowStatus(book.isbn, book.copy.id)}
+    let arr = [];
+    arr.concat(newCopies);
+    console.log("book copies", arr)
+    setBookBorrowStatus(book.isbn, book.copy.id)
     // Tässä pitäisi käyttää setBookBorrowStatus-funktiota tyyliin setBookBorrowStatus(isbn, copyId) 
   }
 

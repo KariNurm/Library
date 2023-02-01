@@ -41,4 +41,4 @@ const addUser = (newUser) => {
             .then((response) => response.data);
 }
 
-export {getBooks, getUsers, getLoginStatus, setLoginStatusServer, addUser};
+export {getBooks, getUsers, getLoginStatus, setLoginStatusServer, addUser, setBookBorrowStatus};
