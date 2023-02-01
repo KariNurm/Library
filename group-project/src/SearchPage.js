@@ -85,6 +85,12 @@ const SearchPage = ({books}) => {
         event.preventDefault();
         setRevealedBooks(!revealedBooks)
     }
+
+    const clearAll = () => {
+        setSearchAuthor("");
+        setSearchISBN("");
+        setSearchTitle("");
+    }
     <BookComponent/>
 
 
@@ -99,7 +105,9 @@ const SearchPage = ({books}) => {
                 <BookComponent setIsOpen={setIsOpen} book={currentElement}/>
                 
             </Modal>
+
             <div className="searchPage">
+            <form>
             <h1 className="title">Search for books</h1> 
             <p>ISBN: </p>
             <input
@@ -122,6 +130,7 @@ const SearchPage = ({books}) => {
                 onChange = {handleAuthor}
                 value = {searchAuthor}
                 />
+                </form>
             {/* <p>Page Count: </p> Doesn't work yet
             <input
                 type = "search"
@@ -133,6 +142,8 @@ const SearchPage = ({books}) => {
             <button onClick={handleSubmit}>Search books with more pages</button> */}
             <br/>
             <div className="button">
+            <button onClick={clearAll}>Clear all the input boxes</button>
+            <br/>
             <button onClick={showBooks}>Toggle book search results</button>
             <div className="owlImage"></div>
             <div className="detectiveImage"></div>
