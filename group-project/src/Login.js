@@ -10,6 +10,7 @@ const customStyles = {
       inset: '50% auto auto 50%', // top right bottom left
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+      padding: 0,
     },
   }
 
