@@ -50,7 +50,6 @@ const [loginStatus, setLoginStatus] = useState({})
       </Routes>
 
     {/*This part is for testing only*/}
-    {console.log(loginStatus)}
     </UserContext.Provider>
   </div>
 )
