@@ -120,6 +120,15 @@
       "current_loans": [],
       "book_history": [],
       "admin": false
+    },
+    {
+      "name": "User",
+      "password": "L@zy1",
+      "email": "someone@gmail.com",
+      "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
     }
   ],
   "books": [
