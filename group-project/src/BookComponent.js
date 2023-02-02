@@ -1,11 +1,25 @@
-import "./BookComponent.css";
+import { useState } from 'react';
+import './BookComponent.css'
+import { setBookBorrowStatus } from './services/Communication';
 
-const BookComponent = ({ book, setIsOpen }) => {
+const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
+
+  const borrow = (id) => {
+    const newCopies = book.copies.map(copy => {
+      if (copy.id === id) {
+        copy.status = "borrowed";
+      }
+      
+    })
+    
+  }
+
   const status = book.copies.map((copy, i) => {
+
     return copy.status === "in_library" ? (
       <div key={copy.id}>
         {i + 1}. In library
-        <button className="borrow-button">Borrow</button>
+        <button className="borrow-button" onClick={(borrow)}>Borrow</button>
       </div>
     ) : (
       <p>{i + 1}. Borrowed &nbsp; </p>
@@ -19,7 +33,7 @@ const BookComponent = ({ book, setIsOpen }) => {
           <img src={book.cover} alt="Book cover" />
         </div>
         <div className="book-info">
-        <button
+          <button
             onClick={() => setIsOpen(false)}
             type="button"
             className="btn-close"
