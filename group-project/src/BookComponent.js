@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './BookComponent.css'
 import { setBookBorrowStatus } from './services/Communication';
+import Draggable, {DraggableCore} from 'react-draggable';
 
 const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
 
@@ -22,11 +23,13 @@ const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
         <button className="borrow-button" onClick={(borrow)}>Borrow</button>
       </div>
     ) : (
-      <p>{i + 1}. Borrowed &nbsp; </p>
+      <p>{i + 1}. Borrowed </p>
     );
   });
 
   return (
+    <Draggable>
+
     <div className="book-component">
       <div className="wrapper">
         <div className="book-cover">
@@ -48,14 +51,15 @@ const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
             </>
           ) : (
             <></>
-          )}
+            )}
           <h3>Description:</h3>
           <p>{book.description}</p>
           <h3>Copies: {book.copies.length}</h3>
-          <div className="book-copy wrapper">{status}</div>
+          <div className="book-copy">{status}</div>
         </div>
       </div>
     </div>
+            </Draggable>
   );
 };
 export default BookComponent;
