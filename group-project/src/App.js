@@ -42,7 +42,7 @@ const [loginStatus, setLoginStatus] = useState({})
       <Header /> { /* <Link> elements goes to Header component*/ }
       <Routes>
         <Route path="/" element={<LandingPage />} />
-          <Route path="/search" element={<SearchPage books={books}/>} />
+          <Route path="/search" element={<SearchPage />} />
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/login" element={ currentForm === "login" 
                                                     ? <Login onFormSwitch={toggleForm} /> 

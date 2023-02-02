@@ -33,6 +33,7 @@ const Login = (props) => {
                                          user: {name: data.users[findUserIndex].name,
                                                 email: data.users[findUserIndex].email,
                                                 id: data.users[findUserIndex].id,
+                                                current_loans: data.users[findUserIndex].current_loans,
                                                 book_history: data.users[findUserIndex].book_history,
                                                 admin: data.users[findUserIndex].admin}})
                                          .then(response => {console.log("vastaus", response);

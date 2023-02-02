@@ -36,4 +36,10 @@ const addUser = (newUser) => {
             .then((response) => response.data);
 }
 
-export {getBooks, getUsers, getLoginStatus, setLoginStatusServer, addUser};
+const borrowBook = (id, newStatus) => {
+  return axios
+            .put(`${booksUrl}/${id}`, newStatus)
+            .then(response => response.data)
+} 
+
+export {getBooks, borrowBook, getUsers, getLoginStatus, setLoginStatusServer, addUser};

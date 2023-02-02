@@ -1,38 +1,36 @@
 import "./BookComponent.css";
-import { BooksContext } from "./App";
-import { useContext } from "react";
-import axios from "axios";
+import { BooksContext, UserContext } from "./App";
+import { useContext} from "react";
+import { borrowBook, getBooks } from "./services/Communication";
 
-const BookComponent = ({ book, setIsOpen }) => {
-
-  const dataUser = useContext(BooksContext);
-
-  const borrow = (id) => {
-    const newCopies = book.copies.map((copy) => {
-      if(copy.id === id) {
+const BookComponent = ({ id, setIsOpen }) => {
+  const dataUser = useContext(UserContext);
+  const dataBooks = useContext(BooksContext);
+  const currentUser = dataUser.loginStatus.user;
+  const currentBookIndex = dataBooks.books.findIndex(ele => ele.id === id);
+  const book = dataBooks.books[currentBookIndex]
+  
+  const borrow = (copyId) => {
+    const date = new Date();
+    date.setDate(date.getDate() + 30);
+    const newCopies =  book.copies.map((copy) => {
+      if(copy.id === copyId) {
         return { ...copy,
-                status: "borrowed"
+                status: "borrowed",
+                borrower_id: currentUser.id,
+                due_date: date.toISOString()
         }
       } else {
         return {...copy}
       }
     })
-    const newStatus = [{ ...book,
+    const newStatus = { ...book,
                          copies: [...newCopies]
-                      }]
-    //console.log("copio uusi data", newStatus)
-     
-    axios.put(`http://localhost:3001/books?isbn=${book.isbn}`, newStatus)
-    .then(response => console.log("takas serveriltä ",response))
+                      }
 
-
-  
-    // const newStatus = [{ 
-    //               ...book,
-    //               copies:
-    //                    }] 
-                    
-
+    borrowBook(book.id, newStatus)
+    .then(getBooks(response => dataBooks.setBooks(response)))  
+    console.log("borrowed")
   }
 
 
@@ -43,7 +41,7 @@ const BookComponent = ({ book, setIsOpen }) => {
         <button className="borrow-button" onClick={() => borrow(copy.id)}>Borrow</button>
       </div>
     ) : (
-      <p>{i + 1}. Borrowed &nbsp; </p>
+      <p key={copy.id}>{i + 1}. Borrowed &nbsp; </p>
     );
   });
 
