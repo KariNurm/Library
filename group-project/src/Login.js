@@ -22,7 +22,7 @@ const Login = (props) => {
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
 
-        const [attempts, setAttempts] = useState(0);
+        // const [attempts, setAttempts] = useState(0);
         
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -30,7 +30,7 @@ const Login = (props) => {
             if(findUserIndex === -1) {
                 setWrongOpen(true);
             } else {
-                while (setAttempts < 3) {
+                // while (setAttempts < 3) {
                     if(password === data.users[findUserIndex].password) {
                         setLoginStatusServer({login: true,
                             user: {name: data.users[findUserIndex].name,
@@ -41,10 +41,10 @@ const Login = (props) => {
                                 .then(response => data.setLoginStatus(response))
                             } else {
                                 setWrongOpen(true);
-                                setAttempts(attempts + 1);
-                                console.log(setAttempts);
+                                // setAttempts(attempts + 1);
+                                // console.log(setAttempts);
                             }
-                    }
+                    // }
             }
             
 
@@ -62,7 +62,7 @@ const Login = (props) => {
                        >
                         <div className="wrong-email">
                             <h3>Wrong email address or password</h3>
-                            <h2>Attempts left: {3-attempts}</h2>
+                            {/* <h2>Attempts left: {3-attempts}</h2> */}
                             <button onClick={() => setWrongOpen(false)}>Close</button>
                         </div>
                 </Modal>
@@ -78,13 +78,7 @@ const Login = (props) => {
                     //  : 
 
                     //     <form className="login-form" onSubmit={handleSubmit}>
-                    //     <label htmlFor="email">Email</label>
-                    // <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
-                    // placeholder="your_email@gmail.com" id="email" name="email"/>
-                    // <label htmlFor="password">Password</label>
-                    // <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password"
-                    // placeholder="********" id="password" name="password"/>
-                    // <button className="login-button" type="submit">Submit</button>
+                    //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
                     // </form>
                 }
                     
