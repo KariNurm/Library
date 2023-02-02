@@ -10,14 +10,6 @@ const Header = () => {
 	
 	const navigate = useNavigate()
 	const [logoutPopOpen, setLogoutPopOpen] = useState(false)
-
-	const style = { "color": "yellow",
-									"height": "2rem",
-									"borderRadius": "50%",
-									"backgroundColor": "green",
-									"position": "relative",
-									"right": "-20%"
-	}
 	const customStyles = {
     content: {
       inset: '50% auto auto 50%', // Stock style for modal
@@ -31,10 +23,8 @@ const Header = () => {
 		navigate("/")
 		setLoginStatusServer({login: false})
 			.then(response => data.setLoginStatus(response))
-
-		setLogoutPopOpen(false)
+		    setLogoutPopOpen(false)
 	}
-
 
 	return (
 			<header className='header'>
@@ -43,7 +33,7 @@ const Header = () => {
 				{data.loginStatus.login === true 
 																	?	<>	
 																			<Link className='navLink' to="/mypage"> MYPAGE </Link> 
-																			<button style={style} onClick={() => setLogoutPopOpen(true)}>Logout</button>
+																			<button className='logout-button'  onClick={() => setLogoutPopOpen(true)}>LOGOUT</button>
 																		</>
 																	: <><Link className='navLink' to="/login"> LOGIN </Link></>}
 				<Modal isOpen={logoutPopOpen}
