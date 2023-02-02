@@ -78,13 +78,7 @@ const Login = (props) => {
                     //  : 
 
                     //     <form className="login-form" onSubmit={handleSubmit}>
-                    //     <label htmlFor="email">Email</label>
-                    // <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
-                    // placeholder="your_email@gmail.com" id="email" name="email"/>
-                    // <label htmlFor="password">Password</label>
-                    // <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password"
-                    // placeholder="********" id="password" name="password"/>
-                    // <button className="login-button" type="submit">Submit</button>
+                    //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
                     // </form>
                 }
                     
