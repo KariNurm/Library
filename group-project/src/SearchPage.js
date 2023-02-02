@@ -12,9 +12,7 @@ const SearchPage = ({books}) => {
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
-    //const [searchPageCount, setSearchPageCount] = useState("");
     const [revealedBooks, setRevealedBooks] = useState(false);
-    const [pageSearch, setPageSearch] = useState(false);
     
     const handleISBN = (event) => {
         event.preventDefault();
@@ -31,40 +29,13 @@ const SearchPage = ({books}) => {
         setSearchAuthor(event.target.value)
     };
     
-    // const handlePageCount = (event) => {
-    //     event.preventDefault();
-    //     setSearchPageCount(event.target.value)
-    // };
-    
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    // }
     
     const [isOpen, setIsOpen] = useState(false);
     const [currentElement, setCurrentElement] = useState({});
 
     const closeElement = () => setIsOpen(false);
 
-    // const handleLess = (event) => {
-        //     event.preventDefault();
-        //     setPageSearch(true);
-        //     if (book.pagecount <= searchPageCount) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-    // const handleMore = (event) => {
-        //     event.preventDefault();
-        //     setPageSearch(true);
-        //     if (book.pagecount => searchPageCount) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
-    const filteredBooks = books.filter(book => { //Filter the books on title.
+    const filteredBooks = books.filter(book => {
         if (searchISBN === "" && searchTitle === "" && searchAuthor === "") {
             return false;
         } else if (
@@ -131,15 +102,6 @@ const SearchPage = ({books}) => {
                 value = {searchAuthor}
                 />
                 </form>
-            {/* <p>Page Count: </p> Doesn't work yet
-            <input
-                type = "search"
-                placeholder = "Search with a pagecount"
-                onChange = {handlePageCount}
-                value = {searchPageCount}
-                />
-            <button onClick={handleSubmit}>Search books with less pages</button>
-            <button onClick={handleSubmit}>Search books with more pages</button> */}
             <br/>
             <div className="button">
             <button onClick={clearAll}>Clear all the input boxes</button>
@@ -156,7 +118,7 @@ const SearchPage = ({books}) => {
             
             <table>
                 { (searchISBN === "" && searchTitle === ""
-                && searchAuthor === "" && !pageSearch) ? <></> : 
+                && searchAuthor === "") ? <></> : 
                       <thead>
                         <tr>
                           <th>ISBN</th>
