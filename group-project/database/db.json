@@ -1,6 +1,13 @@
 {
   "loginStatus": {
-    "login": false
+    "login": true,
+    "user": {
+      "name": "User",
+      "email": "someone@gmail.com",
+      "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "book_history": [],
+      "admin": false
+    }
   },
   "users": [
     {
