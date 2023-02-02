@@ -1,4 +1,6 @@
 .searchPage {
+  position: relative;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,8 +21,8 @@
   margin-top: 10px;
 }
 .searchPage input[type="search"] {
-  width: 100%;
-  max-width: 450px;
+  width: 650px;
+  height: 50px;
   background-color: white;
   padding: 10px;
   margin: 0, 0, 0, 20px;
@@ -62,7 +64,7 @@
   font-size: 1.2rem;
 }
 .searchPage button {
-  background-color: #05421f; /* Green */
+  background-color: #05421f;
   box-shadow: 0px 0px 20px #ccc;
   transition: all 0.2s ease-in-out;
   border: none;
@@ -71,9 +73,10 @@
   text-align: center;
   text-decoration: none;
   border-radius: 20px;
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 20px;
   cursor: pointer;
+  width: 400px;
 }
 
 .searchPage button:hover {
@@ -85,25 +88,26 @@
 
 .owlImage {
   background: url("./images/transparent-owl.png");
-  width: 450px;
-  height: 450px;
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
-  top: 40px;
-  background-size: 100%;
-  margin: 5px;
-  right: 25px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20%;
+  height: auto;
 }
 
 .detectiveImage {
   background: url("./images/detective.png");
-  width: 350px;
-  height: 350px;
-  position: absolute;
-  top: 120px;
-  background-size: 100%;
-  margin: 5px;
-  left: 85px;
+  background-size: contain;
   background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20%;
+  height: auto;
 }
 .searchPage tr:hover {
   cursor: pointer;
@@ -111,7 +115,6 @@
   transform: scale(1);
   background-color: #4caf50;
   color: white;
-  
   border-radius: 20px;
   padding: 10px;
 }
