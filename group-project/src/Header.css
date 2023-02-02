@@ -37,3 +37,10 @@
   position: relative;
   right: -20%;
 }
+.navLink:hover {
+  background-color: #11d211;
+  color: white;
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
+}
+
