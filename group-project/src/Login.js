@@ -38,7 +38,8 @@ const Login = (props) => {
                                 id: data.users[findUserIndex].id,
                                 book_history: data.users[findUserIndex].book_history,
                                 admin: data.users[findUserIndex].admin}})
-                                .then(response => data.setLoginStatus(response))
+                                .then(response => {data.setLoginStatus(response);
+                                    navigate("/mypage")})
                             } else {
                                 setWrongOpen(true);
                                 // setAttempts(attempts + 1);
@@ -57,14 +58,13 @@ const Login = (props) => {
                 <h2>Login</h2>
                 <Modal isOpen={wrongOpen}
                        contentLabel="wrong email/password"
-                       style={customStyles}
-                       
-                       >
-                        <div className="wrong-email">
-                            <h3>Wrong email address or password</h3>
-                            {/* <h2>Attempts left: {3-attempts}</h2> */}
-                            <button onClick={() => setWrongOpen(false)}>Close</button>
-                        </div>
+                       style={customStyles}>
+                         <div className="wrong-email">
+                    
+                    {/* <h2>Attempts left: {3-attempts}</h2> */}
+                    <button className="popup-close-button" onClick={() => setWrongOpen(false)}>X</button>
+                    <h3>Wrong email address or password</h3>
+                </div>
                 </Modal>
                     {                <form className="login-form" onSubmit={handleSubmit}>
                         <label htmlFor="email">Email</label>

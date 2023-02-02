@@ -55,8 +55,10 @@ const Signup = (props) => {
         onRequestClose={() => setIsError(false)}
         style={customStyles}
         contentLabel="passwords do not match">
-        <h2 ref={subtitle1}> Passwords do not match! Please try again  </h2>
-        <button onClick={() => setIsError(false)}> X </button>
+         <div className="pass-not-match"  > 
+          <button className="popup-close-button"  onClick={() => setIsError(false)}> X </button>
+          <h2 ref={subtitle1}> Passwords do not match! Please try again  </h2>
+        </div>
       </Modal>
 
       <Modal
@@ -66,8 +68,8 @@ const Signup = (props) => {
         style={customStyles}
         contentLabel="successful modal">
         <div className="signup-success">
-        <h2 ref={subtitle}> Thank you for registration! You can <Link onClick={() => props.onFormSwitch('login')}> log in </Link> </h2>
-        <button onClick={() => setIsOpen(false)}> X </button>
+          <button className="popup-close-button" onClick={() => setIsOpen(false)}> X </button>
+          <h2 ref={subtitle}> Thank you for registration! You can <Link onClick={() => props.onFormSwitch('login')}> log in </Link> </h2>
         </div>
       </Modal>
 
