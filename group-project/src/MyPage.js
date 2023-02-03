@@ -2,14 +2,12 @@ import { UserContext } from "./App";
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
-Modal.setAppElement('#root');
-
+Modal.setAppElement("#root");
 
 const MyPage = () => {
-  
   const data = useContext(UserContext);
   const user = data.loginStatus.user;
-  console.log("data to my page", data)
+  console.log("data to my page", data);
   const [isOpen, setIsOpen] = useState(false);
   const borrowedBooks = user.current_loans;
 
