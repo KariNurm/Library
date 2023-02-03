@@ -30,22 +30,20 @@ const Login = (props) => {
             if(findUserIndex === -1) {
                 setWrongOpen(true);
             } else {
-                // while (setAttempts < 3) {
-                    if(password === data.users[findUserIndex].password) {
-                        setLoginStatusServer({login: true,
-                            user: {name: data.users[findUserIndex].name,
-                                email: data.users[findUserIndex].email,
-                                id: data.users[findUserIndex].id,
-                                book_history: data.users[findUserIndex].book_history,
-                                admin: data.users[findUserIndex].admin}})
-                                .then(response => {data.setLoginStatus(response);
-                                    navigate("/mypage")})
-                            } else {
-                                setWrongOpen(true);
-                                // setAttempts(attempts + 1);
-                                // console.log(setAttempts);
-                            }
-                    // }
+                if(password === data.users[findUserIndex].password) {
+                    setLoginStatusServer({login: true,
+                                         user: {name: data.users[findUserIndex].name,
+                                                email: data.users[findUserIndex].email,
+                                                id: data.users[findUserIndex].id,
+                                                current_loans: data.users[findUserIndex].current_loans,
+                                                book_history: data.users[findUserIndex].book_history,
+                                                admin: data.users[findUserIndex].admin}})
+                                         .then(response => {console.log("vastaus", response);
+                                                                    data.setLoginStatus(response);
+                                                                    navigate("/");})
+                } else {
+                    setWrongOpen(true);
+                }
             }
             
 
