@@ -20,3 +20,24 @@ body {
   position: absolute;
   top: 15vh;
 }
+.logoutPopup, .wrong-email,.signup-success,.pass-not-match {
+  border: 20px;
+  border-style: solid;
+  border-color: #31a967;
+  border-radius: 4px;
+  max-width: 100%;
+  text-align: justify;
+  background-color: #31a967af;
+}
+.popup-close-button {
+  background-color: rgb(224, 153, 153);
+  color: white;
+  float: right;
+  position: relative;
+  right: 0%;
+}
+.yes-no-button{
+  background-color: #05421f;
+  color: white;
+}
+

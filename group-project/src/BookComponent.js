@@ -1,8 +1,9 @@
 import "./BookComponent.css";
 import { BooksContext, UserContext } from "./App";
 import { useContext} from "react";
-import { borrowBook, getBooks, getUsers, setLoginStatusServer, updateUsers } from "./services/Communication";
-import { createRoutesFromElements } from "react-router-dom";
+import { borrowBook, setLoginStatusServer, updateUsers } from "./services/Communication";
+import Draggable from 'react-draggable';
+
 
 const BookComponent = ({ id, setIsOpen }) => {
   
@@ -82,6 +83,7 @@ const BookComponent = ({ id, setIsOpen }) => {
   }
 
   const status = book.copies.map((copy, i) => {
+
     return copy.status === "in_library" ? (
       <div key={copy.id}>
         {i + 1}. In library
@@ -95,13 +97,15 @@ const BookComponent = ({ id, setIsOpen }) => {
 
 
   return (
+    <Draggable key={book.id}>
+
     <div className="book-component">
       <div className="wrapper">
         <div className="book-cover">
           <img src={book.cover} alt="Book cover" />
         </div>
         <div className="book-info">
-        <button
+          <button
             onClick={() => setIsOpen(false)}
             type="button"
             className="btn-close"
@@ -116,14 +120,15 @@ const BookComponent = ({ id, setIsOpen }) => {
             </>
           ) : (
             <></>
-          )}
+            )}
           <h3>Description:</h3>
           <p>{book.description}</p>
           <h3>Copies: {book.copies.length}</h3>
-          <div className="book-copy wrapper">{status}</div>
+          <div className="book-copy">{status}</div>
         </div>
       </div>
     </div>
+            </Draggable>
   );
 };
 export default BookComponent;

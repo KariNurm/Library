@@ -10,6 +10,7 @@ const getBooks = () => {
             .get(booksUrl)
             .then((response) => response.data);
 }
+
 // Get current login status
 const getLoginStatus = () => {
   return axios
@@ -29,7 +30,6 @@ const getUsers = () => {
             .get(usersUrl)
             .then((response) => response.data);
 }
-
 
 const addUser = (newUser) => {
   return axios

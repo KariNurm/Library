@@ -1,4 +1,5 @@
 import './Header.css';
+import './App.css';
 import { Link, useNavigate } from "react-router-dom"
 import { useContext, useState } from 'react';
 import { UserContext } from './App';
@@ -10,19 +11,12 @@ const Header = () => {
 	
 	const navigate = useNavigate()
 	const [logoutPopOpen, setLogoutPopOpen] = useState(false)
-
-	const style = { "color": "yellow",
-									"height": "2rem",
-									"borderRadius": "50%",
-									"backgroundColor": "green",
-									"position": "relative",
-									"right": "-20%"
-	}
 	const customStyles = {
     content: {
       inset: '50% auto auto 50%', // Stock style for modal
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+	  padding: 0,
     },
   }
 
@@ -31,10 +25,8 @@ const Header = () => {
 		navigate("/")
 		setLoginStatusServer({login: false})
 			.then(response => data.setLoginStatus(response))
-
-		setLogoutPopOpen(false)
+		    setLogoutPopOpen(false)
 	}
-
 
 	return (
 			<header className='header'>
@@ -43,16 +35,16 @@ const Header = () => {
 				{data.loginStatus.login === true 
 																	?	<>	
 																			<Link className='navLink' to="/mypage"> MYPAGE </Link> 
-																			<button style={style} onClick={() => setLogoutPopOpen(true)}>Logout</button>
+																			<button className='logout-button'  onClick={() => setLogoutPopOpen(true)}>LOGOUT</button>
 																		</>
 																	: <><Link className='navLink' to="/login"> LOGIN </Link></>}
 				<Modal isOpen={logoutPopOpen}
 							 contentLabel="want to log out?"
 							 style={customStyles}>
-			 <div>
+			  <div className="logoutPopup" >
 					 <h3>Are you sure you want to log out?</h3>
-					 <button onClick={handleClick}>Yes</button>
-					 <button onClick={() => setLogoutPopOpen(false)}>No</button>
+					 <button className='yes-no-button' onClick={handleClick}>Yes</button>
+					 <button className='yes-no-button' onClick={() => setLogoutPopOpen(false)}>No</button>
 			 </div>
 			</Modal>
 				</header>

@@ -21,6 +21,8 @@ const Login = (props) => {
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
+
+        // const [attempts, setAttempts] = useState(0);
         
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -54,21 +56,30 @@ const Login = (props) => {
                 <h2>Login</h2>
                 <Modal isOpen={wrongOpen}
                        contentLabel="wrong email/password"
-                       style={customStyles}
-                       
-                       >
-                        <div className="wrong-email">
-                            <h3>Wrong email address or password</h3>
-                            <button onClick={() => setWrongOpen(false)}>Close</button>
-                        </div>
+                       style={customStyles}>
+                         <div className="wrong-email">
+                    
+                    {/* <h2>Attempts left: {3-attempts}</h2> */}
+                    <button className="popup-close-button" onClick={() => setWrongOpen(false)}>X</button>
+                    <h3>Wrong email address or password</h3>
+                </div>
                 </Modal>
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email</label>
-                    <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="your_email@gmail.com" id="email" name="email" />
+                    {                <form className="login-form" onSubmit={handleSubmit}>
+                        <label htmlFor="email">Email</label>
+                    <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
+                    placeholder="your_email@gmail.com" id="email" name="email" />
                     <label htmlFor="password">Password</label>
-                    <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+                    <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password"
+                    placeholder="********" id="password" name="password" />
                     <button className="login-button" type="submit">Submit</button>
                 </form>
+                    //  : 
+
+                    //     <form className="login-form" onSubmit={handleSubmit}>
+                    //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
+                    // </form>
+                }
+                    
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
                 </div>
         )
