@@ -1,14 +1,16 @@
 import "./BookComponent.css";
 import { BooksContext, UserContext } from "./App";
 import { useContext} from "react";
-import { borrowBook, setLoginStatusServer, updateUsers } from "./services/Communication";
+import React from "react";
+import { borrowBook, setLoginStatusServer, updateUser } from "./services/Communication";
 import Draggable from 'react-draggable';
-
 
 const BookComponent = ({ id, setIsOpen }) => {
   
-
+  
   const user = useContext(UserContext);
+  const users = user.users;
+  const login = user.loginStatus.login;
   const currentUser = user.loginStatus.user;
   const setUsers = user.setUsers;
   const setLoginStatus = user.setLoginStatus;
@@ -33,9 +35,11 @@ const BookComponent = ({ id, setIsOpen }) => {
                         ...book,
                         copies: [...newCopies]
                       }
+    
+    const findUserIndex = users.findIndex((ele) => ele.id === currentUser.id);
 
     const newUserState = { 
-                          ...currentUser,
+                          ...users[findUserIndex],
                           current_loans: [
                                           ...currentUser.current_loans,
                                           {
@@ -44,7 +48,9 @@ const BookComponent = ({ id, setIsOpen }) => {
                                           }
                                          ]
                          }
-       
+    
+    const newUserStateNoPW = (({ password, ...o }) => o)(newUserState) // remove b and c
+
 
       borrowBook(book.id, newBookStatus)
         .then(response => {
@@ -58,7 +64,7 @@ const BookComponent = ({ id, setIsOpen }) => {
         )
 
         }).then( response => {
-          updateUsers(currentUser.id, newUserState)
+          updateUser(currentUser.id, newUserState)
           .then(response => { 
             setUsers(
               user.users.map((ele) => {
@@ -75,7 +81,7 @@ const BookComponent = ({ id, setIsOpen }) => {
         ).then( response => 
           setLoginStatusServer({
             login: true,
-            user: {...newUserState}
+            user: {...newUserStateNoPW}
           }).then(response => {
              setLoginStatus(response)           
           })
@@ -86,8 +92,15 @@ const BookComponent = ({ id, setIsOpen }) => {
 
     return copy.status === "in_library" ? (
       <div key={copy.id}>
-        {i + 1}. In library
-        <button className="borrow-button" onClick={() => borrow(copy.id)}>Borrow</button>
+        
+        {login === true ?
+                          <button 
+                            className="borrow-button" 
+                            onClick={() => borrow(copy.id)}
+                          >Borrow</button>
+                        :
+                          <p key={copy.id}>{i + 1}. Available </p>
+                        }
       </div>
     ) : (
       <p key={copy.id}>{i + 1}. Borrowed &nbsp; </p>
@@ -97,7 +110,7 @@ const BookComponent = ({ id, setIsOpen }) => {
 
 
   return (
-    <Draggable key={book.id}>
+    <Draggable>
 
     <div className="book-component">
       <div className="wrapper">
