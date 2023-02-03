@@ -78,6 +78,7 @@
   opacity: 0.9;
   background-image: linear-gradient(to top, #05421f, green);
   box-shadow: none;
+  justify-content: space-between;
 }
 
 .card-info-card {
@@ -94,4 +95,19 @@
   line-height: 1.5;
   opacity: 0.9;
   background-image: linear-gradient(to bottom, #05421f, green);
+  justify-content: space-between;
+}
+.card {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    float: none;
+  }
 }

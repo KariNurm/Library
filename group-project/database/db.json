@@ -5,14 +5,28 @@
   "users": [
     {
       "name": "Rene Orosz",
-      "password": "hunter12",
-      "id": 1,
       "email": "joo@mail.com",
+      "id": 1,
+      "current_loans": [
+        {
+          "id": "9781449331818",
+          "isbn": "9781449331818",
+          "title": "Learning JavaScript Design Patterns",
+          "subtitle": "A JavaScript and jQuery Developer's Guide",
+          "author": "Addy Osmani",
+          "published": "2012-07-01T00:00:00.000Z",
+          "publisher": "O'Reilly Media",
+          "pages": 254,
+          "description": "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you.",
+          "cover": "https://m.media-amazon.com/images/I/51H-31ivMTL._AC_SY780_.jpg",
+          "website": "http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/",
+          "copies": "4"
+        }
+      ],
       "book_history": [
         "2",
         "3"
       ],
-      "current_loans": [],
       "admin": false
     },
     {
@@ -26,7 +40,6 @@
     },
     {
       "name": "Test",
-      "password": "123",
       "email": "jee@hotmail.com",
       "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
       "current_loans": [],
@@ -56,6 +69,7 @@
   ],
   "books": [
     {
+      "id": "0679722769",
       "isbn": "0679722769",
       "title": "Ulysses",
       "author": "James Joyce",
@@ -73,13 +87,14 @@
         },
         {
           "id": "2",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
+          "due_date": "2023-03-05T10:11:37.132Z"
         }
       ]
     },
     {
+      "id": "9781593275846",
       "isbn": "9781593275846",
       "title": "Eloquent JavaScript, Second Edition",
       "subtitle": "A Modern Introduction to Programming",
@@ -100,6 +115,7 @@
       ]
     },
     {
+      "id": "9781449331818",
       "isbn": "9781449331818",
       "title": "Learning JavaScript Design Patterns",
       "subtitle": "A JavaScript and jQuery Developer's Guide",
@@ -113,13 +129,14 @@
       "copies": [
         {
           "id": "4",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": 1,
+          "due_date": "2023-03-05T11:01:56.161Z"
         }
       ]
     },
     {
+      "id": "9781449365035",
       "isbn": "9781449365035",
       "title": "Speaking JavaScript",
       "subtitle": "An In-Depth Guide for Programmers",
@@ -140,6 +157,7 @@
       ]
     },
     {
+      "id": "9781491950296",
       "isbn": "9781491950296",
       "title": "Programming JavaScript Applications",
       "subtitle": "Robust Web Architecture with Node, HTML5, and Modern JS Libraries",
@@ -160,6 +178,7 @@
       ]
     },
     {
+      "id": "9781593277574",
       "isbn": "9781593277574",
       "title": "Understanding ECMAScript 6",
       "subtitle": "The Definitive Guide for JavaScript Developers",
@@ -180,6 +199,7 @@
       ]
     },
     {
+      "id": "9781491904244",
       "isbn": "9781491904244",
       "title": "You Don't Know JS",
       "subtitle": "ES6 & Beyond",
@@ -200,6 +220,7 @@
       ]
     },
     {
+      "id": "9781449325862",
       "isbn": "9781449325862",
       "title": "Git Pocket Guide",
       "subtitle": "A Working Introduction",
@@ -220,6 +241,7 @@
       ]
     },
     {
+      "id": "9781449337711",
       "isbn": "9781449337711",
       "title": "Designing Evolvable Web APIs with ASP.NET",
       "subtitle": "Harnessing the Power of the Web",
@@ -240,6 +262,7 @@
       ]
     },
     {
+      "id": "123",
       "isbn": "123",
       "title": "Book",
       "author": "Jon Doe",
