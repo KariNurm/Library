@@ -22,7 +22,7 @@ const Login = (props) => {
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
 
-        // const [attempts, setAttempts] = useState(0);
+        const [attempts, setAttempts] = useState(0);
         
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -59,12 +59,12 @@ const Login = (props) => {
                        style={customStyles}>
                          <div className="wrong-email">
                     
-                    {/* <h2>Attempts left: {3-attempts}</h2> */}
+                    <h2>Attempts left: {3-attempts}</h2>
                     <button className="popup-close-button" onClick={() => setWrongOpen(false)}>X</button>
                     <h3>Wrong email address or password</h3>
                 </div>
                 </Modal>
-                {/* {setAttempts < 3} ? */}
+                {setAttempts < 3} ?
                     {                <form className="login-form" onSubmit={handleSubmit}>
                         <label htmlFor="email">Email</label>
                     <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
@@ -75,12 +75,12 @@ const Login = (props) => {
                     <button className="login-button" type="submit">Submit</button>
                 </form>
                     }
-                     {/* :{ 
+                     :{ 
 
                         <form className="login-form" onSubmit={handleSubmit}>
                         <p> Sorry, but you tried password too many times. You have been locked out. </p>
                     </form>
-                } */}
+                }
                     
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
                 </div>
