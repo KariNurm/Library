@@ -66,6 +66,7 @@ const Login = (props) => {
                             <button onClick={() => setWrongOpen(false)}>Close</button>
                         </div>
                 </Modal>
+                {/* {setAttempts < 3} ? */}
                     {                <form className="login-form" onSubmit={handleSubmit}>
                         <label htmlFor="email">Email</label>
                     <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
@@ -75,12 +76,13 @@ const Login = (props) => {
                     placeholder="********" id="password" name="password" />
                     <button className="login-button" type="submit">Submit</button>
                 </form>
-                    //  : 
+                    }
+                     {/* :{ 
 
-                    //     <form className="login-form" onSubmit={handleSubmit}>
-                    //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
-                    // </form>
-                }
+                        <form className="login-form" onSubmit={handleSubmit}>
+                        <p> Sorry, but you tried password too many times. You have been locked out. </p>
+                    </form>
+                } */}
                     
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
                 </div>
