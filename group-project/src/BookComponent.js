@@ -42,38 +42,44 @@ const BookComponent = ({ id, setIsOpen }) => {
                                           }
                                          ]
                          }
-    
-        borrowBook(book.id, newStatus)
-          .then(response => {
-            console.log("borrow book", response)  // kirja objekti borrowed 2
-             getBooks()
-                 .then(response => {
-                   dataBooks.setBooks(response);
-                   console.log("getBook", response) // kirja lista arr päivitetty borrowed 4
-                 })
-             })
-             .then(
-              updateUsers(currentUser.id, newUserState)
-                 .then(response => console.log("update user", response)) // user objeckti loan added 3
-               )
-                           .then(
-               getUsers()
-                 .then(response => {
-                                   setUsers([...response]);
-                                  console.log("get user", response)  // ekana, vanha lista  1
-                                  })
-             )
-  
+       
 
-  /*  setTimeout(() => {
-      setLoginStatusServer({
-                            login: true,
-                            user: {...newUserState}
-                           }).then(response => {setLoginStatus(response)})
-      console.log("setloginstatus")                
-    }, "1000")
+      borrowBook(book.id, newStatus)
+        .then(response => console.log("borrow book", response))  // kirja objekti borrowed 
+      
+        
+      setTimeout(() => { 
+        getBooks()
+        .then(response => {
+          dataBooks.setBooks(response);
+          console.log("getBook", response) // kirja lista arr päivitetty borrowed 
+        })
+      }, "500")        
+             
+      setTimeout(() => { 
+        updateUsers(currentUser.id, newUserState)
+        .then(response => console.log("update user", response)) // user objeckti loan added 
+      }, "1000")     
+                               
+      setTimeout(() => {
+        getUsers()
+          .then(response => {
+                              setUsers([...response]);
+                              console.log("get user", response)  // ekana, vanha lista  
+                            })
+      }, "1500")     
+  
+      setTimeout(() => {
+        setLoginStatusServer({
+                              login: true,
+                              user: {...newUserState}
+                             }).then(response => {
+                              setLoginStatus(response)
+                              console.log("setloginstatus", response)  // loginstatus object             
+                             })
+      }, "2000")
                                 
-    */
+   
                        
   }
   console.log("borrowed")

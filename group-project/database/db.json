@@ -5,7 +5,20 @@
       "name": "Test",
       "email": "jee@hotmail.com",
       "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
-      "current_loans": [],
+      "current_loans": [
+        {
+          "id": "0679722769",
+          "isbn": "0679722769",
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "published": "1922-02-02T00:00:00.000Z",
+          "publisher": "Sylvia Beach",
+          "pages": 730,
+          "description": "Ulysses is a modernist novel by Irish writer James Joyce. It was first serialised in parts in the American journal The Little Review from March 1918 to December 1920 and then published in its entirety in Paris by Sylvia Beach on 2 February 1922, Joyce's 40th birthday.",
+          "cover": "https://kbimages1-a.akamaihd.net/49ac4c78-0972-4f6c-abcc-5690476bddc3/353/569/90/False/ulysses-160.jpg",
+          "copies": "2"
+        }
+      ],
       "book_history": [],
       "admin": false
     }
@@ -34,10 +47,22 @@
     },
     {
       "name": "Test",
-      "password": "123",
       "email": "jee@hotmail.com",
       "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
-      "current_loans": [],
+      "current_loans": [
+        {
+          "id": "0679722769",
+          "isbn": "0679722769",
+          "title": "Ulysses",
+          "author": "James Joyce",
+          "published": "1922-02-02T00:00:00.000Z",
+          "publisher": "Sylvia Beach",
+          "pages": 730,
+          "description": "Ulysses is a modernist novel by Irish writer James Joyce. It was first serialised in parts in the American journal The Little Review from March 1918 to December 1920 and then published in its entirety in Paris by Sylvia Beach on 2 February 1922, Joyce's 40th birthday.",
+          "cover": "https://kbimages1-a.akamaihd.net/49ac4c78-0972-4f6c-abcc-5690476bddc3/353/569/90/False/ulysses-160.jpg",
+          "copies": "2"
+        }
+      ],
       "book_history": [],
       "admin": false
     },
@@ -73,9 +98,9 @@
         },
         {
           "id": "2",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
+          "due_date": "2023-03-05T08:25:46.057Z"
         }
       ]
     },

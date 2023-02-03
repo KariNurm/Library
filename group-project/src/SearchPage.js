@@ -15,9 +15,9 @@ const SearchPage = () => {
 
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
-    const [searchAuthor, setSearchAuthor] = useState("");
+    const [searchAuthor, setSearchAuthor] = useState("James");
     //const [searchPageCount, setSearchPageCount] = useState("");
-    const [revealedBooks, setRevealedBooks] = useState(false);
+    const [revealedBooks, setRevealedBooks] = useState(true);
     const [pageSearch, setPageSearch] = useState(false);
     
     const handleISBN = (event) => {
