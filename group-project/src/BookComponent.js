@@ -127,6 +127,7 @@ const BookComponent = ({ id, setIsOpen }) => {
           <div className="book-copy">{status}</div>
         </div>
       </div>
+      </div>
     </Draggable>
   );
 };
