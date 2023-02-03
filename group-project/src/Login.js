@@ -30,20 +30,24 @@ const Login = (props) => {
             if(findUserIndex === -1) {
                 setWrongOpen(true);
             } else {
-                if(password === data.users[findUserIndex].password) {
-                    setLoginStatusServer({login: true,
-                                         user: {name: data.users[findUserIndex].name,
-                                                email: data.users[findUserIndex].email,
-                                                id: data.users[findUserIndex].id,
-                                                current_loans: data.users[findUserIndex].current_loans,
-                                                book_history: data.users[findUserIndex].book_history,
-                                                admin: data.users[findUserIndex].admin}})
-                                         .then(response => {console.log("vastaus", response);
-                                                                    data.setLoginStatus(response);
-                                                                    navigate("/");})
-                } else {
-                    setWrongOpen(true);
-                }
+                while (attempts < 3) {
+                    if(password === data.users[findUserIndex].password) {
+                        setLoginStatusServer({login: true,
+                            user: {name: data.users[findUserIndex].name,
+                                email: data.users[findUserIndex].email,
+                                id: data.users[findUserIndex].id,
+                                current_loans: data.users[findUserIndex].current_loans,
+                                book_history: data.users[findUserIndex].book_history,
+                                admin: data.users[findUserIndex].admin}})
+                                .then(response => {console.log("vastaus", response);
+                                data.setLoginStatus(response);
+                                navigate("/");})
+                            } else {
+                                setWrongOpen(true);
+                                setAttempts(attempts + 1);
+                                console.log(this)
+                            }
+                        }
             }
             
 
@@ -59,9 +63,9 @@ const Login = (props) => {
                        style={customStyles}>
                          <div className="wrong-email">
                     
-                    <h2>Attempts left: {3-attempts}</h2>
                     <button className="popup-close-button" onClick={() => setWrongOpen(false)}>X</button>
                     <h3>Wrong email address or password</h3>
+                    <h2>Attempts left: {3-attempts}</h2>
                 </div>
                 </Modal>
                 {setAttempts < 3} ?
