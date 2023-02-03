@@ -29,37 +29,36 @@ const BookComponent = ({ book, setIsOpen, setCurrentElement}) => {
 
   return (
     <Draggable>
-
-    <div className="book-component">
-      <div className="wrapper">
-        <div className="book-cover">
-          <img src={book.cover} alt="Book cover" />
-        </div>
-        <div className="book-info">
-          <button
-            onClick={() => setIsOpen(false)}
-            type="button"
-            className="btn-close"
-            data-mdb-dismiss="modal"
-            aria-label="Close">X</button>
-          <h3>Author: {book.author}</h3>
-          <h3>Title: {book.title}</h3>
-          {book.subtitle ? (
-            <>
-              <h3>Subtitle: </h3>
-              <p>{book.subtitle}</p>
-            </>
-          ) : (
-            <></>
-            )}
-          <h3>Description:</h3>
-          <p>{book.description}</p>
-          <h3>Copies: {book.copies.length}</h3>
-          <div className="book-copy">{status}</div>
+      <div className="book-component">
+        <div className="wrapper">
+          <div className="book-cover">
+            <img src={book.cover} alt="Book cover" />
+          </div>
+          <div className="book-info">
+            <button
+              onClick={() => setIsOpen(false)}
+              type="button"
+              className="btn-close"
+              data-mdb-dismiss="modal"
+              aria-label="Close">X</button>
+            <h3>Author: {book.author}</h3>
+            <h3>Title: {book.title}</h3>
+            {book.subtitle ? (
+              <>
+                <h3>Subtitle: </h3>
+                <p>{book.subtitle}</p>
+              </>
+            ) : (
+              <></>
+              )}
+            <h3>Description:</h3>
+            <p>{book.description}</p>
+            <h3>Copies: {book.copies.length}</h3>
+            <div className="book-copy">{status}</div>
+          </div>
         </div>
       </div>
-    </div>
-            </Draggable>
+    </Draggable>
   );
 };
 export default BookComponent;

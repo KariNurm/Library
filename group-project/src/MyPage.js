@@ -1,6 +1,6 @@
 import { UserContext } from "./App";
 import { useContext, useState } from "react";
-// import './MyPage.css'
+import './MyPage.css'
 import Modal from "react-modal";
 Modal.setAppElement('#root');
 
