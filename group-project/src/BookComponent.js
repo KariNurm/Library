@@ -54,12 +54,12 @@ const BookComponent = ({ id, setIsOpen }) => {
           dataBooks.setBooks(response);
           console.log("getBook", response) // kirja lista arr päivitetty borrowed 
         })
-      }, "500")        
+      }, "250")        
              
       setTimeout(() => { 
         updateUsers(currentUser.id, newUserState)
         .then(response => console.log("update user", response)) // user objeckti loan added 
-      }, "1000")     
+      }, "500")     
                                
       setTimeout(() => {
         getUsers()
@@ -67,7 +67,7 @@ const BookComponent = ({ id, setIsOpen }) => {
                               setUsers([...response]);
                               console.log("get user", response)  // ekana, vanha lista  
                             })
-      }, "1500")     
+      }, "750")     
   
       setTimeout(() => {
         setLoginStatusServer({
@@ -77,7 +77,7 @@ const BookComponent = ({ id, setIsOpen }) => {
                               setLoginStatus(response)
                               console.log("setloginstatus", response)  // loginstatus object             
                              })
-      }, "2000")
+      }, "1000")
                                 
    
                        
