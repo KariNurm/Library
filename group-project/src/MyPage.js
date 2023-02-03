@@ -2,6 +2,7 @@ import { UserContext } from "./App";
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
+import MyBorrowedBooks from "./MyBorrowedBooks";
 Modal.setAppElement('#root');
 
 
@@ -25,6 +26,7 @@ const MyPage = () => {
           {user.book_history.length === 0 ? <h2>You have no loans</h2>
                                           : <h2>Your current loans: {user.book_history.length}</h2>}
           <h1>list of books here...</h1>
+          <MyBorrowedBooks/> 
          </div>
 }
 

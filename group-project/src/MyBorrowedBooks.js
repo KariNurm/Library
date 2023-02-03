@@ -1,15 +1,16 @@
-import './MyBorrowedBooks.css';
+import './MyBorrowedBooks';
 // import { UserContext } from './App';
 // import { useContext } from 'react';
 
 const MyBorrowedBooks = () => {
 
     return (
-        <>
-            <p>jee</p>
-            <button>Return</button>
-        </>
+        <div className="borrowed-book" >
+            <p>Author: book name due date
+            <button className="borrow-button">Return</button>
+            </p>
+        </div>
     )
 
-
 }
+export default MyBorrowedBooks;
