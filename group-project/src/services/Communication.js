@@ -10,11 +10,7 @@ const getBooks = () => {
             .get(booksUrl)
             .then((response) => response.data);
 }
-const setBookBorrowStatus = (book) => {
-  return axios
-            .put(booksUrl, book)
-            .then((response) => response.data);
-}
+
 // Get current login status
 const getLoginStatus = () => {
   return axios
@@ -37,8 +33,19 @@ const getUsers = () => {
 
 const addUser = (newUser) => {
   return axios
-            .post(usersUrl, newUser)
-            .then((response) => response.data);
+  .post(usersUrl, newUser)
+  .then((response) => response.data);
 }
 
-export {getBooks, getUsers, getLoginStatus, setLoginStatusServer, addUser, setBookBorrowStatus};
+const updateUsers = (id,newStatus) => {
+  return axios
+            .put(`${usersUrl}/${id}`, newStatus)
+            .then((response) => response.data);
+}
+const borrowBook = (id, newStatus) => {
+  return axios
+            .put(`${booksUrl}/${id}`, newStatus)
+            .then(response => response.data)
+} 
+
+export {getBooks, borrowBook, getUsers, getLoginStatus, updateUsers, setLoginStatusServer, addUser};

@@ -1,4 +1,5 @@
 import './Header.css';
+import './App.css';
 import { Link, useNavigate } from "react-router-dom"
 import { useContext, useState } from 'react';
 import { UserContext } from './App';
@@ -15,6 +16,7 @@ const Header = () => {
       inset: '50% auto auto 50%', // Stock style for modal
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+	  padding: 0,
     },
   }
 
@@ -39,10 +41,10 @@ const Header = () => {
 				<Modal isOpen={logoutPopOpen}
 							 contentLabel="want to log out?"
 							 style={customStyles}>
-			 <div>
+			  <div className="logoutPopup" >
 					 <h3>Are you sure you want to log out?</h3>
-					 <button onClick={handleClick}>Yes</button>
-					 <button onClick={() => setLogoutPopOpen(false)}>No</button>
+					 <button className='yes-no-button' onClick={handleClick}>Yes</button>
+					 <button className='yes-no-button' onClick={() => setLogoutPopOpen(false)}>No</button>
 			 </div>
 			</Modal>
 				</header>

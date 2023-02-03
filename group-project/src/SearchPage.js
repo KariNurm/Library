@@ -1,14 +1,18 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import Modal from "react-modal";
 import "./SearchPage.css"
 import BookComponent from "./BookComponent"
+import { BooksContext } from "./App";
+
 Modal.setAppElement('#root');
 
 
-const SearchPage = ({books}) => {
+const SearchPage = () => {
 
+    const books = useContext(BooksContext).books;
 
     
+
     const [searchISBN, setSearchISBN] = useState("");
     const [searchTitle, setSearchTitle] = useState("");
     const [searchAuthor, setSearchAuthor] = useState("");
@@ -62,7 +66,7 @@ const SearchPage = ({books}) => {
         setSearchISBN("");
         setSearchTitle("");
     }
-    <BookComponent/>
+   
 
 
     return (
@@ -73,7 +77,7 @@ const SearchPage = ({books}) => {
                 onRequestClose={closeElement}
                 contentLabel="Book element"
                 >
-                <BookComponent setIsOpen={setIsOpen} book={currentElement}/>
+                <BookComponent setIsOpen={setIsOpen} id={currentElement}/>
                 
             </Modal>
 
@@ -132,7 +136,9 @@ const SearchPage = ({books}) => {
 
                 {filteredBooks.map((books) => (
                     <tbody key={books.isbn} className="tableElement">
-                      <tr onClick={() => {setCurrentElement(books); setIsOpen(true)}}>
+                      <tr onClick={() => {setCurrentElement(books.id);
+                                          setIsOpen(true);
+                                          }}>
                         <td>{books.isbn}</td>
                         <td>{books.title}</td>
                         <td>{books.subtitle}</td>

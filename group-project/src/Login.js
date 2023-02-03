@@ -30,21 +30,20 @@ const Login = (props) => {
             if(findUserIndex === -1) {
                 setWrongOpen(true);
             } else {
-                // while (setAttempts < 3) {
-                    if(password === data.users[findUserIndex].password) {
-                        setLoginStatusServer({login: true,
-                            user: {name: data.users[findUserIndex].name,
-                                email: data.users[findUserIndex].email,
-                                id: data.users[findUserIndex].id,
-                                book_history: data.users[findUserIndex].book_history,
-                                admin: data.users[findUserIndex].admin}})
-                                .then(response => data.setLoginStatus(response))
-                            } else {
-                                setWrongOpen(true);
-                                // setAttempts(attempts + 1);
-                                // console.log(setAttempts);
-                            }
-                    // }
+                if(password === data.users[findUserIndex].password) {
+                    setLoginStatusServer({login: true,
+                                         user: {name: data.users[findUserIndex].name,
+                                                email: data.users[findUserIndex].email,
+                                                id: data.users[findUserIndex].id,
+                                                current_loans: data.users[findUserIndex].current_loans,
+                                                book_history: data.users[findUserIndex].book_history,
+                                                admin: data.users[findUserIndex].admin}})
+                                         .then(response => {console.log("vastaus", response);
+                                                                    data.setLoginStatus(response);
+                                                                    navigate("/");})
+                } else {
+                    setWrongOpen(true);
+                }
             }
             
 
@@ -57,14 +56,13 @@ const Login = (props) => {
                 <h2>Login</h2>
                 <Modal isOpen={wrongOpen}
                        contentLabel="wrong email/password"
-                       style={customStyles}
-                       
-                       >
-                        <div className="wrong-email">
-                            <h3>Wrong email address or password</h3>
-                            {/* <h2>Attempts left: {3-attempts}</h2> */}
-                            <button onClick={() => setWrongOpen(false)}>Close</button>
-                        </div>
+                       style={customStyles}>
+                         <div className="wrong-email">
+                    
+                    {/* <h2>Attempts left: {3-attempts}</h2> */}
+                    <button className="popup-close-button" onClick={() => setWrongOpen(false)}>X</button>
+                    <h3>Wrong email address or password</h3>
+                </div>
                 </Modal>
                 {/* {setAttempts < 3} ? */}
                     {                <form className="login-form" onSubmit={handleSubmit}>
