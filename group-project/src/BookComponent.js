@@ -2,6 +2,7 @@ import "./BookComponent.css";
 import { BooksContext, UserContext } from "./App";
 import { useContext} from "react";
 import { borrowBook, getBooks, getUsers, setLoginStatusServer, updateUsers } from "./services/Communication";
+import { createRoutesFromElements } from "react-router-dom";
 
 const BookComponent = ({ id, setIsOpen }) => {
   
@@ -27,7 +28,7 @@ const BookComponent = ({ id, setIsOpen }) => {
         return {...copy}
       }
     })
-    const newStatus = { 
+    const newBookStatus = { 
                         ...book,
                         copies: [...newCopies]
                       }
@@ -44,45 +45,41 @@ const BookComponent = ({ id, setIsOpen }) => {
                          }
        
 
-      borrowBook(book.id, newStatus)
-        .then(response => console.log("borrow book", response))  // kirja objekti borrowed 
-      
-        
-      setTimeout(() => { 
-        getBooks()
+      borrowBook(book.id, newBookStatus)
         .then(response => {
-          dataBooks.setBooks(response);
-          console.log("getBook", response) // kirja lista arr päivitetty borrowed 
-        })
-      }, "250")        
-             
-      setTimeout(() => { 
-        updateUsers(currentUser.id, newUserState)
-        .then(response => console.log("update user", response)) // user objeckti loan added 
-      }, "500")     
-                               
-      setTimeout(() => {
-        getUsers()
-          .then(response => {
-                              setUsers([...response]);
-                              console.log("get user", response)  // ekana, vanha lista  
-                            })
-      }, "750")     
-  
-      setTimeout(() => {
-        setLoginStatusServer({
-                              login: true,
-                              user: {...newUserState}
-                             }).then(response => {
-                              setLoginStatus(response)
-                              console.log("setloginstatus", response)  // loginstatus object             
-                             })
-      }, "1000")
-                                
-   
-                       
+          dataBooks.setBooks( dataBooks.books.map((ele) => {
+              if(book.id === ele.id) {
+                return response
+              } else {
+                return ele
+              }
+          })    
+        )
+
+        }).then( response => {
+          updateUsers(currentUser.id, newUserState)
+          .then(response => { 
+            setUsers(
+              user.users.map((ele) => {
+                if(currentUser.id === ele.id){
+                  return response
+                } else {
+                  return ele
+                }
+              })
+            )
+          }) 
+        }
+
+        ).then( response => 
+          setLoginStatusServer({
+            login: true,
+            user: {...newUserState}
+          }).then(response => {
+             setLoginStatus(response)           
+          })
+        )                   
   }
-  console.log("borrowed")
 
   const status = book.copies.map((copy, i) => {
     return copy.status === "in_library" ? (
