@@ -26,6 +26,7 @@
     },
     {
       "name": "Test",
+      "password": "123",
       "email": "jee@hotmail.com",
       "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
       "current_loans": [],
@@ -73,9 +74,9 @@
         },
         {
           "id": "2",
-          "status": "borrowed",
-          "borrower_id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
-          "due_date": "2023-03-05T10:11:37.132Z"
+          "status": "in_library",
+          "borrower_id": null,
+          "due_date": null
         }
       ]
     },
