@@ -30,16 +30,22 @@ const getUsers = () => {
             .then((response) => response.data);
 }
 
+
 const addUser = (newUser) => {
   return axios
-            .post(usersUrl, newUser)
-            .then((response) => response.data);
+  .post(usersUrl, newUser)
+  .then((response) => response.data);
 }
 
+const updateUsers = (id,newStatus) => {
+  return axios
+            .put(`${usersUrl}/${id}`, newStatus)
+            .then((response) => response.data);
+}
 const borrowBook = (id, newStatus) => {
   return axios
             .put(`${booksUrl}/${id}`, newStatus)
             .then(response => response.data)
 } 
 
-export {getBooks, borrowBook, getUsers, getLoginStatus, setLoginStatusServer, addUser};
+export {getBooks, borrowBook, getUsers, getLoginStatus, updateUsers, setLoginStatusServer, addUser};

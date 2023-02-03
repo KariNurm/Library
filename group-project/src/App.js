@@ -37,12 +37,16 @@ const [loginStatus, setLoginStatus] = useState({})
 
  return ( 
   <div className='App'>
-    <UserContext.Provider value={{users: users, loginStatus: loginStatus, setLoginStatus: setLoginStatus}}>
-        <BooksContext.Provider value={{books: books, setBooks: setBooks}} >
-      <Header /> { /* <Link> elements goes to Header component*/ }
+    <UserContext.Provider value={{users: users,
+                                  loginStatus: loginStatus,
+                                  setLoginStatus: setLoginStatus,
+                                  setUsers: setUsers}}>
+        <BooksContext.Provider value={{books: books,
+                                       setBooks: setBooks}} >
+      <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-          <Route path="/search" element={<SearchPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/mypage" element={<MyPage/>} />
         <Route path="/login" element={ currentForm === "login" 
                                                     ? <Login onFormSwitch={toggleForm} /> 
