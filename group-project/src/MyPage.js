@@ -24,8 +24,9 @@ const MyPage = () => {
       <button onClick={() => setIsOpen(false)}>Close</button>
       </Modal>
           <h2>Welcome to your page, {user.name}!</h2>
-          {user.current_loans.length === 0 ? <h2>You have no loans</h2>
+          {borrowedBooks.length === 0 ? <h2>You have no loans</h2>
                                           : <h2>Your current loans: {borrowedBooks.length}</h2>}
+<<<<<<< HEAD
           {(user.current_loans.length>0) }
           {borrowedBooks.map (borrowedBook => 
                   
@@ -35,6 +36,26 @@ const MyPage = () => {
                         {<button className="borrow-button">Return</button>}</p>
                         
                   )}
+=======
+          {(borrowedBooks.length>0)?(
+            <table className="myPage-table">
+            <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                </tr> 
+                </thead> 
+                {borrowedBooks.map (borrowedBook => 
+                  
+                  <tr>
+                      <td>{borrowedBook.title}</td>
+                      <td>{borrowedBook.author}</td>
+                      </tr>)}
+                </table>
+
+          ) : (<h2></h2>) }
+          
+>>>>>>> main
     </div>
   )
 }
