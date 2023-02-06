@@ -1,7 +1,15 @@
 {
   "loginStatus": {
-    "login":  false
-    },
+    "login": true,
+    "user": {
+      "name": "User",
+      "email": "someone@gmail.com",
+      "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    }
+  },
   "users": [
     {
       "name": "Rene Orosz",
@@ -52,6 +60,15 @@
       "current_loans": [],
       "book_history": [],
       "admin": false
+    },
+    {
+      "name": "Oliver Beacon",
+      "password": "Student1",
+      "email": "olivine@gmail.com",
+      "id": "547ce362-243b-4f75-8b2d-195b777cfe41",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
     }
   ],
   "books": [
@@ -74,9 +91,9 @@
         },
         {
           "id": "2",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+          "due_date": "2023-03-08T10:42:36.502Z"
         }
       ]
     },

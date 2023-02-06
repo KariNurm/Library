@@ -105,7 +105,7 @@ const SearchPage = () => {
           </div>
           <div>
             <button className="show-button" onClick={showBooks}>
-              Toggle book search results
+              Submit
             </button>
           </div>
         </div>
