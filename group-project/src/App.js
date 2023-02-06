@@ -14,25 +14,34 @@ export const BooksContext = createContext();
 const App = () => {
   
   
-const [books, setBooks] = useState([]);
-const [users, setUsers] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [currentForm, setCurrentForm] = useState('login');
+  const [loginStatus, setLoginStatus] = useState({})
+
 useEffect(() => {
+  const loggedInUser = JSON.parse(localStorage.getItem("user"));
+  console.log(loggedInUser)
+  if (loggedInUser) {
+    setLoginStatus(loggedInUser);
+  }
+
   getBooks().then((data) => {setBooks(data)});
   getUsers().then((data) => {setUsers(data)});
-  getLoginStatus().then((data) =>{setLoginStatus(data)})
+  
 }, []);
+
+console.log(loginStatus)
 
 const addNewUser = (newUser) => {
   addUser(newUser).then(newUser => setUsers([newUser, ...users]));
 }
 
-const [currentForm, setCurrentForm] = useState('login');
 
 const toggleForm = (formName) => {
   setCurrentForm(formName);
 }
 
-const [loginStatus, setLoginStatus] = useState({})
 // loginStatus contains the data of the logged in user
 
  return ( 

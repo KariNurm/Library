@@ -1,5 +1,5 @@
-import { UserContext } from "./App";
-import { useContext, useState } from "react";
+
+import { useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
 import MyBorrowedBooks from "./MyBorrowedBooks";
@@ -7,10 +7,12 @@ Modal.setAppElement('#root');
 
 
 const MyPage = () => {
-  const data = useContext(UserContext);
-  const user = data.loginStatus.user;
-  console.log("data to my page", data);
+  
   const [isOpen, setIsOpen] = useState(false);
+  
+  const data = JSON.parse(localStorage.getItem("user"));
+  const user = data.user;
+  console.log("data to my page", data);
   const borrowedBooks = user.current_loans;
 
 

@@ -23,6 +23,7 @@ const Header = () => {
 	const data = useContext(UserContext)
 	const handleClick = () => {
 		navigate("/")
+		localStorage.clear();
 		setLoginStatusServer({login: false})
 			.then(response => data.setLoginStatus(response))
 		    setLogoutPopOpen(false)
