@@ -12,6 +12,7 @@ const Signup = (props) => {
     const [name, setName] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [pwdError, setPwdError] = useState(false);
    
     const customStyles = {
         content: {
@@ -44,6 +45,14 @@ const Signup = (props) => {
           setIsError(true)
         }
       }
+
+    const validPassword = new RegExp()
+
+    const validate = () => {
+      if (!validPassword.test(password)) {
+        setPwdError(true);
+      }
+    }
     
     return (
         <div className="container">
@@ -82,7 +91,8 @@ const Signup = (props) => {
             <input className="login-input" required="required" minlength="4" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <label htmlFor="password2">Repeat password</label>
             <input className="login-input" required="required" minlength="4" value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" placeholder="********" id="password2" name="password2" />
-            <button className="login-button" type="submit">Submit</button>
+            <button className="login-button" onClick={validate} type="submit">Submit</button>
+            {pwdError && <p> Your password is invalid. </p>}
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>

@@ -1,14 +1,36 @@
 {
   "loginStatus": {
-    "login":  false
-    },
+    "login": true,
+    "user": {
+      "name": "User",
+      "email": "someone@gmail.com",
+      "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    }
+  },
   "users": [
     {
       "name": "Rene Orosz",
-      "password": "hunter12",
-      "id": 1,
       "email": "joo@mail.com",
-      "current_loans": [],
+      "id": 1,
+      "current_loans": [
+        {
+          "id": "9781449331818",
+          "isbn": "9781449331818",
+          "title": "Learning JavaScript Design Patterns",
+          "subtitle": "A JavaScript and jQuery Developer's Guide",
+          "author": "Addy Osmani",
+          "published": "2012-07-01T00:00:00.000Z",
+          "publisher": "O'Reilly Media",
+          "pages": 254,
+          "description": "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you.",
+          "cover": "https://m.media-amazon.com/images/I/51H-31ivMTL._AC_SY780_.jpg",
+          "website": "http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/",
+          "copies": "4"
+        }
+      ],
       "book_history": [
         "2",
         "3"
@@ -26,7 +48,6 @@
     },
     {
       "name": "Test",
-      "password": "123",
       "email": "jee@hotmail.com",
       "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
       "current_loans": [],
@@ -74,9 +95,9 @@
         },
         {
           "id": "2",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
+          "due_date": "2023-03-05T10:11:37.132Z"
         }
       ]
     },
@@ -116,9 +137,9 @@
       "copies": [
         {
           "id": "4",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": 1,
+          "due_date": "2023-03-05T11:01:56.161Z"
         }
       ]
     },

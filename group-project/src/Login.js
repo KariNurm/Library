@@ -67,24 +67,26 @@ const Login = (props) => {
                     <h3>Wrong email address or password</h3>
                     <h2>Attempts left: {3-attempts}</h2>
                 </div>
-                {setAttempts < 3} ?
                 </Modal>
-                    {                <form className="login-form" onSubmit={handleSubmit}>
-                        <label htmlFor="email">Email</label>
+                
+
+                {attempts < 3 ?
+                    <form className="login-form" onSubmit={handleSubmit}>
+                    <label htmlFor="email">Email</label>
                     <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
                     placeholder="your_email@gmail.com" id="email" name="email" />
                     <label htmlFor="password">Password</label>
                     <input className="login-input" value={password} onChange={(e) => setPassword(e.target.value)} type="password"
                     placeholder="********" id="password" name="password" />
                     <button className="login-button" type="submit">Submit</button>
-                </form>
-                    }
-                     :{ 
-
-                        <form className="login-form" onSubmit={handleSubmit}>
+                    </form>
+                    
+                    :
+                     <form>
                         <p> Sorry, but you tried password too many times. You have been locked out. </p>
                     </form>
                 }
+                
                     
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
                 </div>
