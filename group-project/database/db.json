@@ -1,25 +1,18 @@
 {
   "loginStatus": {
-    "login": true,
-    "user": {
-      "name": "Test",
-      "email": "jee@hotmail.com",
-      "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
-      "book_history": [],
-      "admin": false
-    }
-  },
+    "login":  false
+    },
   "users": [
     {
       "name": "Rene Orosz",
       "password": "hunter12",
       "id": 1,
       "email": "joo@mail.com",
+      "current_loans": [],
       "book_history": [
         "2",
         "3"
       ],
-      "current_loans": [],
       "admin": false
     },
     {
@@ -52,40 +45,18 @@
       "admin": false
     },
     {
-      "name": "Test",
-      "password": "Lazy",
-      "email": "some@gmail.com",
-      "id": "8d3fa329-db76-46fb-bec9-aa9b3972c3c5",
-      "book_history": [],
-      "admin": false
-    },
-    {
       "name": "User",
-      "password": "L@zy",
-      "email": "some@gmail.com",
-      "id": "9816c1aa-907a-4fd7-8e5b-e8c25e07dab2",
-      "book_history": [],
-      "admin": false
-    },
-    {
-      "name": "user",
-      "password": "Lazy",
-      "email": "some@gmail.com",
-      "id": "4303f327-b7b5-4c7a-8d8b-8a3d27fdbd44",
-      "book_history": [],
-      "admin": false
-    },
-    {
-      "name": "User",
-      "password": "Lazy",
-      "email": "some@gmail.com",
-      "id": "a37cf355-1c44-4d98-839b-c348a668fb16",
+      "password": "L@zy1",
+      "email": "someone@gmail.com",
+      "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "current_loans": [],
       "book_history": [],
       "admin": false
     }
   ],
   "books": [
     {
+      "id": "0679722769",
       "isbn": "0679722769",
       "title": "Ulysses",
       "author": "James Joyce",
@@ -110,6 +81,7 @@
       ]
     },
     {
+      "id": "9781593275846",
       "isbn": "9781593275846",
       "title": "Eloquent JavaScript, Second Edition",
       "subtitle": "A Modern Introduction to Programming",
@@ -130,6 +102,7 @@
       ]
     },
     {
+      "id": "9781449331818",
       "isbn": "9781449331818",
       "title": "Learning JavaScript Design Patterns",
       "subtitle": "A JavaScript and jQuery Developer's Guide",
@@ -150,6 +123,7 @@
       ]
     },
     {
+      "id": "9781449365035",
       "isbn": "9781449365035",
       "title": "Speaking JavaScript",
       "subtitle": "An In-Depth Guide for Programmers",
@@ -170,6 +144,7 @@
       ]
     },
     {
+      "id": "9781491950296",
       "isbn": "9781491950296",
       "title": "Programming JavaScript Applications",
       "subtitle": "Robust Web Architecture with Node, HTML5, and Modern JS Libraries",
@@ -190,6 +165,7 @@
       ]
     },
     {
+      "id": "9781593277574",
       "isbn": "9781593277574",
       "title": "Understanding ECMAScript 6",
       "subtitle": "The Definitive Guide for JavaScript Developers",
@@ -210,6 +186,7 @@
       ]
     },
     {
+      "id": "9781491904244",
       "isbn": "9781491904244",
       "title": "You Don't Know JS",
       "subtitle": "ES6 & Beyond",
@@ -230,6 +207,7 @@
       ]
     },
     {
+      "id": "9781449325862",
       "isbn": "9781449325862",
       "title": "Git Pocket Guide",
       "subtitle": "A Working Introduction",
@@ -250,6 +228,7 @@
       ]
     },
     {
+      "id": "9781449337711",
       "isbn": "9781449337711",
       "title": "Designing Evolvable Web APIs with ASP.NET",
       "subtitle": "Harnessing the Power of the Web",
@@ -270,6 +249,7 @@
       ]
     },
     {
+      "id": "123",
       "isbn": "123",
       "title": "Book",
       "author": "Jon Doe",
