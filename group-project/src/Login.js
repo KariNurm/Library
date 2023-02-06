@@ -30,7 +30,7 @@ const Login = (props) => {
             if(findUserIndex === -1) {
                 setWrongOpen(true);
             } else {
-                while (attempts < 3) {
+                // while (attempts < 3) {
                     if(password === data.users[findUserIndex].password) {
                         setLoginStatusServer({login: true,
                             user: {name: data.users[findUserIndex].name,
@@ -47,7 +47,7 @@ const Login = (props) => {
                                 console.log(this);
                                 setAttempts(attempts + 1);
                             }
-                        }
+                        // }
             }
             
 
@@ -70,7 +70,7 @@ const Login = (props) => {
                 </Modal>
                 
 
-                {attempts < 3 ?
+                {/* {attempts < 3 ? */}
                     <form className="login-form" onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
                     <input className="login-input" value={email} onChange={(e) => setEmail(e.target.value)}type="email"
@@ -81,11 +81,11 @@ const Login = (props) => {
                     <button className="login-button" type="submit">Submit</button>
                     </form>
                     
-                    :
-                     <form>
-                        <p> Sorry, but you tried password too many times. You have been locked out. </p>
-                    </form>
-                }
+                    // :
+                    //  <form>
+                    //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
+                    // </form>
+                {/* // } */}
                 
                     
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
