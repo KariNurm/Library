@@ -2,7 +2,9 @@ import { UserContext } from "./App";
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
-Modal.setAppElement("#root");
+import MyBorrowedBooks from "./MyBorrowedBooks";
+Modal.setAppElement('#root');
+
 
 const MyPage = () => {
   const data = useContext(UserContext);
@@ -24,12 +26,15 @@ const MyPage = () => {
           <h2>Welcome to your page, {user.name}!</h2>
           {borrowedBooks.length === 0 ? <h2>You have no loans</h2>
                                           : <h2>Your current loans: {borrowedBooks.length}</h2>}
+          {(user.current_loans.length>0) }
+        
           {(borrowedBooks.length>0)?(
             <table className="myPage-table">
             <thead>
                 <tr>
                   <th>Title</th>
                   <th>Author</th>
+                  <th>Due date</th>
                 </tr> 
                 </thead> 
                 {borrowedBooks.map (borrowedBook => 
@@ -37,6 +42,9 @@ const MyPage = () => {
                   <tr>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
+                      <td>{borrowedBook.due_date}</td>
+                    {<button className="borrow-button">Renew</button>}
+                    {<button className="borrow-button">Return</button>}
                       </tr>)}
                 </table>
 
