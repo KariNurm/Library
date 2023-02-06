@@ -46,7 +46,7 @@ const Signup = (props) => {
         }
       }
 
-    const validPassword = new RegExp(/[a-z][A-Z][0-9]/);
+    const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
 
     const validate = () => {
       if (!validPassword.test(password)) {
