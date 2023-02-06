@@ -26,23 +26,15 @@ const MyPage = () => {
           <h2>Welcome to your page, {user.name}!</h2>
           {borrowedBooks.length === 0 ? <h2>You have no loans</h2>
                                           : <h2>Your current loans: {borrowedBooks.length}</h2>}
-<<<<<<< HEAD
           {(user.current_loans.length>0) }
-          {borrowedBooks.map (borrowedBook => 
-                  
-                        <p>{borrowedBook.author}: 
-                        {borrowedBook.title}
-                        Due date  {borrowedBook.due_date}
-                        {<button className="borrow-button">Return</button>}</p>
-                        
-                  )}
-=======
+        
           {(borrowedBooks.length>0)?(
             <table className="myPage-table">
             <thead>
                 <tr>
                   <th>Title</th>
                   <th>Author</th>
+                  <th>Due date</th>
                 </tr> 
                 </thead> 
                 {borrowedBooks.map (borrowedBook => 
@@ -50,12 +42,14 @@ const MyPage = () => {
                   <tr>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
+                      <td>{borrowedBook.due_date}</td>
+                    {<button className="borrow-button">Renew</button>}
+                    {<button className="borrow-button">Return</button>}
                       </tr>)}
                 </table>
 
           ) : (<h2></h2>) }
           
->>>>>>> main
     </div>
   )
 }
