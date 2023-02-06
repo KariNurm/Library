@@ -7,13 +7,52 @@ Modal.setAppElement("#root");
 
 const MyPage = () => {
   const data = useContext(UserContext);
+  const dataBooks = useContext(BooksContext);
   const user = data.loginStatus.user;
-  console.log("data to my page", data);
+  //console.log("data to my page", data);
   const [isOpen, setIsOpen] = useState(false);
   const borrowedBooks = user.current_loans;
-  const returnButton =() =>{
 
+  const returnButton =(borrowedBook) =>{
+    const currentCopyId=borrowedBook.copies;
+    console.log(currentCopyId);
+    const currentBookIndex = dataBooks.books.findIndex(ele => ele.id === borrowedBook.id);
+    const book = dataBooks.books[currentBookIndex];
+    const currentCopyIndex = book.copies.findIndex(ele => ele.id === currentCopyId);
+    const currentCopy = book.copies[currentCopyIndex];
+    console.log(currentCopy);
+    
+    const newCopies =  book.copies.map((copy) => {
+      if(copy.id === currentCopyId) {
+        return { ...copy,
+                status: "in_library",
+                borrower_id: null,
+                due_date: null,
+        }
+      } else {
+        return {...copy}
+      }
+    })
+    console.log(newCopies);
+    const newBookStatus = { 
+      ...book,
+      copies: [...newCopies]
+    }
+    
+    returnBook(book.id, newBookStatus)
+        .then(response => {
+          dataBooks.setBooks( dataBooks.books.map((ele) => {
+              if(book.id === ele.id) {
+                return response
+              } else {
+                return ele
+              }
+          }))
+        })
   }
+
+ 
+
 
   
 
@@ -47,7 +86,7 @@ const MyPage = () => {
                   <tr>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
-                      <td><button onClick={()=> returnButton(borrowedBook.id)} className="return-button">Return</button></td>
+                      <td><button onClick={()=> returnButton(borrowedBook)} className="return-button">Return</button></td>
                       </tr>)}
                 </table>
 
@@ -57,4 +96,5 @@ const MyPage = () => {
   )
 }
 export default MyPage;
+
 
