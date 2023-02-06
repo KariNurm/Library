@@ -1,7 +1,8 @@
-import { UserContext } from "./App";
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
+import { BooksContext, UserContext } from "./App";
+import { returnBook, updateCurrentLoans, updateUser } from "./services/Communication";
 Modal.setAppElement("#root");
 
 const MyPage = () => {
@@ -10,6 +11,13 @@ const MyPage = () => {
   console.log("data to my page", data);
   const [isOpen, setIsOpen] = useState(false);
   const borrowedBooks = user.current_loans;
+  const returnButton =() =>{
+
+  }
+
+  
+
+
 
 
   return (
@@ -30,6 +38,8 @@ const MyPage = () => {
                 <tr>
                   <th>Title</th>
                   <th>Author</th>
+                  <th>Return</th>
+                  
                 </tr> 
                 </thead> 
                 {borrowedBooks.map (borrowedBook => 
@@ -37,6 +47,7 @@ const MyPage = () => {
                   <tr>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
+                      <td><button onClick={()=> returnButton(borrowedBook.id)} className="return-button">Return</button></td>
                       </tr>)}
                 </table>
 
@@ -46,3 +57,4 @@ const MyPage = () => {
   )
 }
 export default MyPage;
+
