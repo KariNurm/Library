@@ -28,18 +28,13 @@ const MyPage = () => {
                                           : <h2>Your current loans: {borrowedBooks.length}</h2>}
           {(user.current_loans.length>0) }
           {borrowedBooks.map (borrowedBook => 
-                  <table className=".myPage table">
-                    <thead>
-                        <tr>
-                          <th>Title</th>
-                          <th>Author</th>
-                        </tr> 
-                        </thead> 
-                    <tr>
-                        <td>{borrowedBook.title}</td>
-                        <td>{borrowedBook.author}</td>
-                        </tr>
-                  </table>)}
+                  
+                        <p>{borrowedBook.author}: 
+                        {borrowedBook.title}
+                        Due date  {borrowedBook.due_date}
+                        {<button className="borrow-button">Return</button>}</p>
+                        
+                  )}
     </div>
   )
 }
