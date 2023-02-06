@@ -1,7 +1,14 @@
 {
   "loginStatus": {
-    "login": false
-    },
+    "login": true,
+    "user": {
+      "name": "Test",
+      "email": "jee@hotmail.com",
+      "id": "85eaa25b-ad86-4317-a862-8a96b98ad257",
+      "book_history": [],
+      "admin": false
+    }
+  },
   "users": [
     {
       "name": "Rene Orosz",
