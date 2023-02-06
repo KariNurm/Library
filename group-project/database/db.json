@@ -1,14 +1,83 @@
 {
   "loginStatus": {
-    "login":  false
-    },
+    "login": true,
+    "user": {
+      "name": "Rene Orosz",
+      "id": 1,
+      "email": "joo@mail.com",
+      "current_loans": [
+        {
+          "id": "9781593277574",
+          "isbn": "9781593277574",
+          "title": "Understanding ECMAScript 6",
+          "subtitle": "The Definitive Guide for JavaScript Developers",
+          "author": "Nicholas C. Zakas",
+          "published": "2016-09-03T00:00:00.000Z",
+          "publisher": "No Starch Press",
+          "pages": 352,
+          "description": "ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that ECMAScript 6 brings to JavaScript.",
+          "cover": "https://m.media-amazon.com/images/I/512T+d+VK6L._AC_SY1000_.jpg",
+          "website": "https://leanpub.com/understandinges6/read",
+          "copies": "7"
+        },
+        {
+          "id": "9781491904244",
+          "isbn": "9781491904244",
+          "title": "You Don't Know JS",
+          "subtitle": "ES6 & Beyond",
+          "author": "Kyle Simpson",
+          "published": "2015-12-27T00:00:00.000Z",
+          "publisher": "O'Reilly Media",
+          "pages": 278,
+          "description": "No matter how much experience you have with JavaScript, odds are you don’t fully understand the language. As part of the \"You Don’t Know JS\" series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built.",
+          "cover": "https://balka-book.com/files/2021/05_03/21_33/u_files_store_1_486486.jpg",
+          "website": "https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20&%20beyond",
+          "copies": "8"
+        }
+      ],
+      "book_history": [
+        "2",
+        "3"
+      ],
+      "admin": false
+    }
+  },
   "users": [
     {
       "name": "Rene Orosz",
       "password": "hunter12",
       "id": 1,
       "email": "joo@mail.com",
-      "current_loans": [],
+      "current_loans": [
+        {
+          "id": "9781593277574",
+          "isbn": "9781593277574",
+          "title": "Understanding ECMAScript 6",
+          "subtitle": "The Definitive Guide for JavaScript Developers",
+          "author": "Nicholas C. Zakas",
+          "published": "2016-09-03T00:00:00.000Z",
+          "publisher": "No Starch Press",
+          "pages": 352,
+          "description": "ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that ECMAScript 6 brings to JavaScript.",
+          "cover": "https://m.media-amazon.com/images/I/512T+d+VK6L._AC_SY1000_.jpg",
+          "website": "https://leanpub.com/understandinges6/read",
+          "copies": "7"
+        },
+        {
+          "id": "9781491904244",
+          "isbn": "9781491904244",
+          "title": "You Don't Know JS",
+          "subtitle": "ES6 & Beyond",
+          "author": "Kyle Simpson",
+          "published": "2015-12-27T00:00:00.000Z",
+          "publisher": "O'Reilly Media",
+          "pages": 278,
+          "description": "No matter how much experience you have with JavaScript, odds are you don’t fully understand the language. As part of the \"You Don’t Know JS\" series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built.",
+          "cover": "https://balka-book.com/files/2021/05_03/21_33/u_files_store_1_486486.jpg",
+          "website": "https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20&%20beyond",
+          "copies": "8"
+        }
+      ],
       "book_history": [
         "2",
         "3"
@@ -49,6 +118,15 @@
       "password": "L@zy1",
       "email": "someone@gmail.com",
       "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "fakenews",
+      "password": "12345",
+      "email": "fakenews@gmail.com",
+      "id": "3a346d45-81c7-46b2-bf72-81d983e6b5a4",
       "current_loans": [],
       "book_history": [],
       "admin": false
@@ -179,9 +257,9 @@
       "copies": [
         {
           "id": "7",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": 1,
+          "due_date": "2023-03-08T10:04:38.228Z"
         }
       ]
     },
@@ -200,9 +278,9 @@
       "copies": [
         {
           "id": "8",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": 1,
+          "due_date": "2023-03-08T10:05:05.167Z"
         }
       ]
     },

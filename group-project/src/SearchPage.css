@@ -148,3 +148,7 @@
   border-radius: 20px;
   padding: 10px;
 }
+
+.modal {
+  font-family: Arial, Helvetica, sans-serif;
+}
