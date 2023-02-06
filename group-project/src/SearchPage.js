@@ -59,6 +59,12 @@ const SearchPage = () => {
     setSearchTitle("");
   };
 
+  const handleKeyPress = (event) => {
+    if (event.keycode === 13) {
+      showBooks();
+    }
+  }
+
   return (
     <>
       <Modal
@@ -79,6 +85,7 @@ const SearchPage = () => {
             placeholder="Search with an ISBN"
             onChange={handleISBN}
             value={searchISBN}
+            onKeyUp={handleKeyPress}
           />
           <p>Title: </p>
           <input
@@ -86,6 +93,7 @@ const SearchPage = () => {
             placeholder="Search with a title"
             onChange={handleTitle}
             value={searchTitle}
+            onKeyUp={handleKeyPress}
           />
           <p>Author: </p>
           <input
@@ -93,6 +101,7 @@ const SearchPage = () => {
             placeholder="Search with an author"
             onChange={handleAuthor}
             value={searchAuthor}
+            onKeyUp={handleKeyPress}
           />
         </form>
         <br />
