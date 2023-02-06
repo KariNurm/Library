@@ -1,14 +1,6 @@
 {
   "loginStatus": {
-    "login": true,
-    "user": {
-      "name": "User",
-      "email": "someone@gmail.com",
-      "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
-      "current_loans": [],
-      "book_history": [],
-      "admin": false
-    }
+    "login": false
   },
   "users": [
     {
@@ -57,15 +49,6 @@
       "password": "L@zy1",
       "email": "someone@gmail.com",
       "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
-      "current_loans": [],
-      "book_history": [],
-      "admin": false
-    },
-    {
-      "name": "Oliver Beacon",
-      "password": "Student1",
-      "email": "olivine@gmail.com",
-      "id": "547ce362-243b-4f75-8b2d-195b777cfe41",
       "current_loans": [],
       "book_history": [],
       "admin": false
