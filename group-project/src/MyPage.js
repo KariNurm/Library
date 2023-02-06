@@ -1,12 +1,13 @@
-import { UserContext } from "./App";
+import { BooksContext, UserContext } from "./App";
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
 import MyBorrowedBooks from "./MyBorrowedBooks";
+import BookComponent from "./BookComponent";
 Modal.setAppElement('#root');
 
 
-const MyPage = () => {
+const MyPage = (copyId) => {
   const data = useContext(UserContext);
   const user = data.loginStatus.user;
   console.log("data to my page", data);
@@ -43,7 +44,7 @@ const MyPage = () => {
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
                       <td>{borrowedBook.due_date}</td>
-                    {<button className="borrow-button">Renew</button>}
+                    {<button className="borrow-button"onClick={() => BookComponent.borrow(copyId)}>Renew</button>}
                     {<button className="borrow-button">Return</button>}
                       </tr>)}
                 </table>

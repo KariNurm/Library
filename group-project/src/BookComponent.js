@@ -25,7 +25,7 @@ const BookComponent = ({ id, setIsOpen }) => {
         return { ...copy,
                 status: "borrowed",
                 borrower_id: currentUser.id,
-                due_date: date.toISOString()
+                due_date: date.toLocaleDateString()
         }
       } else {
         return {...copy}
@@ -33,18 +33,19 @@ const BookComponent = ({ id, setIsOpen }) => {
     })
     const newBookStatus = { 
                         ...book,
-                        copies: [...newCopies]
+                        copies: [...newCopies],
                       }
-    
-    const findUserIndex = users.findIndex((ele) => ele.id === currentUser.id);
-
-    const newUserState = { 
-                          ...users[findUserIndex],
-                          current_loans: [
-                                          ...currentUser.current_loans,
-                                          {
-                                            ...book,
-                                            copies: copyId
+                      
+                      const findUserIndex = users.findIndex((ele) => ele.id === currentUser.id);
+                      
+                      const newUserState = { 
+                        ...users[findUserIndex],
+                        current_loans: [
+                          ...currentUser.current_loans,
+                          {
+                            ...book,
+                            copies: copyId,
+                            due_date: date
                                           }
                                          ]
                          }
