@@ -130,15 +130,15 @@ const MyPage = () => {
             <table className="myPage-table">
             <thead>
                 <tr>
+                  <th></th>
                   <th>Title</th>
                   <th>Author</th>
-                  <th>Due date</th>
-                                  
+                  <th>Due date</th>            
                 </tr> 
                 </thead> 
                 {borrowedBooks.map (borrowedBook => 
-                  
                   <tr>
+                      <td><img className="small-cover" src={borrowedBook.cover} alt="Book cover" /></td>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
                       <td>{borrowedBook.due_date}</td>
