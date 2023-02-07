@@ -147,6 +147,7 @@ const MyPage = () => {
                       </tr>)}
                 </table>
 
+
           ) : (<h2></h2>) }
     
     </div>
