@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import "./Login_Signup.css";
 import  Modal  from "react-modal";
+import { setLoginStatusServer } from "./services/Communication";
 import { UserContext } from "./App";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 Modal.setAppElement('#root')
 
 const customStyles = {
@@ -21,7 +21,8 @@ const Login = (props) => {
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const data = useContext(UserContext)
-        
+
+        // const [attempts, setAttempts] = useState(0);
         
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -30,17 +31,16 @@ const Login = (props) => {
                 setWrongOpen(true);
             } else {
                 if(password === data.users[findUserIndex].password) {
-                    localStorage.setItem("user", JSON.stringify({login: true,
+                    setLoginStatusServer({login: true,
                                          user: {name: data.users[findUserIndex].name,
                                                 email: data.users[findUserIndex].email,
                                                 id: data.users[findUserIndex].id,
                                                 current_loans: data.users[findUserIndex].current_loans,
                                                 book_history: data.users[findUserIndex].book_history,
-                                                admin: data.users[findUserIndex].admin
-                                            }}))
-                data.setLoginStatus(JSON.parse(localStorage.getItem("user")))
-                navigate("/");
-                console.log(data.loginStatus) 
+                                                admin: data.users[findUserIndex].admin}})
+                                         .then(response => {console.log("vastaus", response);
+                                                                    data.setLoginStatus(response);
+                                                                    navigate("/");})
                 } else {
                     setWrongOpen(true);
                 }
@@ -51,13 +51,6 @@ const Login = (props) => {
         }
     
         return (
-            <motion.div
-            className="container text-center  bg-black"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-          >
             <div className="container" >
                 
                 <h2>Login</h2>
@@ -89,7 +82,6 @@ const Login = (props) => {
                     
                 <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
                 </div>
-        </motion.div>
         )
     }
 
