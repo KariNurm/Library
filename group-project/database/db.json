@@ -8,64 +8,7 @@
       "password": "hunter12",
       "id": 1,
       "email": "joo@mail.com",
-      "current_loans": [
-        {
-          "id": "9781449325862",
-          "isbn": "9781449325862",
-          "title": "Git Pocket Guide",
-          "subtitle": "A Working Introduction",
-          "author": "Richard E. Silverman",
-          "published": "2013-08-02T00:00:00.000Z",
-          "publisher": "O'Reilly Media",
-          "pages": 234,
-          "description": "This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git experience.",
-          "cover": "https://m.media-amazon.com/images/I/41ZE0f9LiNL._AC_SY1000_.jpg",
-          "website": "http://chimera.labs.oreilly.com/books/1230000000561/index.html",
-          "copies": "9"
-        },
-        {
-          "id": "9781449365035",
-          "isbn": "9781449365035",
-          "title": "Speaking JavaScript",
-          "subtitle": "An In-Depth Guide for Programmers",
-          "author": "Axel Rauschmayer",
-          "published": "2014-02-01T00:00:00.000Z",
-          "publisher": "O'Reilly Media",
-          "pages": 460,
-          "description": "Like it or not, JavaScript is everywhere these days-from browser to server to mobile-and now you, too, need to learn the language or dive deeper than you have. This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.",
-          "cover": "https://m.media-amazon.com/images/I/51sdVmunyuL._AC_SY1000_.jpg",
-          "website": "http://speakingjs.com/",
-          "copies": "5"
-        },
-        {
-          "id": "9781593277574",
-          "isbn": "9781593277574",
-          "title": "Understanding ECMAScript 6",
-          "subtitle": "The Definitive Guide for JavaScript Developers",
-          "author": "Nicholas C. Zakas",
-          "published": "2016-09-03T00:00:00.000Z",
-          "publisher": "No Starch Press",
-          "pages": 352,
-          "description": "ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that ECMAScript 6 brings to JavaScript.",
-          "cover": "https://m.media-amazon.com/images/I/512T+d+VK6L._AC_SY1000_.jpg",
-          "website": "https://leanpub.com/understandinges6/read",
-          "copies": "7"
-        },
-        {
-          "id": "9781491950296",
-          "isbn": "9781491950296",
-          "title": "Programming JavaScript Applications",
-          "subtitle": "Robust Web Architecture with Node, HTML5, and Modern JS Libraries",
-          "author": "Eric Elliott",
-          "published": "2014-07-01T00:00:00.000Z",
-          "publisher": "O'Reilly Media",
-          "pages": 254,
-          "description": "Take advantage of JavaScript's power to build robust web-scale or enterprise applications that are easy to extend and maintain. By applying the design patterns outlined in this practical book, experienced JavaScript developers will learn how to write flexible and resilient code that's easier-yes, easier-to work with as your code base grows.",
-          "cover": "https://m.media-amazon.com/images/I/51+1N8tvUiL._AC_SY780_.jpg",
-          "website": "http://chimera.labs.oreilly.com/books/1234000000262/index.html",
-          "copies": "6"
-        }
-      ],
+      "current_loans": [],
       "book_history": [
         "2",
         "3"
@@ -154,6 +97,15 @@
       "current_loans": [],
       "book_history": [],
       "admin": false
+    },
+    {
+      "name": "iamtheuser",
+      "password": "password",
+      "email": "userman@email.com",
+      "id": "b7c8b0cf-ab8d-4441-a13c-9b51c8f161ac",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
     }
   ],
   "books": [
@@ -239,9 +191,9 @@
       "copies": [
         {
           "id": "5",
-          "status": "borrowed",
-          "borrower_id": 1,
-          "due_date": "2023-03-09T10:03:24.217Z"
+          "status": "in_library",
+          "borrower_id": null,
+          "due_date": null
         }
       ]
     },
@@ -260,9 +212,9 @@
       "copies": [
         {
           "id": "6",
-          "status": "borrowed",
-          "borrower_id": 1,
-          "due_date": "2023-03-09T10:03:40.394Z"
+          "status": "in_library",
+          "borrower_id": null,
+          "due_date": null
         }
       ]
     },
@@ -283,7 +235,7 @@
           "id": "7",
           "status": "borrowed",
           "borrower_id": 1,
-          "due_date": "2023-03-09T10:03:34.366Z"
+          "due_date": "2023-03-09T13:01:02.606Z"
         }
       ]
     },
@@ -323,9 +275,9 @@
       "copies": [
         {
           "id": "9",
-          "status": "borrowed",
-          "borrower_id": 1,
-          "due_date": "2023-03-09T10:03:17.737Z"
+          "status": "in_library",
+          "borrower_id": null,
+          "due_date": null
         }
       ]
     },
