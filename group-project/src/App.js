@@ -1,6 +1,7 @@
 import { addUser, getBooks, getUsers } from "./services/Communication";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route , useLocation} from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
+import { AnimatePresence } from 'framer-motion'
 import Header from "./Header";
 import LandingPage from "./LandingPage";
 import Login from "./Login"
@@ -42,6 +43,10 @@ const toggleForm = (formName) => {
   setCurrentForm(formName);
 }
 
+
+const location = useLocation()
+
+
 // loginStatus contains the data of the logged in user
 
  return ( 
@@ -53,15 +58,17 @@ const toggleForm = (formName) => {
         <BooksContext.Provider value={{books: books,
                                        setBooks: setBooks}} >
       <Header />
-      <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/mypage" element={<MyPage/>} />
-          <Route path="/login" element={ currentForm === "login" 
-                                                      ? <Login onFormSwitch={toggleForm} /> 
-                                                      : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
-                                                    }/>
-        </Routes>
+      <AnimatePresence mode="wait">
+        <Routes key={location.pathname} location={location}>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/mypage" element={<MyPage/>} />
+            <Route path="/login" element={ currentForm === "login" 
+                                                        ? <Login onFormSwitch={toggleForm} /> 
+                                                        : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
+                                                      }/>
+          </Routes>
+      </AnimatePresence>
     </BooksContext.Provider>
 
     {/*This part is for testing only*/}
