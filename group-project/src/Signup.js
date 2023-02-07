@@ -28,7 +28,7 @@ const Signup = (props) => {
         
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (password === password2)  {
+      if (password === password2 && validPassword.test(password))  {
         const newId = idv4();
         const newUser = {
             name: name,
@@ -41,22 +41,37 @@ const Signup = (props) => {
         }
         props.addNewUser(newUser);
         setIsOpen(true);
+        } else if (!validPassword.test(password)) {
+          setPwdError(true);
         } else {
           setIsError(true)
         }
       }
 
-    const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
+    const validPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$");
 
-    const validate = () => {
-      if (!validPassword.test(password)) {
-        setPwdError(true);
-      }
-    }
+    // const validate = () => {
+    //   if (!validPassword.test(password)) {
+    //     console.log("InvalidPassword")
+    //     setPwdError(true);
+    //   }
+    // }
     
     return (
         <div className="container">
             <h2>Signup</h2>
+
+      <Modal
+        isOpen={pwdError}
+        onAfterOpen={() => {subtitle1.style.color = '#f00'}}
+        onRequestClose={() => setPwdError(false)}
+        style={customStyles}
+        contentLabel="invalid password">
+         <div className="invalid-password"  > 
+          <button className="popup-close-button"  onClick={() => setPwdError(false)}> X </button>
+          <h2 ref={subtitle1}> Password isn't valid! Come up with a new one.  </h2>
+        </div>
+      </Modal>
 
       <Modal
         isOpen={isError}
@@ -66,7 +81,7 @@ const Signup = (props) => {
         contentLabel="passwords do not match">
          <div className="pass-not-match"  > 
           <button className="popup-close-button"  onClick={() => setIsError(false)}> X </button>
-          <h2 ref={subtitle1}> Passwords do not match! Please try again  </h2>
+          <h2 ref={subtitle1}> Passwords do not match! Please try again.  </h2>
         </div>
       </Modal>
 
@@ -92,9 +107,9 @@ const Signup = (props) => {
             <label htmlFor="password2">Repeat password</label>
             <input className="login-input" required="required" minlength="4" value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" placeholder="********" id="password2" name="password2" />
             <button className="login-button" 
-            onClick={validate}
+            // onClick={validate}
             type="submit">Submit</button>
-            {pwdError && <p> Your password is invalid. </p>}
+            {/* {pwdError && <p> Your password is invalid. </p>} */}
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>

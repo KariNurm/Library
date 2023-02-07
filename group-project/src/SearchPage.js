@@ -12,7 +12,7 @@ const SearchPage = () => {
   const [searchISBN, setSearchISBN] = useState("");
   const [searchTitle, setSearchTitle] = useState("");
   const [searchAuthor, setSearchAuthor] = useState("");
-  const [revealedBooks, setRevealedBooks] = useState(false);
+  const [revealedBooks, setRevealedBooks] = useState([]);
 
   const handleISBN = (event) => {
     event.preventDefault();
@@ -50,7 +50,7 @@ const SearchPage = () => {
 
   const showBooks = (event) => {
     event.preventDefault();
-    setRevealedBooks(!revealedBooks);
+    setRevealedBooks(filteredBooks);
   };
 
   const clearAll = () => {
@@ -59,10 +59,11 @@ const SearchPage = () => {
     setSearchTitle("");
   };
 
-  const handleKeyPress = (event) => {
-    if (event.keycode === 13) {
-      showBooks();
-    }
+
+  const onFormSubmit = e => {
+    e.preventDefault();
+    showBooks(e);
+    // send state to server with e.g. `window.fetch`
   }
 
   return (
@@ -77,7 +78,7 @@ const SearchPage = () => {
       </Modal>
 
       <div className="searchPage">
-        <form>
+        <form onSubmit={onFormSubmit}>
           <h1 className="title">Search for books</h1>
           <p>ISBN: </p>
           <input
@@ -85,7 +86,6 @@ const SearchPage = () => {
             placeholder="Search with an ISBN"
             onChange={handleISBN}
             value={searchISBN}
-            onKeyUp={handleKeyPress}
           />
           <p>Title: </p>
           <input
@@ -93,7 +93,6 @@ const SearchPage = () => {
             placeholder="Search with a title"
             onChange={handleTitle}
             value={searchTitle}
-            onKeyUp={handleKeyPress}
           />
           <p>Author: </p>
           <input
@@ -101,9 +100,7 @@ const SearchPage = () => {
             placeholder="Search with an author"
             onChange={handleAuthor}
             value={searchAuthor}
-            onKeyUp={handleKeyPress}
           />
-        </form>
         <br />
 
         <div className="button">
@@ -113,17 +110,17 @@ const SearchPage = () => {
             </button>
           </div>
           <div>
-            <button className="show-button" onClick={showBooks}>
+            <button className="show-button" type="submit">
               Submit
             </button>
           </div>
         </div>
+        </form>
 
         <div className="owlImage"></div>
         <div className="detectiveImage"></div>
 
         <p>Click on the row of the book for more info.</p>
-        {revealedBooks ? (
           <table>
             {searchISBN === "" && searchTitle === "" && searchAuthor === "" ? (
               <></>
@@ -140,7 +137,7 @@ const SearchPage = () => {
               </thead>
             )}
 
-            {filteredBooks.map((books) => (
+            {revealedBooks.map((books) => (
               <tbody key={books.isbn} className="tableElement">
                 <tr
                   onClick={() => {
@@ -158,7 +155,6 @@ const SearchPage = () => {
               </tbody>
             ))}
           </table>
-        ) : null}
       </div>
     </>
   );
