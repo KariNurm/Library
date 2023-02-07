@@ -35,20 +35,6 @@ const BookComponent = ({ id, setIsOpen }) => {
                         ...book,
                         copies: [...newCopies],
                       }
-<<<<<<< HEAD
-                      
-                      const findUserIndex = users.findIndex((ele) => ele.id === currentUser.id);
-                      
-                      const newUserState = { 
-                        ...users[findUserIndex],
-                        current_loans: [
-                          ...currentUser.current_loans,
-                          {
-                            ...book,
-                            copies: copyId,
-                            due_date: date
-=======
-    
     const findUserIndex = users.findIndex((ele) => ele.id === currentUser.id);
 
     const newUserState = { 
@@ -58,7 +44,6 @@ const BookComponent = ({ id, setIsOpen }) => {
                                           {
                                             ...book,
                                             copies: copyId
->>>>>>> main
                                           }
                                          ]
                          }

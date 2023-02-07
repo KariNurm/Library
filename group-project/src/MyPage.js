@@ -1,36 +1,37 @@
-<<<<<<< HEAD
 import { BooksContext, UserContext } from "./App";
-=======
-import { UserContext } from "./App";
->>>>>>> main
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
+import { motion } from 'framer-motion'
 import MyBorrowedBooks from "./MyBorrowedBooks";
 import BookComponent from "./BookComponent";
 Modal.setAppElement('#root');
 
 const MyPage = () => {
-<<<<<<< HEAD
- 
-    //const data = useContext(UserContext);
+  
+    const data = useContext(UserContext);
     //const user = data.loginStatus.user;
+    
+  
     
   
   const [isOpen, setIsOpen] = useState(false);
   
-  const data = JSON.parse(localStorage.getItem("user"));
+  //const data = JSON.parse(localStorage.getItem("user"));
   const user = data.user;
-=======
-  const data = useContext(UserContext);
-  const user = data.loginStatus.user;
->>>>>>> main
   console.log("data to my page", data);
-  const [isOpen, setIsOpen] = useState(false);
   const borrowedBooks = user.current_loans;
 
 
   return (
+    <motion.div
+    className="container text-center  bg-black"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.15 }}
+  >
+
     <div className="mypage">
       <Modal className="mypagemodal"
                 isOpen={isOpen}
@@ -67,6 +68,7 @@ const MyPage = () => {
           ) : (<h2></h2>) }
           
     </div>
+  </motion.div>
   )
 }
 export default MyPage;
