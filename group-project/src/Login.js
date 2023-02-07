@@ -123,3 +123,5 @@ const Login = (props) => {
                 </motion.div>
         )
     }
+
+  export default Login;
