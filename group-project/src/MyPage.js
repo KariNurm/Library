@@ -2,25 +2,47 @@ import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
 import { BooksContext, UserContext } from "./App";
-import { returnBook, updateCurrentLoans, updateUser } from "./services/Communication";
+import { returnBook, updateUser } from "./services/Communication";
 Modal.setAppElement("#root");
 
 const MyPage = () => {
   const data = useContext(UserContext);
   const dataBooks = useContext(BooksContext);
-  const user = data.loginStatus.user;
-  //console.log("data to my page", data);
+  const currentUser = data.loginStatus.user;
+  const user = useContext(UserContext);
+  const users = user.users;
+  //const login = user.loginStatus.login;
+  const setUsers = user.setUsers;
+
   const [isOpen, setIsOpen] = useState(false);
-  const borrowedBooks = user.current_loans;
+  const borrowedBooks = currentUser.current_loans;
+
+
 
   const returnButton =(borrowedBook) =>{
     const currentCopyId=borrowedBook.copies;
-    console.log(currentCopyId);
+    //console.log(currentCopyId);
     const currentBookIndex = dataBooks.books.findIndex(ele => ele.id === borrowedBook.id);
     const book = dataBooks.books[currentBookIndex];
     const currentCopyIndex = book.copies.findIndex(ele => ele.id === currentCopyId);
     const currentCopy = book.copies[currentCopyIndex];
-    console.log(currentCopy);
+    //console.log(currentCopy);
+
+    const findUserIndex = users.findIndex((ele) => ele.id === currentUser.id);
+    // console.log(findUserIndex);   8 - correct
+
+    const currentBookIndexInUsers = users[findUserIndex].current_loans.findIndex(ele => ele.id === borrowedBook.id);
+    //console.log(currentBookIndexInUsers); 0 and 1 - correct
+
+    const currentBookInUsers = currentUser.current_loans[currentBookIndexInUsers];
+    //console.log(currentBookInUsers); title Book ... correct
+
+    users[findUserIndex].current_loans.splice(currentBookIndexInUsers, 1);
+    console.log(users[findUserIndex].current_loans);
+
+    const newUserState = { 
+      ...users[findUserIndex]
+     }
     
     const newCopies =  book.copies.map((copy) => {
       if(copy.id === currentCopyId) {
@@ -33,7 +55,7 @@ const MyPage = () => {
         return {...copy}
       }
     })
-    console.log(newCopies);
+    //console.log(newCopies);
     const newBookStatus = { 
       ...book,
       copies: [...newCopies]
@@ -48,7 +70,22 @@ const MyPage = () => {
                 return ele
               }
           }))
-        })
+        }).then( response => {
+          updateUser(currentUser.id, newUserState)
+          .then(response => { 
+            setUsers(
+              user.users.map((ele) => {
+                if(currentUser.id === ele.id){
+                  return response
+                } else {
+                  return ele
+                }
+              })
+            )
+          }) 
+        }
+
+        )
   }
 
  
@@ -68,7 +105,7 @@ const MyPage = () => {
       <h3>Logged out successfully.</h3>
       <button onClick={() => setIsOpen(false)}>Close</button>
       </Modal>
-          <h2>Welcome to your page, {user.name}!</h2>
+          <h2>Welcome to your page, {currentUser.name}!</h2>
           {borrowedBooks.length === 0 ? <h2>You have no loans</h2>
                                           : <h2>Your current loans: {borrowedBooks.length}</h2>}
           {(borrowedBooks.length>0)?(
@@ -96,5 +133,4 @@ const MyPage = () => {
   )
 }
 export default MyPage;
-
 
