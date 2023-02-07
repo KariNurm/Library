@@ -3,9 +3,7 @@ import './MyPage.css'
 import Modal from "react-modal";
 import { BooksContext, UserContext } from "./App";
 import { returnBook, updateUser, setLoginStatusServer } from "./services/Communication";
-import MyBorrowedBooks from "./MyBorrowedBooks";
-Modal.setAppElement('#root');
-
+Modal.setAppElement("#root");
 
 const MyPage = () => {
   const data = useContext(UserContext);
@@ -75,8 +73,7 @@ const MyPage = () => {
                 return ele
               }
           }))
-        })
-        .then( response => {
+        }).then( response => {
           updateUser(currentUser.id, newUserState)
           .then(response => { 
             setUsers(
@@ -90,6 +87,7 @@ const MyPage = () => {
             )
           }) 
         }
+
         )
         .then( response => 
           setLoginStatusServer({
@@ -100,6 +98,14 @@ const MyPage = () => {
           })
         )       
   }
+
+ 
+
+
+  
+
+
+
 
   return (
     <div className="mypage">
@@ -113,8 +119,6 @@ const MyPage = () => {
           <h2>Welcome to your page, {currentUser.name}!</h2>
           {borrowedBooks.length === 0 ? <h2>You have no loans</h2>
                                           : <h2>Your current loans: {borrowedBooks.length}</h2>}
-          {(user.current_loans.length>0) }
-        
           {(borrowedBooks.length>0)?(
             <table className="myPage-table">
             <thead>
@@ -122,17 +126,18 @@ const MyPage = () => {
                   <th>Title</th>
                   <th>Author</th>
                   <th>Due date</th>
+                                  
                 </tr> 
-            </thead> 
+                </thead> 
                 {borrowedBooks.map (borrowedBook => 
                   
                   <tr>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
                       <td>{borrowedBook.due_date}</td>
-                    {<button className="borrow-button">Renew</button>}
-                    {<button onClick={()=> returnButton(borrowedBook)} className="return-button">Return</button>}
-                  </tr>)}
+                      <td><button onClick={()=> returnButton(borrowedBook)} className="return-button">Return</button></td>
+                      <td><button className="return-button">Renew</button></td>
+                      </tr>)}
                 </table>
 
           ) : (<h2></h2>) }
@@ -141,4 +146,3 @@ const MyPage = () => {
   )
 }
 export default MyPage;
-
