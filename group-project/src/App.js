@@ -1,4 +1,4 @@
-import { addUser, getBooks, getUsers, getLoginStatus } from "./services/Communication";
+import { addUser, getBooks, getUsers } from "./services/Communication";
 import { Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import Header from "./Header";
@@ -54,14 +54,14 @@ const toggleForm = (formName) => {
                                        setBooks: setBooks}} >
       <Header />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/mypage" element={<MyPage/>} />
-        <Route path="/login" element={ currentForm === "login" 
-                                                    ? <Login onFormSwitch={toggleForm} /> 
-                                                    : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
-                                                  }/>
-      </Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/mypage" element={<MyPage/>} />
+          <Route path="/login" element={ currentForm === "login" 
+                                                      ? <Login onFormSwitch={toggleForm} /> 
+                                                      : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
+                                                    }/>
+        </Routes>
     </BooksContext.Provider>
 
     {/*This part is for testing only*/}
