@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
 import { BooksContext, UserContext } from "./App";
-import { returnBook, updateUser } from "./services/Communication";
+import { returnBook, updateUser, setLoginStatusServer } from "./services/Communication";
 Modal.setAppElement("#root");
 
 const MyPage = () => {
@@ -11,6 +11,7 @@ const MyPage = () => {
   const currentUser = data.loginStatus.user;
   const user = useContext(UserContext);
   const users = user.users;
+  const setLoginStatus = user.setLoginStatus;
   //const login = user.loginStatus.login;
   const setUsers = user.setUsers;
 
@@ -60,6 +61,8 @@ const MyPage = () => {
       ...book,
       copies: [...newCopies]
     }
+
+    const newUserStateNoPW = (({ password, ...o }) => o)(newUserState) // remove b and c
     
     returnBook(book.id, newBookStatus)
         .then(response => {
@@ -86,6 +89,14 @@ const MyPage = () => {
         }
 
         )
+        .then( response => 
+          setLoginStatusServer({
+            login: true,
+            user: {...newUserStateNoPW}
+          }).then(response => {
+             setLoginStatus(response)           
+          })
+        )       
   }
 
  
