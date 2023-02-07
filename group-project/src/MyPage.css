@@ -50,10 +50,15 @@
   border-radius: 20px;
 }
 
-/*.myPage-table:hover {
+.myPage-table tr:nth-child(odd) {
+  background-color: #c7c0c0;
+  border-radius: 20px;
+}
+
+.myPage-table:hover {
   box-shadow: 0px 0px 20px #ccc;
   transform: scale(1.1);
-}*/
+}
 
 .mypagemodal {
   display: flex;
@@ -83,4 +88,11 @@
 
 .mypagemodal button:hover {
   background-color: green;
+}
+.return-button {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
+  border-radius: 5px;
 }
