@@ -25,10 +25,13 @@ const Signup = (props) => {
       Modal.setAppElement('#root'); // bind modal to root
       const subtitle = useRef(null);
       const subtitle1 = useRef(null);
-        
+      
+    const validPassword = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])$");
+
     const handleSubmit = (e) => {
       e.preventDefault();
       if (password === password2 && validPassword.test(password))  {
+        console.log("test")
         const newId = idv4();
         const newUser = {
             name: name,
@@ -48,7 +51,6 @@ const Signup = (props) => {
         }
       }
 
-    const validPassword = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])$");
 
     // const validate = () => {
     //   if (!validPassword.test(password)) {
