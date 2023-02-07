@@ -62,6 +62,7 @@ const SearchPage = () => {
 
   const onFormSubmit = e => {
     e.preventDefault();
+    setSearchISBN(e.target.value);
     showBooks(e);
     // send state to server with e.g. `window.fetch`
   }
