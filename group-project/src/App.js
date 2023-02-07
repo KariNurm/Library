@@ -1,6 +1,7 @@
-import { addUser, getBooks, getUsers, getLoginStatus } from "./services/Communication";
-import { Routes, Route } from "react-router-dom";
+import { addUser, getBooks, getUsers } from "./services/Communication";
+import { Routes, Route , useLocation} from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
+import { AnimatePresence } from 'framer-motion'
 import Header from "./Header";
 import LandingPage from "./LandingPage";
 import Login from "./Login"
@@ -14,25 +15,38 @@ export const BooksContext = createContext();
 const App = () => {
   
   
-const [books, setBooks] = useState([]);
-const [users, setUsers] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [currentForm, setCurrentForm] = useState('login');
+  const [loginStatus, setLoginStatus] = useState({})
+
 useEffect(() => {
+  const loggedInUser = JSON.parse(localStorage.getItem("user"));
+  console.log(loggedInUser)
+  if (loggedInUser) {
+    setLoginStatus(loggedInUser);
+  }
+
   getBooks().then((data) => {setBooks(data)});
   getUsers().then((data) => {setUsers(data)});
-  getLoginStatus().then((data) =>{setLoginStatus(data)})
+  
 }, []);
+
+console.log(loginStatus)
 
 const addNewUser = (newUser) => {
   addUser(newUser).then(newUser => setUsers([newUser, ...users]));
 }
 
-const [currentForm, setCurrentForm] = useState('login');
 
 const toggleForm = (formName) => {
   setCurrentForm(formName);
 }
 
-const [loginStatus, setLoginStatus] = useState({})
+
+const location = useLocation()
+
+
 // loginStatus contains the data of the logged in user
 
  return ( 
@@ -44,15 +58,17 @@ const [loginStatus, setLoginStatus] = useState({})
         <BooksContext.Provider value={{books: books,
                                        setBooks: setBooks}} >
       <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/mypage" element={<MyPage/>} />
-        <Route path="/login" element={ currentForm === "login" 
-                                                    ? <Login onFormSwitch={toggleForm} /> 
-                                                    : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
-                                                  }/>
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes key={location.pathname} location={location}>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/mypage" element={<MyPage/>} />
+            <Route path="/login" element={ currentForm === "login" 
+                                                        ? <Login onFormSwitch={toggleForm} /> 
+                                                        : <Signup addNewUser={addNewUser} onFormSwitch={toggleForm} />
+                                                      }/>
+          </Routes>
+      </AnimatePresence>
     </BooksContext.Provider>
 
     {/*This part is for testing only*/}

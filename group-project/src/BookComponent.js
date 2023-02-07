@@ -25,7 +25,7 @@ const BookComponent = ({ id, setIsOpen }) => {
         return { ...copy,
                 status: "borrowed",
                 borrower_id: currentUser.id,
-                due_date: date.toLocaleDateString()
+                due_date: date.toDateString()
         }
       } else {
         return {...copy}
