@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import { v4 as idv4} from 'uuid'
 import "./Login_Signup.css";
 import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
 
 const Signup = (props) => {
     const [email, setEmail] = useState('');
@@ -47,13 +46,6 @@ const Signup = (props) => {
       }
     
     return (
-      <motion.div
-      className="container text-center  bg-black"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.15 }}
-    >
         <div className="container">
             <h2>Signup</h2>
 
@@ -94,7 +86,6 @@ const Signup = (props) => {
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
-    </motion.div>
     )
 }
 
