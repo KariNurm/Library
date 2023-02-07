@@ -48,7 +48,7 @@ const Signup = (props) => {
         }
       }
 
-    const validPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$");
+    const validPassword = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])$");
 
     // const validate = () => {
     //   if (!validPassword.test(password)) {
