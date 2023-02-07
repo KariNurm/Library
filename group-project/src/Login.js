@@ -4,7 +4,8 @@ import Modal from "react-modal";
 import { setLoginStatusServer } from "./services/Communication";
 import { UserContext } from "./App";
 import { useNavigate } from "react-router-dom";
-Modal.setAppElement("#root");
+import { motion } from 'framer-motion'
+Modal.setAppElement('#root')
 
 const customStyles = {
   content: {
@@ -53,6 +54,13 @@ const Login = (props) => {
   };
 
   return (
+            <motion.div
+    className="container text-center  bg-black"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.15 }}
+  >
     <>
       <div className="container">
         <h2>Login</h2>
@@ -101,22 +109,19 @@ const Login = (props) => {
               Submit
             </button>
           </form>
+
           //  :
 
-          //     <form className="login-form" onSubmit={handleSubmit}>
-          //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
-          // </form>
-        }
+                    //     <form className="login-form" onSubmit={handleSubmit}>
+                    //     <p> Sorry, but you tried password too many times. You have been locked out. </p>
+                    // </form>
+                }
+                    
+                <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+                </div>
+                </>
+                </motion.div>
+        )
+    }
 
-        <button
-          className="link-btn"
-          onClick={() => props.onFormSwitch("register")}
-        >
-          Don't have an account? Register here.
-        </button>
-      </div>
-    </>
-  );
-};
-
-export default Login;
+  export default Login;
