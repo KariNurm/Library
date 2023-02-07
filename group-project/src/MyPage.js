@@ -99,15 +99,14 @@ const MyPage = () => {
         )       
   }
 
- 
-
-
-  
-
-
-
-
   return (
+    <div
+    className="container text-center  bg-black"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.15 }}
+  >
     <div className="mypage">
       <Modal className="mypagemodal"
                 isOpen={isOpen}
@@ -123,15 +122,15 @@ const MyPage = () => {
             <table className="myPage-table">
             <thead>
                 <tr>
+                  <th></th>
                   <th>Title</th>
                   <th>Author</th>
-                  <th>Due date</th>
-                                  
+                  <th>Due date</th>            
                 </tr> 
                 </thead> 
                 {borrowedBooks.map (borrowedBook => 
-                  
                   <tr>
+                      <td><img className="small-cover" src={borrowedBook.cover} alt="Book cover" /></td>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>
                       <td>{borrowedBook.due_date}</td>
@@ -142,6 +141,7 @@ const MyPage = () => {
 
           ) : (<h2></h2>) }
           
+    </div>
     </div>
   )
 }
