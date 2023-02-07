@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import './MyPage.css'
 import Modal from "react-modal";
+import { motion } from 'framer-motion'
 import { BooksContext, UserContext } from "./App";
 import { returnBook, updateUser, setLoginStatusServer } from "./services/Communication";
 Modal.setAppElement("#root");
@@ -99,8 +100,15 @@ const MyPage = () => {
         )       
   }
 
+ 
+
+
+  
+
+
+
   return (
-    <div
+    <motion.div
     className="container text-center  bg-black"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -139,10 +147,12 @@ const MyPage = () => {
                       </tr>)}
                 </table>
 
+
           ) : (<h2></h2>) }
-          
+    
     </div>
-    </div>
+    </motion.div>
   )
+
 }
 export default MyPage;

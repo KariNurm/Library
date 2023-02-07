@@ -1,7 +1,8 @@
 {
   "loginStatus": {
     "login":  false
-    },
+    
+  },
   "users": [
     {
       "name": "Rene Orosz",
@@ -49,6 +50,60 @@
       "password": "L@zy1",
       "email": "someone@gmail.com",
       "id": "5f8c6ef6-8d84-4fcf-a18f-dd6e58ab5edb",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "new user",
+      "password": "12345",
+      "email": "newuser@email.com",
+      "id": "0d3c77cd-b74b-4484-b559-2d1930bb95e9",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "username",
+      "password": "12345",
+      "email": "username@email.com",
+      "id": "97075b14-1f08-4b69-a339-2791b6fb594e",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "user1234",
+      "password": "12345",
+      "email": "user1234@email.com",
+      "id": "55a02024-29ea-4721-977e-7c5ea2c51a18",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "user12345",
+      "password": "123456",
+      "email": "user12345@email.com",
+      "id": "331f6bb2-28bf-4dc5-9554-fcb73b3fc9bf",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "name",
+      "password": "123456",
+      "email": "name@email.com",
+      "id": "aac10004-d90a-442e-977a-5eda97a37a7f",
+      "current_loans": [],
+      "book_history": [],
+      "admin": false
+    },
+    {
+      "name": "iamtheuser",
+      "password": "password",
+      "email": "userman@email.com",
+      "id": "b7c8b0cf-ab8d-4441-a13c-9b51c8f161ac",
       "current_loans": [],
       "book_history": [],
       "admin": false
@@ -179,9 +234,9 @@
       "copies": [
         {
           "id": "7",
-          "status": "in_library",
-          "borrower_id": null,
-          "due_date": null
+          "status": "borrowed",
+          "borrower_id": 1,
+          "due_date": "2023-03-09T13:01:02.606Z"
         }
       ]
     },
