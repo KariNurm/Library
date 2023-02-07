@@ -43,7 +43,8 @@ const BookComponent = ({ id, setIsOpen }) => {
                                           ...currentUser.current_loans,
                                           {
                                             ...book,
-                                            copies: copyId
+                                            copies: copyId,
+                                            due_date: date
                                           }
                                          ]
                          }

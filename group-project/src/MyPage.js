@@ -99,16 +99,8 @@ const MyPage = () => {
         )       
   }
 
- 
-
-
-  
-
-
-
-
   return (
-    <motion.div
+    <div
     className="container text-center  bg-black"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -148,10 +140,11 @@ const MyPage = () => {
                       </tr>)}
                 </table>
 
+
           ) : (<h2></h2>) }
           
     </div>
-  </motion.div>
+  </div>
   )
 }
 export default MyPage;
