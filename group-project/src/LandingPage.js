@@ -1,19 +1,9 @@
 import React from "react";
 import "./LandingPage.css";
 import logo from "./images/green-logo.png";
-import { motion } from 'framer-motion';
-
-
 
 function LandingPage() {
   return (
-    <motion.div
-    className="container text-center  bg-black"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.15 }}
-  >
     <div className="landing-page">
       <div className="logo-container artwork-container">
         <img src={logo} alt="Logo" className="logo-image" />
@@ -71,7 +61,6 @@ function LandingPage() {
         </div>
       </div>
     </div>
-  </motion.div>
   );
 }
 
