@@ -1,42 +1,121 @@
 .mypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #05421f;
+  background-image: linear-gradient(to bottom, #05421f, green);
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 50px;
+}
+
+.mypage h2 {
+  margin: 20px 0;
+  font-size: 2em;
+  text-shadow: 1px 1px #333;
+}
+
+.myPage-table {
+  width: 60%;
+  margin: 2rem auto;
+  border: 2px solid #73ad21;
+  background-color: #c7c0c0;
+  color: #05421f;
+  text-align: center;
+  align-items: center;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.myPage-table thead {
+  background-color: #05421f;
+  color: black;
+}
+
+.myPage-table td,
+.myPage-table th {
+  padding: 2px;
+  text-align: center;
+  align-items: center;
+
+  border: 2px solid #73ad21;
+}
+
+/*
+.myPage-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+  border-radius: 20px;
+}
+*/
+.myPage-table tr {
+  background-color: #bfbbbb;
+  border-radius: 20px;
+}
+
+.myPage-table tr:hover {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1);
+  cursor: pointer;
+}
+.myPage-table th:hover {
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
+}
+
+.mypagemodal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.mypagemodal h3 {
+  margin: 20px 0;
+  font-size: 1.5em;
+}
+
+.mypagemodal button {
+  padding: 8px 16px;
+  background-color: #05421f;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.mypagemodal button:hover {
+  background-color: green;
+}
+.return-button {
+  background-color: #05421f;
+  color: white;
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
+  border-radius: 5px;
+}
+.return-button:hover {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0px 0px 20px #ccc;
+  transform: scale(1.1);
+  border-radius: 5px;
+}
+  .small-cover{
     display: flex;
     flex-direction: column;
+    height: 70px;
+    text-align: center;
     align-items: center;
-    background-color: #05421f;
-    opacity: 0.9;
-    background-image: linear-gradient(to bottom, #05421f, green);
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    margin: 50px;
-    border-radius: 20px;
-  }
-  
-  .mypage h2 {
-    margin: 20px 0;
-  }
-  
-  .user-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
-  }
-  
-  .mypage:hover {
-    box-shadow: 0px 0px 20px #ccc;
-    transform: scale(1.1);
-  }
-  .myPage-table {
-    width: 80%;
-    margin: 2rem auto;
-    border-collapse: collapse;
-    background-color: #c7c0c0;
-    color: #05421f;
+    justify-content: center;
   }

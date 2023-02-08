@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { motion } from 'framer-motion'
 import { useRef } from "react";
-import Modal from 'react-modal';
-import { v4 as idv4} from 'uuid'
+import Modal from "react-modal";
+import { v4 as idv4 } from "uuid";
 import "./Login_Signup.css";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Signup = (props) => {
     const [email, setEmail] = useState('');
@@ -12,7 +13,6 @@ const Signup = (props) => {
     const [name, setName] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [pwdError, setPwdError] = useState(false);
    
     const customStyles = {
         content: {
@@ -25,13 +25,10 @@ const Signup = (props) => {
       Modal.setAppElement('#root'); // bind modal to root
       const subtitle = useRef(null);
       const subtitle1 = useRef(null);
-      
-    const validPassword = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])$");
-
+        
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (password === password2 && validPassword.test(password))  {
-        console.log("test")
+      if (password === password2)  {
         const newId = idv4();
         const newUser = {
             name: name,
@@ -44,36 +41,14 @@ const Signup = (props) => {
         }
         props.addNewUser(newUser);
         setIsOpen(true);
-        } else if (!validPassword.test(password)) {
-          setPwdError(true);
         } else {
           setIsError(true)
         }
       }
-
-
-    // const validate = () => {
-    //   if (!validPassword.test(password)) {
-    //     console.log("InvalidPassword")
-    //     setPwdError(true);
-    //   }
-    // }
     
     return (
         <div className="container">
             <h2>Signup</h2>
-
-      <Modal
-        isOpen={pwdError}
-        onAfterOpen={() => {subtitle1.style.color = '#f00'}}
-        onRequestClose={() => setPwdError(false)}
-        style={customStyles}
-        contentLabel="invalid password">
-         <div className="invalid-password"  > 
-          <button className="popup-close-button"  onClick={() => setPwdError(false)}> X </button>
-          <h2 ref={subtitle1}> Password isn't valid! Come up with a new one.  </h2>
-        </div>
-      </Modal>
 
       <Modal
         isOpen={isError}
@@ -83,21 +58,41 @@ const Signup = (props) => {
         contentLabel="passwords do not match">
          <div className="pass-not-match"  > 
           <button className="popup-close-button"  onClick={() => setIsError(false)}> X </button>
-          <h2 ref={subtitle1}> Passwords do not match! Please try again.  </h2>
+          <h2 ref={subtitle1}> Passwords do not match! Please try again  </h2>
         </div>
       </Modal>
 
-      <Modal
-        isOpen={isOpen}
-        onAfterOpen={() => {subtitle.style.color = '#f00'}}
-        onRequestClose={() => setIsOpen(false)}
-        style={customStyles}
-        contentLabel="successful modal">
-        <div className="signup-success">
-          <button className="popup-close-button" onClick={() => setIsOpen(false)}> X </button>
-          <h2 ref={subtitle}> Thank you for registration! You can <Link onClick={() => props.onFormSwitch('login')}> log in </Link> </h2>
-        </div>
-      </Modal>
+        <Modal
+          className="signup-success"
+          isOpen={isOpen}
+          onAfterOpen={() => {
+            subtitle.style.color = "#f00";
+          }}
+          onRequestClose={() => setIsOpen(false)}
+          style={customStyles}
+          contentLabel="successful modal"
+        >
+          <div className="signup-successful">
+            <button
+              className="popup-close-button"
+              onClick={() => setIsOpen(false)}
+            >
+              {" "}
+              X{" "}
+            </button>
+            <h2 className="h2-text" ref={subtitle}>
+              {" "}
+              Thank you for registration! You can now{" "}
+              <Link
+                className="link"
+                onClick={() => props.onFormSwitch("login")}
+              >
+                {" "}
+                Log-In{" "}
+              </Link>{" "}
+            </h2>
+          </div>
+        </Modal>
 
         <form className="signup-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
@@ -108,14 +103,18 @@ const Signup = (props) => {
             <input className="login-input" required="required" minlength="4" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
             <label htmlFor="password2">Repeat password</label>
             <input className="login-input" required="required" minlength="4" value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" placeholder="********" id="password2" name="password2" />
-            <button className="login-button" 
-            // onClick={validate}
-            type="submit">Submit</button>
-            {/* {pwdError && <p> Your password is invalid. </p>} */}
+            <button className="login-button" type="submit">Submit</button>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
-    </div>
-    )
-}
+        <button
+          className="link-btn"
+          onClick={() => props.onFormSwitch("login")}
+        >
+          Already have an account? Login here.
+        </button>
+      </div>
+    </>
+    </motion.div>
+  );
+};
 
-export default Signup
+export default Signup;
