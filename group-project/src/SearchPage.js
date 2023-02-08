@@ -60,12 +60,12 @@ const SearchPage = () => {
   };
 
 
-  const onFormSubmit = e => {
-    e.preventDefault();
-    setSearchISBN(e.target.value);
-    showBooks(e);
-    // send state to server with e.g. `window.fetch`
-  }
+  // const onFormSubmit = e => {
+  //   e.preventDefault();
+  //   setSearchISBN(e.target.value);
+  //   showBooks(e);
+  //   // send state to server with e.g. `window.fetch`
+  // }
 
   return (
     <>
@@ -79,7 +79,7 @@ const SearchPage = () => {
       </Modal>
 
       <div className="searchPage">
-        <form onSubmit={onFormSubmit}>
+        <form>
           <h1 className="title">Search for books</h1>
           <p>ISBN: </p>
           <input
@@ -111,7 +111,7 @@ const SearchPage = () => {
             </button>
           </div>
           <div>
-            <button className="show-button" type="submit">
+            <button className="show-button" type="button">
               Submit
             </button>
           </div>
