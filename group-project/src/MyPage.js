@@ -3,17 +3,15 @@ import './MyPage.css'
 import Modal from "react-modal";
 import { motion } from 'framer-motion'
 import { BooksContext, UserContext } from "./App";
-import { returnBook, updateUser, setLoginStatusServer } from "./services/Communication";
+import { returnBook, updateUser } from "./services/Communication";
 Modal.setAppElement("#root");
 
 const MyPage = () => {
-  const data = useContext(UserContext);
   const dataBooks = useContext(BooksContext);
-  const currentUser = data.loginStatus.user;
+  const currentUser = JSON.parse(localStorage.getItem("user")).user;
   const user = useContext(UserContext);
   const users = user.users;
   const setLoginStatus = user.setLoginStatus;
-  //const login = user.loginStatus.login;
   const setUsers = user.setUsers;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -90,14 +88,16 @@ const MyPage = () => {
         }
 
         )
-        .then( response => 
-          setLoginStatusServer({
-            login: true,
-            user: {...newUserStateNoPW}
-          }).then(response => {
-             setLoginStatus(response)           
-          })
-        )       
+        .then( response => { 
+          localStorage.setItem("user", JSON.stringify(
+            {
+              login: true,
+              user: {...newUserStateNoPW}
+            }
+            )
+          )
+          setLoginStatus(JSON.parse(localStorage.getItem("user"))); 
+        })         
   }
 
  
@@ -137,7 +137,7 @@ const MyPage = () => {
                 </tr> 
                 </thead> 
                 {borrowedBooks.map (borrowedBook => 
-                  <tr>
+                  <tr key={borrowedBook.id}>
                       <td><img className="small-cover" src={borrowedBook.cover} alt="Book cover" /></td>
                       <td>{borrowedBook.title}</td>
                       <td>{borrowedBook.author}</td>

@@ -1,13 +1,13 @@
 import "./Header.css";
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { UserContext } from "./App";
+import { useState } from "react";
 import Modal from "react-modal";
-import { setLoginStatusServer } from "./services/Communication";
 Modal.setAppElement("#root");
 
 const Header = () => {
+  const currentUser = JSON.parse(localStorage.getItem("user"))
+  console.log(currentUser)
   const navigate = useNavigate();
   const [logoutPopOpen, setLogoutPopOpen] = useState(false);
   const customStyles = {
@@ -20,46 +20,25 @@ const Header = () => {
     },
   };
 
-  const data = useContext(UserContext);
   const handleClick = () => {
     navigate("/");
-    setLoginStatusServer({ login: false }).then((response) =>
-      data.setLoginStatus(response)
-    );
+    localStorage.setItem("user", JSON.stringify({ login: false }))
     setLogoutPopOpen(false);
   };
 
   return (
     <header className="header">
-      <Link className="navLink" to="/">
-        {" "}
-        HOME{" "}
-      </Link>
-      <Link className="navLink" to="/search">
-        {" "}
-        SEARCH{" "}
-      </Link>
-      {data.loginStatus.login === true ? (
-        <>
-          <Link className="navLink" to="/mypage">
-            {" "}
-            MYPAGE{" "}
-          </Link>
-          <button
-            className="logout-button"
-            onClick={() => setLogoutPopOpen(true)}
-          >
-            LOGOUT
-          </button>
-        </>
-      ) : (
-        <>
-          <Link className="navLink" to="/login">
-            {" "}
-            LOGIN{" "}
-          </Link>
-        </>
-      )}
+      <Link className="navLink" to="/"> HOME </Link>
+      <Link className="navLink" to="/search"> SEARCH </Link>
+      {currentUser.login === true 
+                                  ? <>
+                                      <Link className="navLink" to="/mypage"> MYPAGE </Link>
+                                      <button
+                                        className="logout-button"
+                                        onClick={() => setLogoutPopOpen(true)}> LOGOUT </button>
+                                    </>
+                                  : <Link className="navLink" to="/login"> LOGIN </Link> 
+      }
       <Modal
         isOpen={logoutPopOpen}
         contentLabel="want to log out?"

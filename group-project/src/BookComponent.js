@@ -4,6 +4,7 @@ import { useContext} from "react";
 import React from "react";
 import { borrowBook, setLoginStatusServer, updateUser } from "./services/Communication";
 import Draggable from 'react-draggable';
+import { json } from "react-router-dom";
 
 const BookComponent = ({ id, setIsOpen }) => {
   
@@ -49,8 +50,7 @@ const BookComponent = ({ id, setIsOpen }) => {
                                          ]
                          }
     
-    const newUserStateNoPW = (({ password, ...o }) => o)(newUserState) // remove b and c
-
+    const newUserStateNoPW = (({ password, ...o }) => o)(newUserState) 
 
       borrowBook(book.id, newBookStatus)
         .then(response => {
@@ -77,15 +77,16 @@ const BookComponent = ({ id, setIsOpen }) => {
             )
           }) 
         }
-
-        ).then( response => 
-          setLoginStatusServer({
-            login: true,
-            user: {...newUserStateNoPW}
-          }).then(response => {
-             setLoginStatus(response)           
-          })
-        )                   
+        ).then( response => { 
+          localStorage.setItem("user", JSON.stringify(
+            {
+              login: true,
+              user: {...newUserStateNoPW}
+            }
+            )
+          )
+          setLoginStatus(JSON.parse(localStorage.getItem("user"))); 
+        })                  
   }
 
   const status = book.copies.map((copy, i) => {

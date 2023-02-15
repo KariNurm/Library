@@ -1,4 +1,4 @@
-import { addUser, getBooks, getUsers, getLoginStatus } from "./services/Communication";
+import { addUser, getBooks, getUsers} from "./services/Communication";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import { AnimatePresence } from 'framer-motion'
@@ -15,27 +15,30 @@ export const BooksContext = createContext();
 const App = () => {
   
   
-const [books, setBooks] = useState([]);
-const [users, setUsers] = useState([]);
-useEffect(() => {
-  getBooks().then((data) => {setBooks(data)});
-  getUsers().then((data) => {setUsers(data)});
-  getLoginStatus().then((data) =>{setLoginStatus(data)})
-}, []);
+  const [books, setBooks] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loginStatus, setLoginStatus] = useState({});
+  const [currentForm, setCurrentForm] = useState('login');
+  
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('user'));
+    if(!loggedInUser) {
+      localStorage.setItem('user', JSON.stringify({login: false}));
+    }
+
+    getBooks().then((data) => {setBooks(data)});
+    getUsers().then((data) => {setUsers(data)});
+  }, []);
+  
+const location = useLocation();
 
 const addNewUser = (newUser) => {
   addUser(newUser).then(newUser => setUsers([newUser, ...users]));
 }
 
-const [currentForm, setCurrentForm] = useState('login');
-
 const toggleForm = (formName) => {
   setCurrentForm(formName);
 }
-
-const location = useLocation();
-const [loginStatus, setLoginStatus] = useState({})
-// loginStatus contains the data of the logged in user
 
  return ( 
   <div className='App'>
@@ -58,8 +61,6 @@ const [loginStatus, setLoginStatus] = useState({})
         </Routes>
       </AnimatePresence>
     </BooksContext.Provider>
-
-    {/*This part is for testing only*/}
     </UserContext.Provider>
   </div>
 )
